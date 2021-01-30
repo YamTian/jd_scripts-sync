@@ -120,21 +120,25 @@ async function main() {
   await showMsg()
 }
 async function JD818() {
-  await getHelp();
-  await listGoods();//逛新品
-  await shopInfo();//逛店铺
-  await listMeeting();//逛会场
-  await $.wait(10000);
-  //再次运行一次，避免出现遗漏的问题
-  await listGoods();//逛新品
-  await shopInfo();//逛店铺
-  await listMeeting();//逛会场
-  await doHelp();
-  await myRank();//领取往期排名奖励
-  await getListJbean();
-  await getListRank();
-  await getListIntegral();
-  await showMsg()
+  try {
+    await getHelp();
+    await listGoods();//逛新品
+    await shopInfo();//逛店铺
+    await listMeeting();//逛会场
+    await $.wait(10000);
+    //再次运行一次，避免出现遗漏的问题
+    await listGoods();//逛新品
+    await shopInfo();//逛店铺
+    await listMeeting();//逛会场
+    await doHelp();
+    await myRank();//领取往期排名奖励
+    await getListJbean();
+    await getListRank();
+    await getListIntegral();
+    await showMsg()
+  } catch (e) {
+    $.logErr(e)
+  }
 }
 function listMeeting() {
   const options = {
@@ -585,12 +589,13 @@ async function doHelp() {
   }
   // await updateShareCodes();
   // if (!$.updatePkActivityIdRes) await updateShareCodesCDN();
-  // tempCode = $.updatePkActivityIdRes.shareCodes;
+  await updateShareCodesCDN();
+  if ($.updatePkActivityIdRes && $.updatePkActivityIdRes['shareCodes']) tempCode = $.updatePkActivityIdRes['shareCodes'];
   console.log(`是否大于当天九点🕘:${nowTime > new Date(nowTime).setHours(9, 0, 0, 0)}`)
   //当天大于9:00才从API里面取收集的助力码
   //if (nowTime > new Date(nowTime).setHours(9, 0, 0, 0)) body = await printAPI();//访问收集的互助码
   body = await printAPI();//访问收集的互助码
-  if (body) {
+  if (body && body['data']) {
     // console.log(`printAPI返回助力码数量:${body.replace(/"/g, '').split(',').length}`)
     // tempCode = tempCode.concat(body.replace(/"/g, '').split(','))
     tempCode = [...tempCode, ...body['data']]
@@ -853,10 +858,9 @@ function updateShareCodes(url = 'https://raw.githubusercontent.com/LXK9301/updat
     })
   })
 }
-function updateShareCodesCDN(url = 'https://raw.fastgit.org/LXK9301/updateTeam/master/jd_shareCodes.json') {
+function updateShareCodesCDN(url = 'https://gitee.com/lxk0301/updateTeam/raw/master/jd_shareCodes.json') {
   return new Promise(resolve => {
     //https://cdn.jsdelivr.net/gh/LXK9301/updateTeam@master/jd_shareCodes.json
-    //https://raw.githubusercontent.com/LXK9301/updateTeam/master/jd_shareCodes.json
     $.get({url}, async (err, resp, data) => {
       try {
         if (err) {
