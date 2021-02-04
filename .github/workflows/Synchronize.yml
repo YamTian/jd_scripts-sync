@@ -27,5 +27,5 @@ jobs:
         with:
           source_repo: "https://gitee.com/lxk0301/jd_scripts.git"
           source_branch: "master" # 克隆对方仓库的分支
-          destination_branch: "master" #新建一个你自己远程的分支
+          destination_branch: "Synchronize" #新建一个你自己远程的分支
           github_token: ${{ secrets.PAT }}
