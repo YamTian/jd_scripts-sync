@@ -23,6 +23,7 @@ jobs:
           persist-credentials: false
           
       - name: Prepare
+        run: |
           mkdir -p ~/.ssh
           echo -e "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
