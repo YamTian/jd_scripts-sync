@@ -29,7 +29,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
           source-repo: 'git@gitee.com:lxk0301/jd_scripts.git'
-          destination-repo: 'git@gitee.com:lxk0301/jd_scripts.git'
+          destination-repo: 'git@github.com:YamTian/lxk0301.git'
 
 #       - name: Synchronize
 #         uses: repo-sync/github-sync@v2
