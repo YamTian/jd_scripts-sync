@@ -21,13 +21,22 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
-
+          
       - name: Synchronize
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "git@gitee.com:lxk0301/jd_scripts.git"
-          source_branch: "master" # 克隆对方仓库的分支
-          destination_branch: "master" #新建一个你自己远程的分支
-          github_token: ${{ secrets.PAT }}
+        uses: wearerequired/git-mirror-action@v1
+#         if: env.PAT
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          source-repo: 'git@gitee.com:lxk0301/jd_scripts.git'
+          destination-repo: 'git@gitee.com:lxk0301/jd_scripts.git'
+
+#       - name: Synchronize
+#         uses: repo-sync/github-sync@v2
+#         if: env.PAT
+#         with:
+#           source_repo: "git@gitee.com:lxk0301/jd_scripts.git"
+#           source_branch: "master" # 克隆对方仓库的分支
+#           destination_branch: "master" #新建一个你自己远程的分支
+#           github_token: ${{ secrets.PAT }}
+#           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
