@@ -22,6 +22,12 @@ jobs:
         with:
           persist-credentials: false
           
+      - name: Prepare
+          mkdir -p ~/.ssh
+          echo -e "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan gitee.com > ~/.ssh/known_hosts
+          
       - name: Synchronize
         uses: repo-sync/github-sync@v2
         if: env.PAT
