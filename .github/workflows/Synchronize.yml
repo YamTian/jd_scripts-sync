@@ -21,6 +21,6 @@ jobs:
         if: env.PAT
         with:
           source_repo: "git@jd_scripts_gitee:lxk0301/jd_scripts.git"
-          source_branch: "main"
-          destination_branch: "main"
+          source_branch: "master"
+          destination_branch: "master"
           github_token: ${{ secrets.PAT }}
