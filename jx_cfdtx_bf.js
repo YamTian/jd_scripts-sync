@@ -38,7 +38,7 @@ const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
 const jdTokenNode = $.isNode() ? require('./jdJxncTokens.js') : '';
 $.cookieArr = [];
 $.tokenArr = [];
-let concurrency = 9 // 并发数
+let concurrency = 6 // 并发数
 
 !(async () => {
   if (!getCookies()) return;
