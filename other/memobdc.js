@@ -1,18 +1,40 @@
-/*
-墨墨背单词3.5.4版本
-#圈x
-［rewrite］
-^https\:\/\/api\.maimemo\.com\/api\/v1/users/info url script-response-body https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/memobdc.js
-https://api.maimemo.com/api/v1/system/check url reject
-#Loon
-http-response ^https\:\/\/api\.maimemo\.com\/api\/v1/users/info script-path=https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/memobdc.js, requires-body=true, timeout=10, tag=默默背单词
-[ulr rewrite]
-https://api.maimemo.com/api/v1/system/check _ reject
-［mitm］
-hostname=api.maimemo.com
-*/
-let obj = JSON.parse($response.body);
-obj.data["user"]["inf_level"] = 99;
-obj.data["user"]["level"] = 99;
-obj.data["user"]["inf_words_limit"] = 999999;
-$done({body: JSON.stringify(obj)});
+//独立COOKIE文件     ck在``里面填写，多js换行，不填也要换行
+let githubACnameVal = ``
+let githubACurlVal = ``
+let githubACheaderVal = ``
+let githubACbodyVal = ``
+
+let HHAVal = ``
+let HHBVal = ``
+let HHCVal = ``
+let HHDVal = ``
+let HHEVal = ``
+let HHFVal = ``
+let HHGVal = ``
+let HHHVal = ``
+let HHIVal = ``
+let HHJVal = ``
+let HHKVal = ``
+let HHLVal = ``
+
+let MMAVal = ``
+let MMBVal = ``
+let MMCVal = ``
+let MMDVal = ``
+let MMEVal = ``
+let MMFVal = ``
+let MMGVal = ``
+let MMHVal = ``
+let MMIVal = ``
+let MMJVal = ``
+let MMKVal = ``
+let MMLVal = ``
+
+
+
+
+let githubACcookie = {
+    githubACnameVal: githubACnameVal,
+    githubACurlVal: githubACurlVal,
+    githubACheaderVal: githubACheaderVal,
+    githubACbodyVal: git

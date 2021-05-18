@@ -1,322 +1,255 @@
-/* ziye  CK导入导出专用    务必下载或者复制到本地使用
+const $ = new Env();
+// =======================================微信server酱通知设置区域===========================================
+//此处填你申请的SCKEY.
+//注：此处设置github action用户填写到Settings-Secrets里面(Name输入PUSH_KEY)
+let SCKEY = '';
 
-github地址 https://github.com/ziye11
-TG频道地址  https://t.me/ziyescript
-TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
-
-
-转载请备注个名字，谢谢
-
-
-
-*/
-
-const $ = Env("CK导入导出");
-
-//填写账号数，
-const Count=5 
-
-//设置1，导入CK
-const DR=0 
-
-//设置1，导出CK
-const DC=0
-
-//0可批量导入ck,  1清空ck  2单独导入ck
-const QK=0
+// =======================================Bark App通知设置区域===========================================
+//此处填你BarkAPP的信息(IP/设备码，例如：https://api.day.app/XXXXXXXX)
+//注：此处设置github action用户填写到Settings-Secrets里面（Name输入BARK_PUSH）
+let BARK_PUSH = '';
+//BARK app推送铃声,铃声列表去APP查看复制填写
+//注：此处设置github action用户填写到Settings-Secrets里面（Name输入BARK_SOUND , Value输入app提供的铃声名称，例如:birdsong）
+let BARK_SOUND = '';
 
 
+// =======================================telegram机器人通知设置区域===========================================
+//此处填你telegram bot 的Token，例如：1077xxx4424:AAFjv0FcqxxxxxxgEMGfi22B4yh15R5uw
+//注：此处设置github action用户填写到Settings-Secrets里面(Name输入TG_BOT_TOKEN)
+let TG_BOT_TOKEN = '';
+//此处填你接收通知消息的telegram用户的id，例如：129xxx206
+//注：此处设置github action用户填写到Settings-Secrets里面(Name输入TG_USER_ID)
+let TG_USER_ID = '';
 
+// =======================================钉钉机器人通知设置区域===========================================
+//此处填你钉钉 bot 的webhook，例如：5a544165465465645d0f31dca676e7bd07415asdasd
+//注：此处设置github action用户填写到Settings-Secrets里面(Name输入DD_BOT_TOKEN)
+let DD_BOT_TOKEN = '';
+//密钥，机器人安全设置页面，加签一栏下面显示的SEC开头的字符串
+let DD_BOT_SECRET = '';
 
-
-//👇👇👇👇👇👇👇👇👇👇👇👇  CK单独导入  👇👇👇👇👇👇👇👇👇👇👇👇👇👇
-
-//填写你要单独导入的ck名字，去boxjs里看或者ck获取处 如$.setdata(refreshtokenVal, "refreshtoken" + $.idx);  想要导入账号2的ck   则在''中填写refreshtoken2
-const JSCKNAME='refreshtoken2'
-
-//填写 想要单独导入的ck数据，如token=abc   则在``中填写token=abc
-const JSCK=`token=abc`
-
-
-
-
-
-//👇👇👇👇👇👇👇👇👇👇👇👇  CK批量导入  👇👇👇👇👇👇👇👇👇👇👇👇👇👇
-
-
-//填写你要导入的ck名字，去boxjs里看或者ck获取处 如$.setdata(refreshtokenVal, "refreshtoken" + $.idx);   则在''中填写refreshtoken
-
-const JSA='refreshtoken'
-const JSB=''
-const JSC=''
-const JSD=''
-const JSE=''
-const JSF=''
-const JSG=''
-const JSH=''
-const JSI=''
-const JSJ=''
-const JSK=''
-const JSL=''
-
-//填写 想要导入的ck数据，多账号换行 如token=abc   则在``中填写token=abc
-const JSAVal=``
-const JSBVal=``
-const JSCVal=``
-const JSDVal=``
-const JSEVal=``
-const JSFVal=``
-const JSGVal=``
-const JSHVal=``
-const JSIVal=``
-const JSJVal=``
-const JSKVal=``
-const JSLVal=``
-//👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
-
-
-
-
-
-
-
-
-
-//👇👇👇👇👇👇👇👇👇👇👇👇  CK导出  👇👇👇👇👇👇👇👇👇👇👇👇👇👇
-
-let K = 1;//从哪个账号开始
-let Z = 5;//到哪个账号结束
-
-const GG=''//默认为换行，也可以将需要隔开的符号填写在''内
-
-//填写你要打印的ck名字，去js里获取ck处看 如$.setdata(refreshtokenVal, "refreshtoken" + $.idx);   则在''中填写refreshtoken
-
-const jsA='refreshtoken'
-const jsB=''
-const jsC=''
-const jsD=''
-const jsE=''
-const jsF=''
-const jsG=''
-const jsH=''
-const jsI=''
-const jsJ=''
-const jsK=''
-const jsL=''
-
-//开启打印则设置为1
-const jsAA=1  
-const jsBB=0  
-const jsCC=0  
-const jsDD=0  
-const jsEE=0  
-const jsFF=0  
-const jsGG=0  
-const jsHH=0  
-const jsII=0  
-const jsJJ=0  
-const jsKK=0  
-const jsLL=0 
-
-//👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
-
-
-
-//⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️下面内容不要随意改动
- if (DR==1) {
-if (QK==1)
-{
-const JSAVal=``
-const JSBVal=``
-const JSCVal=``
-const JSDVal=``
-const JSEVal=``
-const JSFVal=``
-const JSGVal=``
-const JSHVal=``
-const JSIVal=``
-const JSJVal=``
-const JSKVal=``
-const JSLVal=``
+if (process.env.PUSH_KEY) {
+  SCKEY = process.env.PUSH_KEY;
 }
-         if (QK==2) {
-			 $.setdata(JSCK, `${JSCKNAME}`);
-			 console.log($.name+',ck单独导入成功','✅已导入'+JSCKNAME,)
-			 $.msg($.name+',ck单独导入成功','✅已导入'+JSCKNAME,)
- }
-         if ((QK==0&&JSAVal!='')||QK==1) {
-                $.setdata(JSAVal.split('\n')[0], `${JSA}`);
-				$.setdata(JSBVal.split('\n')[0], `${JSB}`);
-				$.setdata(JSCVal.split('\n')[0], `${JSC}`);
-				$.setdata(JSDVal.split('\n')[0], `${JSD}`);
-				$.setdata(JSEVal.split('\n')[0], `${JSE}`);
-				$.setdata(JSFVal.split('\n')[0], `${JSF}`);
-				$.setdata(JSGVal.split('\n')[0], `${JSG}`);
-				$.setdata(JSHVal.split('\n')[0], `${JSH}`);
-				$.setdata(JSIVal.split('\n')[0], `${JSI}`);
-				$.setdata(JSJVal.split('\n')[0], `${JSJ}`);
-				$.setdata(JSKVal.split('\n')[0], `${JSK}`);
-				$.setdata(JSLVal.split('\n')[0], `${JSL}`);
- for (let i =2; i <= Count; i++) {
-				$.setdata(JSAVal.split('\n')[i-1], `${JSA+i}`);
-				$.setdata(JSBVal.split('\n')[i-1], `${JSB+i}`);
-				$.setdata(JSCVal.split('\n')[i-1], `${JSC+i}`);
-				$.setdata(JSDVal.split('\n')[i-1], `${JSD+i}`);
-				$.setdata(JSEVal.split('\n')[i-1], `${JSE+i}`);
-				$.setdata(JSFVal.split('\n')[i-1], `${JSF+i}`);
-				$.setdata(JSGVal.split('\n')[i-1], `${JSG+i}`);
-				$.setdata(JSHVal.split('\n')[i-1], `${JSH+i}`);
-				$.setdata(JSIVal.split('\n')[i-1], `${JSI+i}`);
-				$.setdata(JSJVal.split('\n')[i-1], `${JSJ+i}`);
-				$.setdata(JSKVal.split('\n')[i-1], `${JSK+i}`);
-				$.setdata(JSLVal.split('\n')[i-1], `${JSL+i}`);
+if (process.env.BARK_PUSH) {
+  if(process.env.BARK_PUSH.indexOf('https') > -1 || process.env.BARK_PUSH.indexOf('http') > -1) {
+    //兼容BARK自建用户
+    BARK_PUSH = process.env.BARK_PUSH
+  } else {
+    BARK_PUSH = `https://api.day.app/${process.env.BARK_PUSH}`
+  }
+  if (process.env.BARK_SOUND) {
+    BARK_SOUND = process.env.BARK_SOUND
+  }
+} else {
+  if(BARK_PUSH && BARK_PUSH.indexOf('https') === -1 && BARK_PUSH.indexOf('http') === -1) {
+    //兼容BARK本地用户只填写设备码的情况
+    BARK_PUSH = `https://api.day.app/${BARK_PUSH}`
+  }
+}
+if (process.env.TG_BOT_TOKEN) {
+  TG_BOT_TOKEN = process.env.TG_BOT_TOKEN;
+}
+if (process.env.TG_USER_ID) {
+  TG_USER_ID = process.env.TG_USER_ID;
+}
+
+if (process.env.DD_BOT_TOKEN) {
+  DD_BOT_TOKEN = process.env.DD_BOT_TOKEN;
+  if (process.env.DD_BOT_SECRET) {
+    DD_BOT_SECRET = process.env.DD_BOT_SECRET;
+  }
+}
+
+async function sendNotify(text, desp) {
+  //提供四种通知
+  await serverNotify(text, desp);
+  await BarkNotify(text, desp);
+  await tgBotNotify(text, desp);
+  await ddBotNotify(text, desp);
+}
+
+function serverNotify(text, desp) {
+  return  new Promise(resolve => {
+    if (SCKEY) {
+      //微信server酱推送通知一个\n不会换行，需要两个\n才能换行，故做此替换
+      desp = desp.replace(/[\n\r]/g, '\n\n');
+      const options = {
+        url: `https://sc.ftqq.com/${SCKEY}.send`,
+        body: `text=${text}&desp=${desp}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      $.post(options, (err, resp, data) => {
+        try {
+          if (err) {
+            console.log('\n发送通知调用API失败！！\n')
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.errno === 0) {
+              console.log('\nserver酱发送通知消息成功\n')
+            } else if (data.errno === 1024) {
+              console.log('\nPUSH_KEY 错误\n')
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      })
+    } else {
+      console.log('\n您未提供server酱的SCKEY，取消微信推送消息通知\n');
+      resolve()
     }
-	
-	if (QK==0&&JSAVal!='') {
-	console.log($.name+',ck批量导入成功✅')
-			 $.msg($.name+',ck批量导入成功✅')
-	
-	   }
-	
-	if (QK==1) {
-	console.log($.name+',ck清除成功✅')
-			 $.msg($.name+',ck清除成功✅')
-	
-	   }
-   }
+  })
+}
 
-$.done()
- }
- if (DC==1) {
-let R=K
-const jsAArr = [];
-let jsAVal = ``;
-const jsBArr = [];
-let jsBVal = ``;
-const jsCArr = [];
-let jsCVal = ``;
-const jsDArr = [];
-let jsDVal = ``;
-const jsEArr = [];
-let jsEVal = ``;
-const jsFArr = [];
-let jsFVal = ``;
-const jsGArr = [];
-let jsGVal = ``;
-const jsHArr = [];
-let jsHVal = ``;
-const jsIArr = [];
-let jsIVal = ``;
-const jsJArr = [];
-let jsJVal = ``;
-const jsKArr = [];
-let jsKVal = ``;
-const jsLArr = [];
-let jsLVal = ``;
-		jsAArr.push($.getdata(`${jsA}`));
-		jsBArr.push($.getdata(`${jsB}`));
-		jsCArr.push($.getdata(`${jsC}`));
-		jsDArr.push($.getdata(`${jsD}`));
-		jsEArr.push($.getdata(`${jsE}`));
-		jsFArr.push($.getdata(`${jsF}`));
-		jsGArr.push($.getdata(`${jsG}`));
-		jsHArr.push($.getdata(`${jsH}`));
-		jsIArr.push($.getdata(`${jsI}`));
-		jsJArr.push($.getdata(`${jsJ}`));
-		jsKArr.push($.getdata(`${jsK}`));
-		jsLArr.push($.getdata(`${jsL}`));
-        // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        for (let i = 2; i <= Count; i++) {
-            if ($.getdata(`${jsA+i}`)) {
-				jsAArr.push($.getdata(`${jsA+i}`));
-				jsBArr.push($.getdata(`${jsB+i}`));
-				jsCArr.push($.getdata(`${jsC+i}`));
-				jsDArr.push($.getdata(`${jsD+i}`));
-				jsEArr.push($.getdata(`${jsE+i}`));
-				jsFArr.push($.getdata(`${jsF+i}`));
-				jsGArr.push($.getdata(`${jsG+i}`));
-				jsHArr.push($.getdata(`${jsH+i}`));
-				jsIArr.push($.getdata(`${jsI+i}`));
-				jsJArr.push($.getdata(`${jsJ+i}`));
-				jsKArr.push($.getdata(`${jsK+i}`));
-				jsLArr.push($.getdata(`${jsL+i}`));
+function BarkNotify(text, desp) {
+  return  new Promise(resolve => {
+    if (BARK_PUSH) {
+      const options = {
+        url: `${BARK_PUSH}/${encodeURIComponent(text)}/${encodeURIComponent(desp)}?sound=${BARK_SOUND}`,
+      }
+      $.get(options, (err, resp, data) => {
+        try {
+          if (err) {
+            console.log('\nBark APP发送通知调用API失败！！\n')
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log('\nBark APP发送通知消息成功\n')
+            } else {
+              console.log(`\n${data.message}\n`);
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      })
+    } else {
+      console.log('\n您未提供Bark的APP推送BARK_PUSH，取消Bark推送消息通知\n');
+      resolve()
     }
-  }
-  console.log(
-    `============ 脚本执行-北京时间(UTC+8)：${new Date(
-      new Date().getTime() + 8 * 60 * 60 * 1000
-    ).toLocaleString()}  =============\n`
-  );
-if (Z<K){
-    $.msg('⚠️提示：请不要调皮🐶')
-   $.done();
-}
-all();
-function all() {
-if (!jsAArr[K-1]) {
-if (K>R)
-    $.msg($.name+R+'到'+(K-1)+'打印成功'+K+'到'+Z+'打印失败', '⚠️提示：请先获取'+K+'到'+Z+'的ck','并设置好账号数')
-if (K==R&&Z>R)
-    $.msg($.name+K+'到'+Z+'打印失败', '⚠️提示：请先获取'+K+'到'+Z+'的ck','并设置好账号数')
-if (Z==R)
-    $.msg($.name+K+'打印失败', '⚠️提示：请先获取'+K+'的ck','并设置好账号数')
-   $.done();
-  }
-  jsAVal = jsAArr[K-1];  
-  jsBVal = jsBArr[K-1];  
-  jsCVal = jsCArr[K-1];  
-  jsDVal = jsDArr[K-1];  
-  jsEVal = jsEArr[K-1];  
-  jsFVal = jsFArr[K-1];  
-  jsGVal = jsGArr[K-1];  
-  jsHVal = jsHArr[K-1];  
-  jsIVal = jsIArr[K-1];  
-  jsJVal = jsJArr[K-1];  
-  jsKVal = jsKArr[K-1];  
-  jsLVal = jsLArr[K-1]; 
-if(jsAA==1)console.log(jsAVal+GG)
-if(jsBB==1)console.log(jsBVal+GG)
-if(jsCC==1)console.log(jsCVal+GG)
-if(jsDD==1)console.log(jsDVal+GG)
-if(jsEE==1)console.log(jsEVal+GG)
-if(jsFF==1)console.log(jsFVal+GG)
-if(jsGG==1)console.log(jsGVal+GG)
-if(jsHH==1)console.log(jsHVal+GG)
-if(jsII==1)console.log(jsIVal+GG)
-if(jsJJ==1)console.log(jsJVal+GG)
-if(jsKK==1)console.log(jsKVal+GG)
-if(jsLL==1)console.log(jsLVal+GG)
-  for (let i = 0; i < 1; i++) {
-    (function (i) {
-      setTimeout(
-        function () {
-      if (i == 0){  
-       if ( K < Z ) {
-              K += 1;
-              all();
-}    else if (K == Z ) {
-          let F=Z-R+1
-              $.msg($.name+R+'到'+Z+',ck打印成功','✅已打印'+F+'个ck',)
-              $.done();
-  }
- }
-},
-        (i + 1) * 10
-      );
-    })(i);
-  }
-}
+  })
 }
 
-
-if(DC==0&&DR==0){
-
-console.log('😂你玩了个寂寞')
-			 $.msg('😂你玩了个寂寞')
-$.done();
-
+function tgBotNotify(text, desp) {
+  return  new Promise(resolve => {
+    if (TG_BOT_TOKEN && TG_USER_ID) {
+      const options = {
+        url: `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`,
+        body: `chat_id=${TG_USER_ID}&text=${text}\n\n${desp}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      $.post(options, (err, resp, data) => {
+        try {
+          if (err) {
+            console.log('\ntelegram发送通知消息失败！！\n')
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.ok) {
+              console.log('\nTelegram发送通知消息完成。\n')
+            } else if (data.error_code === 400) {
+              console.log('\n请主动给bot发送一条消息并检查接收用户ID是否正确。\n')
+            } else if (data.error_code === 401){
+              console.log('\nTelegram bot token 填写错误。\n')
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      })
+    } else {
+      console.log('\n您未提供telegram机器人推送所需的TG_BOT_TOKEN和TG_USER_ID，取消telegram推送消息通知\n');
+      resolve()
+    }
+  })
 }
-
+function ddBotNotify(text, desp) {
+  return  new Promise(resolve => {
+    const options = {
+      url: `https://oapi.dingtalk.com/robot/send?access_token=${DD_BOT_TOKEN}`,
+      json: {
+        "msgtype": "text",
+        "text": {
+          "content": ` ${text}\n\n${desp}`
+        }
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    if (DD_BOT_TOKEN && DD_BOT_SECRET) {
+      const crypto = require('crypto');
+      const dateNow = Date.now();
+      const hmac = crypto.createHmac('sha256', DD_BOT_SECRET);
+      hmac.update(`${dateNow}\n${DD_BOT_SECRET}`);
+      const result = encodeURIComponent(hmac.digest('base64'));
+      options.url = `${options.url}&timestamp=${dateNow}&sign=${result}`;
+      $.post(options, (err, resp, data) => {
+        try {
+          if (err) {
+            console.log('\n钉钉发送通知消息失败！！\n')
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.errcode === 0) {
+              console.log('\n钉钉发送通知消息完成。\n')
+            } else {
+              console.log(`\n${data.errmsg}\n`)
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      })
+    } else if (DD_BOT_TOKEN) {
+      $.post(options, (err, resp, data) => {
+        try {
+          if (err) {
+            console.log('\n钉钉发送通知消息失败！！\n')
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.errcode === 0) {
+              console.log('\n钉钉发送通知消息完成。\n')
+            } else {
+              console.log(`\n${data.errmsg}\n`)
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      })
+    } else {
+      console.log('\n您未提供钉钉机器人推送所需的DD_BOT_TOKEN或者DD_BOT_SECRET，取消钉钉推送消息通知\n');
+      resolve()
+    }
+  })
+}
+module.exports = {
+  sendNotify,
+  BarkNotify,
+  SCKEY,
+  BARK_PUSH,
+  TG_BOT_TOKEN,
+  TG_USER_ID,
+  DD_BOT_TOKEN,
+}//这里导出SCKEY,BARK_PUSH等通知参数是jd_bean_sign.js处需要
 // prettier-ignore
-function Env(t,e){class s{constructor(t){this.env=t}send(t,e="GET"){t="string"==typeof t?{url:t}:t;let s=this.get;return"POST"===e&&(s=this.post),new Promise((e,i)=>{s.call(this,t,(t,s,r)=>{t?i(t):e(s)})})}get(t){return this.send.call(this.env,t)}post(t){return this.send.call(this.env,t,"POST")}}return new class{constructor(t,e){this.name=t,this.http=new s(this),this.data=null,this.dataFile="box.dat",this.logs=[],this.isMute=!1,this.isNeedRewrite=!1,this.logSeparator="\n",this.startTime=(new Date).getTime(),Object.assign(this,e),this.log("",`\ud83d\udd14${this.name}, \u5f00\u59cb!`)}isNode(){return"undefined"!=typeof module&&!!module.exports}isQuanX(){return"undefined"!=typeof $task}isSurge(){return"undefined"!=typeof $httpClient&&"undefined"==typeof $loon}isLoon(){return"undefined"!=typeof $loon}toObj(t,e=null){try{return JSON.parse(t)}catch{return e}}toStr(t,e=null){try{return JSON.stringify(t)}catch{return e}}getjson(t,e){let s=e;const i=this.getdata(t);if(i)try{s=JSON.parse(this.getdata(t))}catch{}return s}setjson(t,e){try{return this.setdata(JSON.stringify(t),e)}catch{return!1}}getScript(t){return new Promise(e=>{this.get({url:t},(t,s,i)=>e(i))})}runScript(t,e){return new Promise(s=>{let i=this.getdata("@chavy_boxjs_userCfgs.httpapi");i=i?i.replace(/\n/g,"").trim():i;let r=this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");r=r?1*r:20,r=e&&e.timeout?e.timeout:r;const[o,h]=i.split("@"),a={url:`http://${h}/v1/scripting/evaluate`,body:{script_text:t,mock_type:"cron",timeout:r},headers:{"X-Key":o,Accept:"*/*"}};this.post(a,(t,e,i)=>s(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),e=this.path.resolve(process.cwd(),this.dataFile),s=this.fs.existsSync(t),i=!s&&this.fs.existsSync(e);if(!s&&!i)return{};{const i=s?t:e;try{return JSON.parse(this.fs.readFileSync(i))}catch(t){return{}}}}}writedata(){if(this.isNode()){this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),e=this.path.resolve(process.cwd(),this.dataFile),s=this.fs.existsSync(t),i=!s&&this.fs.existsSync(e),r=JSON.stringify(this.data);s?this.fs.writeFileSync(t,r):i?this.fs.writeFileSync(e,r):this.fs.writeFileSync(t,r)}}lodash_get(t,e,s){const i=e.replace(/\[(\d+)\]/g,".$1").split(".");let r=t;for(const t of i)if(r=Object(r)[t],void 0===r)return s;return r}lodash_set(t,e,s){return Object(t)!==t?t:(Array.isArray(e)||(e=e.toString().match(/[^.[\]]+/g)||[]),e.slice(0,-1).reduce((t,s,i)=>Object(t[s])===t[s]?t[s]:t[s]=Math.abs(e[i+1])>>0==+e[i+1]?[]:{},t)[e[e.length-1]]=s,t)}getdata(t){let e=this.getval(t);if(/^@/.test(t)){const[,s,i]=/^@(.*?)\.(.*?)$/.exec(t),r=s?this.getval(s):"";if(r)try{const t=JSON.parse(r);e=t?this.lodash_get(t,i,""):e}catch(t){e=""}}return e}setdata(t,e){let s=!1;if(/^@/.test(e)){const[,i,r]=/^@(.*?)\.(.*?)$/.exec(e),o=this.getval(i),h=i?"null"===o?null:o||"{}":"{}";try{const e=JSON.parse(h);this.lodash_set(e,r,t),s=this.setval(JSON.stringify(e),i)}catch(e){const o={};this.lodash_set(o,r,t),s=this.setval(JSON.stringify(o),i)}}else s=this.setval(t,e);return s}getval(t){return this.isSurge()||this.isLoon()?$persistentStore.read(t):this.isQuanX()?$prefs.valueForKey(t):this.isNode()?(this.data=this.loaddata(),this.data[t]):this.data&&this.data[t]||null}setval(t,e){return this.isSurge()||this.isLoon()?$persistentStore.write(t,e):this.isQuanX()?$prefs.setValueForKey(t,e):this.isNode()?(this.data=this.loaddata(),this.data[e]=t,this.writedata(),!0):this.data&&this.data[e]||null}initGotEnv(t){this.got=this.got?this.got:require("got"),this.cktough=this.cktough?this.cktough:require("tough-cookie"),this.ckjar=this.ckjar?this.ckjar:new this.cktough.CookieJar,t&&(t.headers=t.headers?t.headers:{},void 0===t.headers.Cookie&&void 0===t.cookieJar&&(t.cookieJar=this.ckjar))}get(t,e=(()=>{})){t.headers&&(delete t.headers["Content-Type"],delete t.headers["Content-Length"]),this.isSurge()||this.isLoon()?(this.isSurge()&&this.isNeedRewrite&&(t.headers=t.headers||{},Object.assign(t.headers,{"X-Surge-Skip-Scripting":!1})),$httpClient.get(t,(t,s,i)=>{!t&&s&&(s.body=i,s.statusCode=s.status),e(t,s,i)})):this.isQuanX()?(this.isNeedRewrite&&(t.opts=t.opts||{},Object.assign(t.opts,{hints:!1})),$task.fetch(t).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>e(t))):this.isNode()&&(this.initGotEnv(t),this.got(t).on("redirect",(t,e)=>{try{if(t.headers["set-cookie"]){const s=t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();this.ckjar.setCookieSync(s,null),e.cookieJar=this.ckjar}}catch(t){this.logErr(t)}}).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>{const{message:s,response:i}=t;e(s,i,i&&i.body)}))}post(t,e=(()=>{})){if(t.body&&t.headers&&!t.headers["Content-Type"]&&(t.headers["Content-Type"]="application/x-www-form-urlencoded"),t.headers&&delete t.headers["Content-Length"],this.isSurge()||this.isLoon())this.isSurge()&&this.isNeedRewrite&&(t.headers=t.headers||{},Object.assign(t.headers,{"X-Surge-Skip-Scripting":!1})),$httpClient.post(t,(t,s,i)=>{!t&&s&&(s.body=i,s.statusCode=s.status),e(t,s,i)});else if(this.isQuanX())t.method="POST",this.isNeedRewrite&&(t.opts=t.opts||{},Object.assign(t.opts,{hints:!1})),$task.fetch(t).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>e(t));else if(this.isNode()){this.initGotEnv(t);const{url:s,...i}=t;this.got.post(s,i).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>{const{message:s,response:i}=t;e(s,i,i&&i.body)})}}time(t){let e={"M+":(new Date).getMonth()+1,"d+":(new Date).getDate(),"H+":(new Date).getHours(),"m+":(new Date).getMinutes(),"s+":(new Date).getSeconds(),"q+":Math.floor(((new Date).getMonth()+3)/3),S:(new Date).getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,((new Date).getFullYear()+"").substr(4-RegExp.$1.length)));for(let s in e)new RegExp("("+s+")").test(t)&&(t=t.replace(RegExp.$1,1==RegExp.$1.length?e[s]:("00"+e[s]).substr((""+e[s]).length)));return t}msg(e=t,s="",i="",r){const o=t=>{if(!t)return t;if("string"==typeof t)return this.isLoon()?t:this.isQuanX()?{"open-url":t}:this.isSurge()?{url:t}:void 0;if("object"==typeof t){if(this.isLoon()){let e=t.openUrl||t.url||t["open-url"],s=t.mediaUrl||t["media-url"];return{openUrl:e,mediaUrl:s}}if(this.isQuanX()){let e=t["open-url"]||t.url||t.openUrl,s=t["media-url"]||t.mediaUrl;return{"open-url":e,"media-url":s}}if(this.isSurge()){let e=t.url||t.openUrl||t["open-url"];return{url:e}}}};this.isMute||(this.isSurge()||this.isLoon()?$notification.post(e,s,i,o(r)):this.isQuanX()&&$notify(e,s,i,o(r)));let h=["","==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="];h.push(e),s&&h.push(s),i&&h.push(i),console.log(h.join("\n")),this.logs=this.logs.concat(h)}log(...t){t.length>0&&(this.logs=[...this.logs,...t]),console.log(t.join(this.logSeparator))}logErr(t,e){const s=!this.isSurge()&&!this.isQuanX()&&!this.isLoon();s?this.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t.stack):this.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t)}wait(t){return new Promise(e=>setTimeout(e,t))}done(t={}){const e=(new Date).getTime(),s=(e-this.startTime)/1e3;this.log("",`\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${s} \u79d2`),this.log(),(this.isSurge()||this.isQuanX()||this.isLoon())&&$done(t)}}(t,e)}
+function Env(t,s){return new class{constructor(t,s){this.name=t,this.data=null,this.dataFile="box.dat",this.logs=[],this.logSeparator="\n",this.startTime=(new Date).getTime(),Object.assign(this,s),this.log("",`\ud83d\udd14${this.name}, \u5f00\u59cb!`)}isNode(){return"undefined"!=typeof module&&!!module.exports}isQuanX(){return"undefined"!=typeof $task}isSurge(){return"undefined"!=typeof $httpClient&&"undefined"==typeof $loon}isLoon(){return"undefined"!=typeof $loon}getScript(t){return new Promise(s=>{$.get({url:t},(t,e,i)=>s(i))})}runScript(t,s){return new Promise(e=>{let i=this.getdata("@chavy_boxjs_userCfgs.httpapi");i=i?i.replace(/\n/g,"").trim():i;let o=this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");o=o?1*o:20,o=s&&s.timeout?s.timeout:o;const[h,a]=i.split("@"),r={url:`http://${a}/v1/scripting/evaluate`,body:{script_text:t,mock_type:"cron",timeout:o},headers:{"X-Key":h,Accept:"*/*"}};$.post(r,(t,s,i)=>e(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s);if(!e&&!i)return{};{const i=e?t:s;try{return JSON.parse(this.fs.readFileSync(i))}catch(t){return{}}}}}writedata(){if(this.isNode()){this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s),o=JSON.stringify(this.data);e?this.fs.writeFileSync(t,o):i?this.fs.writeFileSync(s,o):this.fs.writeFileSync(t,o)}}lodash_get(t,s,e){const i=s.replace(/\[(\d+)\]/g,".$1").split(".");let o=t;for(const t of i)if(o=Object(o)[t],void 0===o)return e;return o}lodash_set(t,s,e){return Object(t)!==t?t:(Array.isArray(s)||(s=s.toString().match(/[^.[\]]+/g)||[]),s.slice(0,-1).reduce((t,e,i)=>Object(t[e])===t[e]?t[e]:t[e]=Math.abs(s[i+1])>>0==+s[i+1]?[]:{},t)[s[s.length-1]]=e,t)}getdata(t){let s=this.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?)\.(.*?)$/.exec(t),o=e?this.getval(e):"";if(o)try{const t=JSON.parse(o);s=t?this.lodash_get(t,i,""):s}catch(t){s=""}}return s}setdata(t,s){let e=!1;if(/^@/.test(s)){const[,i,o]=/^@(.*?)\.(.*?)$/.exec(s),h=this.getval(i),a=i?"null"===h?null:h||"{}":"{}";try{const s=JSON.parse(a);this.lodash_set(s,o,t),e=this.setval(JSON.stringify(s),i)}catch(s){const h={};this.lodash_set(h,o,t),e=this.setval(JSON.stringify(h),i)}}else e=$.setval(t,s);return e}getval(t){return this.isSurge()||this.isLoon()?$persistentStore.read(t):this.isQuanX()?$prefs.valueForKey(t):this.isNode()?(this.data=this.loaddata(),this.data[t]):this.data&&this.data[t]||null}setval(t,s){return this.isSurge()||this.isLoon()?$persistentStore.write(t,s):this.isQuanX()?$prefs.setValueForKey(t,s):this.isNode()?(this.data=this.loaddata(),this.data[s]=t,this.writedata(),!0):this.data&&this.data[s]||null}initGotEnv(t){this.got=this.got?this.got:require("got"),this.cktough=this.cktough?this.cktough:require("tough-cookie"),this.ckjar=this.ckjar?this.ckjar:new this.cktough.CookieJar,t&&(t.headers=t.headers?t.headers:{},void 0===t.headers.Cookie&&void 0===t.cookieJar&&(t.cookieJar=this.ckjar))}get(t,s=(()=>{})){t.headers&&(delete t.headers["Content-Type"],delete t.headers["Content-Length"]),this.isSurge()||this.isLoon()?$httpClient.get(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)}):this.isQuanX()?$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)):this.isNode()&&(this.initGotEnv(t),this.got(t).on("redirect",(t,s)=>{try{const e=t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();this.ckjar.setCookieSync(e,null),s.cookieJar=this.ckjar}catch(t){this.logErr(t)}}).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)))}post(t,s=(()=>{})){if(t.body&&t.headers&&!t.headers["Content-Type"]&&(t.headers["Content-Type"]="application/x-www-form-urlencoded"),delete t.headers["Content-Length"],this.isSurge()||this.isLoon())$httpClient.post(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)});else if(this.isQuanX())t.method="POST",$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t));else if(this.isNode()){this.initGotEnv(t);const{url:e,...i}=t;this.got.post(e,i).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t))}}time(t){let s={"M+":(new Date).getMonth()+1,"d+":(new Date).getDate(),"H+":(new Date).getHours(),"m+":(new Date).getMinutes(),"s+":(new Date).getSeconds(),"q+":Math.floor(((new Date).getMonth()+3)/3),S:(new Date).getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,((new Date).getFullYear()+"").substr(4-RegExp.$1.length)));for(let e in s)new RegExp("("+e+")").test(t)&&(t=t.replace(RegExp.$1,1==RegExp.$1.length?s[e]:("00"+s[e]).substr((""+s[e]).length)));return t}msg(s=t,e="",i="",o){const h=t=>!t||!this.isLoon()&&this.isSurge()?t:"string"==typeof t?this.isLoon()?t:this.isQuanX()?{"open-url":t}:void 0:"object"==typeof t&&(t["open-url"]||t["media-url"])?this.isLoon()?t["open-url"]:this.isQuanX()?t:void 0:void 0;$.isMute||(this.isSurge()||this.isLoon()?$notification.post(s,e,i,h(o)):this.isQuanX()&&$notify(s,e,i,h(o))),this.logs.push("","==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="),this.logs.push(s),e&&this.logs.push(e),i&&this.logs.push(i)}log(...t){t.length>0?this.logs=[...this.logs,...t]:console.log(this.logs.join(this.logSeparator))}logErr(t,s){const e=!this.isSurge()&&!this.isQuanX()&&!this.isLoon();e?$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t.stack):$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t)}wait(t){return new Promise(s=>setTimeout(s,t))}done(t={}){const s=(new Date).getTime(),e=(s-this.startTime)/1e3;this.log("",`\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${e} \u79d2`),this.log(),(this.isSurge()||this.isQuanX()||this.isLoon())&&$done(t)}}(t,s)}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

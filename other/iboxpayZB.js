@@ -1,135 +1,197 @@
-/* ziye  单直播版
-
-github地址 https://github.com/ziye12
+/* ziye 
+github地址 https://github.com/ziye11
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/ziye.boxjs.json
-
+boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
 转载请备注个名字，谢谢
-⚠️笑谱
-脚本运行一次   
-4次直播（直播默认开启60次）
+
+⚠️github运行AC任务
 
 
-此版本为单直播版
+2.6 制作
+2.7 增加时间控制，多js换行，boxjs手动保存会话，填写，再应用，其他填写环境变量或者githubACCOOKIE.js
+2.7-2 修正判定
+2.7-3 时间精确到5分
+1.12 修复
 
-1.29修复次数问题
-1.30 修复活动id频繁变动问题
-1.30 解决ck失效问题
-1.30-3 增加提现功能
-1.31 调整判定
-2.1 增加CK获取时间
-
-
-⚠️一共2个位置 2个ck  👉 3条 Secrets 
+⚠️一共1个位置 3个ck  👉 18条 Secrets(14个时间变量) 
 多账号换行
 
-第一步 添加  hostname=veishop.iboxpay.com,
+第一步 添加  hostname=github.com,
 
-第二步 添加笑谱获取更新TOKEN重写  
+第二步 添加body重写 
 
+登录github   点Action   All allflows 选择js 
 
-登录  获取更新TOKEN重写 
+点击 Run workflow    Run workflow   运行获取githubACbodyVal  githubACheaderVal
 
+⚠️设置的时间是从 HHA 点到 HHB 点的  MMA  MMB MMC   MMD    MME    MMF   分运行      理解这句话就行
 
-第三步 添加笑谱获取header重写
-
-点击 我的 获取header
-
-
-iboxpayheaderVal 👉XP_iboxpayHEADER
-refreshtokenVal 👉XP_refreshTOKEN
-
-设置直播次数 可设置 0到60  0关闭
-LIVE  👉  XP_live
-
-设置提现金额 可设置 0 1 15 30 50 100  默认0关闭
-CASH  👉  XP_CASH
+githubACnameVal 👉GIT_githubACNAME
+githubACurlVal 👉GIT_githubACURL
+githubACheaderVal 👉GIT_githubACHEADER
+githubACbodyVal 👉GIT_githubACBODY
+HHA 👉GIT_HHA   
+HHB 👉GIT_HHB    
+MMA 👉GIT_MMA
+MMB 👉GIT_MMB
+MMC 👉GIT_MMC
+MMD 👉GIT_MMD
+MME 👉GIT_MME
+MMF 👉GIT_MMF
+HHG 👉GIT_HHG   
+HHH 👉GIT_HHH    
+MMI 👉GIT_MMI
+MMJ 👉GIT_MMJ
+MMK 👉GIT_MMK
+MML 👉GIT_MML
+MMM 👉GIT_MMM
+MMN 👉GIT_MMN
 
 
 ⚠️主机名以及重写👇
 
-hostname=veishop.iboxpay.com
-#笑谱获取header
-https:\/\/veishop\.iboxpay\.com\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
 
-#笑谱获取更新TOKEN
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
+hostname=github.com,
 
+
+
+############## 圈x
+
+#githubAC获取body
+https:\/\/github\.com\/* url script-request-body https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/githubAC.js   
 
 ############## loon
-#笑谱获取header
-http-request https:\/\/veishop\.iboxpay\.com\/* script-path=https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js, requires-header=true, tag=笑谱获取header
-
-#笑谱获取更新TOKEN
-http-request https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js, response-body=true, tag=笑谱获取更新TOKEN
+#githubAC获取body
+http-request https:\/\/github\.com\/* script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/githubAC.js,requires-body=true, tag=githubAC获取body
 
 ############## surge
-#笑谱获取header
-笑谱获取header = type=http-request,pattern=https:\/\/veishop\.iboxpay\.com\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js, script-update-interval=0
 
-#笑谱获取更新TOKEN
-笑谱获取更新TOKEN = type=http-request,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,response-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js, script-update-interval=0
+#githubAC获取body
+githubACbody = type=http-request,pattern=https:\/\/github\.com\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/githubAC.js 
+
+
+
+  
+
 
 
 */
-
-
-const $ = Env("笑谱直播");
-$.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
+const $ = Env("githubAC");
+$.idx = ($.idx = ($.getval('githubACSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const COOKIE = $.isNode() ? require("./iboxpayCOOKIE") : ``;
+const COOKIE = $.isNode() ? require("./githubACCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
+$.message = '', COOKIES_SPLIT = '', ddtime = '';
+const githubACnameArr = [];
+let githubACnameVal = ``;
+let middlegithubACNAME = [];
+const githubACurlArr = [];
+let githubACurlVal = ``;
+let middlegithubACURL = [];
+const githubACheaderArr = [];
+let githubACheaderVal = ``;
+let middlegithubACHEADER = [];
+const githubACbodyArr = [];
+let githubACbodyVal = ``;
+let middlegithubACBODY = [];
 
-const CS = 4
 
-$.message = '', COOKIES_SPLIT = '', CASH = '', LIVE = '', ddtime = '', spid = '', TOKEN = '', zbid = '', cashcs = '';
-let ins = 0,
-    livecs = 0,
-    RT = 35000;
-const iboxpayheaderArr = [];
-let iboxpayheaderVal = ``;
-let middleiboxpayHEADER = [];
+const HHAArr = [];
+let HHAVal = ``;
+let middleHHA = [];
+const HHBArr = [];
+let HHBVal = ``;
+let middleHHB = [];
+const HHCArr = [];
+let HHCVal = ``;
+let middleHHC = [];
+const HHDArr = [];
+let HHDVal = ``;
+let middleHHD = [];
+const HHEArr = [];
+let HHEVal = ``;
+let middleHHE = [];
+const HHFArr = [];
+let HHFVal = ``;
+let middleHHF = [];
+const HHGArr = [];
+let HHGVal = ``;
+let middleHHG = [];
+const HHHArr = [];
+let HHHVal = ``;
+let middleHHH = [];
+const HHIArr = [];
+let HHIVal = ``;
+let middleHHI = [];
+const HHJArr = [];
+let HHJVal = ``;
+let middleHHJ = [];
+const HHKArr = [];
+let HHKVal = ``;
+let middleHHK = [];
+const HHLArr = [];
+let HHLVal = ``;
+let middleHHL = [];
 
-const refreshtokenArr = [];
-let refreshtokenVal = ``;
-let middlerefreshTOKEN = [];
+
+const MMAArr = [];
+let MMAVal = ``;
+let middleMMA = [];
+const MMBArr = [];
+let MMBVal = ``;
+let middleMMB = [];
+const MMCArr = [];
+let MMCVal = ``;
+let middleMMC = [];
+const MMDArr = [];
+let MMDVal = ``;
+let middleMMD = [];
+const MMEArr = [];
+let MMEVal = ``;
+let middleMME = [];
+const MMFArr = [];
+let MMFVal = ``;
+let middleMMF = [];
+const MMGArr = [];
+let MMGVal = ``;
+let middleMMG = [];
+const MMHArr = [];
+let MMHVal = ``;
+let middleMMH = [];
+const MMIArr = [];
+let MMIVal = ``;
+let middleMMI = [];
+const MMJArr = [];
+let MMJVal = ``;
+let middleMMJ = [];
+const MMKArr = [];
+let MMKVal = ``;
+let middleMMK = [];
+const MMLArr = [];
+let MMLVal = ``;
+let middleMML = [];
 
 
-//时间
-nowTimes = new Date(
-    new Date().getTime() +
-    new Date().getTimezoneOffset() * 60 * 1000 +
-    8 * 60 * 60 * 1000
-);
 
-//时间戳
-if ($.isNode()) {
-    tts = Math.round(new Date().getTime() +
-        new Date().getTimezoneOffset() * 60 * 1000).toString();
-    daytime =
-        new Date(new Date().toLocaleDateString()).getTime() - 8 * 60 * 60 * 1000;
-} else {
-    tts = Math.round(new Date().getTime() +
-        new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-    daytime = new Date(new Date().toLocaleDateString()).getTime();
-}
 
-Y = nowTimes.getFullYear() + '-';
-M = (nowTimes.getMonth() + 1 < 10 ? '0' + (nowTimes.getMonth() + 1) : nowTimes.getMonth() + 1) + '-';
-D = nowTimes.getDate();
-ddtime = Y + M + D;
-console.log(ddtime)
 
-if ($.isNode()) {
-    // 没有设置 XP_CASH 则默认为 0 不提现
-    CASH = process.env.XP_CASH || 0;
 
-    LIVE = process.env.XP_live || 60;
-}
-if ($.isNode() && process.env.XP_iboxpayHEADER) {
+
+
+
+
+
+
+
+
+
+
+
+
+if ($.isNode() && process.env.GIT_githubACHEADER) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
     console.log(
         `============ cookies分隔符为：${JSON.stringify(
@@ -137,88 +199,629 @@ if ($.isNode() && process.env.XP_iboxpayHEADER) {
     )} =============\n`
     );
     if (
-        process.env.XP_iboxpayHEADER &&
-        process.env.XP_iboxpayHEADER.indexOf(COOKIES_SPLIT) > -1
+        process.env.GIT_githubACNAME &&
+        process.env.GIT_githubACNAME.indexOf(COOKIES_SPLIT) > -1
     ) {
-        middleiboxpayHEADER = process.env.XP_iboxpayHEADER.split(COOKIES_SPLIT);
+        middlegithubACNAME = process.env.GIT_githubACNAME.split(COOKIES_SPLIT);
     } else {
-        middleiboxpayHEADER = process.env.XP_iboxpayHEADER.split();
+        middlegithubACNAME = process.env.GIT_githubACNAME.split();
     }
     if (
-        process.env.XP_refreshTOKEN &&
-        process.env.XP_refreshTOKEN.indexOf(COOKIES_SPLIT) > -1
+        process.env.GIT_githubACURL &&
+        process.env.GIT_githubACURL.indexOf(COOKIES_SPLIT) > -1
     ) {
-        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split(COOKIES_SPLIT);
+        middlegithubACURL = process.env.GIT_githubACURL.split(COOKIES_SPLIT);
     } else {
-        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split();
+        middlegithubACURL = process.env.GIT_githubACURL.split();
     }
-}
-if (COOKIE.iboxpayheaderVal) {
-    XP_COOKIES = {
-        "iboxpayheaderVal": COOKIE.iboxpayheaderVal.split('\n'),
-        "refreshtokenVal": COOKIE.refreshtokenVal.split('\n'),
+    if (
+        process.env.GIT_githubACHEADER &&
+        process.env.GIT_githubACHEADER.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middlegithubACHEADER = process.env.GIT_githubACHEADER.split(COOKIES_SPLIT);
+    } else {
+        middlegithubACHEADER = process.env.GIT_githubACHEADER.split();
     }
-    Length = XP_COOKIES.iboxpayheaderVal.length;
+    if (
+        process.env.GIT_githubACBODY &&
+        process.env.GIT_githubACBODY.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middlegithubACBODY = process.env.GIT_githubACBODY.split(COOKIES_SPLIT);
+    } else {
+        middlegithubACBODY = process.env.GIT_githubACBODY.split();
+    }
+
+
+
+
+
+
+    if (
+        process.env.GIT_HHA &&
+        process.env.GIT_HHA.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHA = process.env.GIT_HHA.split(COOKIES_SPLIT);
+    } else {
+        middleHHA = process.env.GIT_HHA.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHB &&
+        process.env.GIT_HHB.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHB = process.env.GIT_HHB.split(COOKIES_SPLIT);
+    } else {
+        middleHHB = process.env.GIT_HHB.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHC &&
+        process.env.GIT_HHC.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHC = process.env.GIT_HHC.split(COOKIES_SPLIT);
+    } else {
+        middleHHC = process.env.GIT_HHC.split();
+    }
+
+
+
+
+
+    if (
+        process.env.GIT_HHD &&
+        process.env.GIT_HHD.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHD = process.env.GIT_HHD.split(COOKIES_SPLIT);
+    } else {
+        middleHHD = process.env.GIT_HHD.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHE &&
+        process.env.GIT_HHE.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHE = process.env.GIT_HHE.split(COOKIES_SPLIT);
+    } else {
+        middleHHE = process.env.GIT_HHE.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHF &&
+        process.env.GIT_HHF.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHF = process.env.GIT_HHF.split(COOKIES_SPLIT);
+    } else {
+        middleHHF = process.env.GIT_HHF.split();
+    }
+
+    if (
+        process.env.GIT_HHG &&
+        process.env.GIT_HHG.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHG = process.env.GIT_HHG.split(COOKIES_SPLIT);
+    } else {
+        middleHHG = process.env.GIT_HHG.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHH &&
+        process.env.GIT_HHH.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHH = process.env.GIT_HHH.split(COOKIES_SPLIT);
+    } else {
+        middleHHH = process.env.GIT_HHH.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHI &&
+        process.env.GIT_HHI.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHI = process.env.GIT_HHI.split(COOKIES_SPLIT);
+    } else {
+        middleHHI = process.env.GIT_HHI.split();
+    }
+
+
+
+
+
+    if (
+        process.env.GIT_HHJ &&
+        process.env.GIT_HHJ.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHJ = process.env.GIT_HHJ.split(COOKIES_SPLIT);
+    } else {
+        middleHHJ = process.env.GIT_HHJ.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHK &&
+        process.env.GIT_HHK.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHK = process.env.GIT_HHK.split(COOKIES_SPLIT);
+    } else {
+        middleHHK = process.env.GIT_HHK.split();
+    }
+
+
+
+    if (
+        process.env.GIT_HHL &&
+        process.env.GIT_HHL.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleHHL = process.env.GIT_HHL.split(COOKIES_SPLIT);
+    } else {
+        middleHHL = process.env.GIT_HHL.split();
+    }
+
+
+
+
+    if (
+        process.env.GIT_MMA &&
+        process.env.GIT_MMA.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMA = process.env.GIT_MMA.split(COOKIES_SPLIT);
+    } else {
+        middleMMA = process.env.GIT_MMA.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMB &&
+        process.env.GIT_MMB.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMB = process.env.GIT_MMB.split(COOKIES_SPLIT);
+    } else {
+        middleMMB = process.env.GIT_MMB.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMC &&
+        process.env.GIT_MMC.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMC = process.env.GIT_MMC.split(COOKIES_SPLIT);
+    } else {
+        middleMMC = process.env.GIT_MMC.split();
+    }
+
+
+
+
+
+    if (
+        process.env.GIT_MMD &&
+        process.env.GIT_MMD.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMD = process.env.GIT_MMD.split(COOKIES_SPLIT);
+    } else {
+        middleMMD = process.env.GIT_MMD.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MME &&
+        process.env.GIT_MME.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMME = process.env.GIT_MME.split(COOKIES_SPLIT);
+    } else {
+        middleMME = process.env.GIT_MME.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMF &&
+        process.env.GIT_MMF.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMF = process.env.GIT_MMF.split(COOKIES_SPLIT);
+    } else {
+        middleMMF = process.env.GIT_MMF.split();
+    }
+
+    if (
+        process.env.GIT_MMG &&
+        process.env.GIT_MMG.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMG = process.env.GIT_MMG.split(COOKIES_SPLIT);
+    } else {
+        middleMMG = process.env.GIT_MMG.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMH &&
+        process.env.GIT_MMH.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMH = process.env.GIT_MMH.split(COOKIES_SPLIT);
+    } else {
+        middleMMH = process.env.GIT_MMH.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMI &&
+        process.env.GIT_MMI.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMI = process.env.GIT_MMI.split(COOKIES_SPLIT);
+    } else {
+        middleMMI = process.env.GIT_MMI.split();
+    }
+
+
+
+
+
+    if (
+        process.env.GIT_MMJ &&
+        process.env.GIT_MMJ.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMJ = process.env.GIT_MMJ.split(COOKIES_SPLIT);
+    } else {
+        middleMMJ = process.env.GIT_MMJ.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MMK &&
+        process.env.GIT_MMK.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMMK = process.env.GIT_MMK.split(COOKIES_SPLIT);
+    } else {
+        middleMMK = process.env.GIT_MMK.split();
+    }
+
+
+
+    if (
+        process.env.GIT_MML &&
+        process.env.GIT_MML.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleMML = process.env.GIT_MML.split(COOKIES_SPLIT);
+    } else {
+        middleMML = process.env.GIT_MML.split();
+    }
+
+
+
+
 }
-if (!COOKIE.iboxpayheaderVal) {
+if (COOKIE.githubACurlVal) {
+    GIT_COOKIES = {
+        "githubACnameVal": COOKIE.githubACnameVal.split('\n'),
+        "githubACurlVal": COOKIE.githubACurlVal.split('\n'),
+        "githubACheaderVal": COOKIE.githubACheaderVal.split('\n'),
+        "githubACbodyVal": COOKIE.githubACbodyVal.split('\n'),
+
+        "HHAVal": COOKIE.HHAVal.split('\n'),
+        "HHBVal": COOKIE.HHBVal.split('\n'),
+        "HHCVal": COOKIE.HHCVal.split('\n'),
+        "HHDVal": COOKIE.HHDVal.split('\n'),
+        "HHEVal": COOKIE.HHEVal.split('\n'),
+        "HHFVal": COOKIE.HHFVal.split('\n'),
+        "HHGVal": COOKIE.HHGVal.split('\n'),
+        "HHHVal": COOKIE.HHHVal.split('\n'),
+        "HHIVal": COOKIE.HHIVal.split('\n'),
+        "HHJVal": COOKIE.HHJVal.split('\n'),
+        "HHKVal": COOKIE.HHKVal.split('\n'),
+        "HHLVal": COOKIE.HHLVal.split('\n'),
+
+        "MMAVal": COOKIE.MMAVal.split('\n'),
+        "MMBVal": COOKIE.MMBVal.split('\n'),
+        "MMCVal": COOKIE.MMCVal.split('\n'),
+        "MMDVal": COOKIE.MMDVal.split('\n'),
+        "MMEVal": COOKIE.MMEVal.split('\n'),
+        "MMFVal": COOKIE.MMFVal.split('\n'),
+        "MMGVal": COOKIE.MMGVal.split('\n'),
+        "MMHVal": COOKIE.MMHVal.split('\n'),
+        "MMIVal": COOKIE.MMIVal.split('\n'),
+        "MMJVal": COOKIE.MMJVal.split('\n'),
+        "MMKVal": COOKIE.MMKVal.split('\n'),
+        "MMLVal": COOKIE.MMLVal.split('\n'),
+
+
+
+
+    }
+    Length = GIT_COOKIES.githubACheaderVal.length;
+}
+if (!COOKIE.githubACheaderVal) {
     if ($.isNode()) {
-        Object.keys(middleiboxpayHEADER).forEach((item) => {
-            if (middleiboxpayHEADER[item]) {
-                iboxpayheaderArr.push(middleiboxpayHEADER[item]);
+        Object.keys(middlegithubACNAME).forEach((item) => {
+            if (middlegithubACNAME[item]) {
+                githubACheaderArr.push(middlegithubACNAME[item]);
             }
         });
-        Object.keys(middlerefreshTOKEN).forEach((item) => {
-            if (middlerefreshTOKEN[item]) {
-                refreshtokenArr.push(middlerefreshTOKEN[item]);
+        Object.keys(middlegithubACURL).forEach((item) => {
+            if (middlegithubACURL[item]) {
+                githubACheaderArr.push(middlegithubACURL[item]);
+            }
+        });
+        Object.keys(middlegithubACHEADER).forEach((item) => {
+            if (middlegithubACHEADER[item]) {
+                githubACheaderArr.push(middlegithubACHEADER[item]);
+            }
+        });
+        Object.keys(middlegithubACBODY).forEach((item) => {
+            if (middlegithubACBODY[item]) {
+                githubACbodyArr.push(middlegithubACBODY[item]);
+            }
+        });
+
+
+        Object.keys(middleHHA).forEach((item) => {
+            if (middleHHA[item]) {
+                HHAArr.push(middleHHA[item]);
+            }
+        });
+
+        Object.keys(middleHHB).forEach((item) => {
+            if (middleHHB[item]) {
+                HHBArr.push(middleHHB[item]);
+            }
+        });
+        Object.keys(middleHHC).forEach((item) => {
+            if (middleHHC[item]) {
+                HHCArr.push(middleHHC[item]);
+            }
+        });
+        Object.keys(middleHHD).forEach((item) => {
+            if (middleHHD[item]) {
+                HHDArr.push(middleHHD[item]);
+            }
+        });
+
+        Object.keys(middleHHE).forEach((item) => {
+            if (middleHHE[item]) {
+                HHEArr.push(middleHHE[item]);
+            }
+        });
+        Object.keys(middleHHF).forEach((item) => {
+            if (middleHHF[item]) {
+                HHFArr.push(middleHHF[item]);
+            }
+        });
+
+        Object.keys(middleHHG).forEach((item) => {
+            if (middleHHG[item]) {
+                HHGArr.push(middleHHG[item]);
+            }
+        });
+
+        Object.keys(middleHHH).forEach((item) => {
+            if (middleHHH[item]) {
+                HHHArr.push(middleHHH[item]);
+            }
+        });
+        Object.keys(middleHHI).forEach((item) => {
+            if (middleHHI[item]) {
+                HHIArr.push(middleHHI[item]);
+            }
+        });
+        Object.keys(middleHHJ).forEach((item) => {
+            if (middleHHJ[item]) {
+                HHJArr.push(middleHHJ[item]);
+            }
+        });
+
+        Object.keys(middleHHK).forEach((item) => {
+            if (middleHHK[item]) {
+                HHKArr.push(middleHHK[item]);
+            }
+        });
+        Object.keys(middleHHL).forEach((item) => {
+            if (middleHHL[item]) {
+                HHLArr.push(middleHHL[item]);
+            }
+        });
+
+
+        Object.keys(middleMMA).forEach((item) => {
+            if (middleMMA[item]) {
+                MMAArr.push(middleMMA[item]);
+            }
+        });
+
+        Object.keys(middleMMB).forEach((item) => {
+            if (middleMMB[item]) {
+                MMBArr.push(middleMMB[item]);
+            }
+        });
+        Object.keys(middleMMC).forEach((item) => {
+            if (middleMMC[item]) {
+                MMCArr.push(middleMMC[item]);
+            }
+        });
+        Object.keys(middleMMD).forEach((item) => {
+            if (middleMMD[item]) {
+                MMDArr.push(middleMMD[item]);
+            }
+        });
+
+        Object.keys(middleMME).forEach((item) => {
+            if (middleMME[item]) {
+                MMEArr.push(middleMME[item]);
+            }
+        });
+        Object.keys(middleMMF).forEach((item) => {
+            if (middleMMF[item]) {
+                MMFArr.push(middleMMF[item]);
+            }
+        });
+
+        Object.keys(middleMMG).forEach((item) => {
+            if (middleMMG[item]) {
+                MMGArr.push(middleMMG[item]);
+            }
+        });
+
+        Object.keys(middleMMH).forEach((item) => {
+            if (middleMMH[item]) {
+                MMHArr.push(middleMMH[item]);
+            }
+        });
+        Object.keys(middleMMI).forEach((item) => {
+            if (middleMMI[item]) {
+                MMIArr.push(middleMMI[item]);
+            }
+        });
+        Object.keys(middleMMJ).forEach((item) => {
+            if (middleMMJ[item]) {
+                MMJArr.push(middleMMJ[item]);
+            }
+        });
+
+        Object.keys(middleMMK).forEach((item) => {
+            if (middleMMK[item]) {
+                MMKArr.push(middleMMK[item]);
+            }
+        });
+        Object.keys(middleMML).forEach((item) => {
+            if (middleMML[item]) {
+                MMLArr.push(middleMML[item]);
             }
         });
     } else {
-        iboxpayheaderArr.push($.getdata("iboxpayheader"));
-        refreshtokenArr.push($.getdata("refreshtoken"));
+        githubACnameArr.push($.getdata("githubACname"));
+        githubACurlArr.push($.getdata("githubACurl"));
+        githubACheaderArr.push($.getdata("githubACheader"));
+        githubACbodyArr.push($.getdata("githubACbody"));
+        HHAArr.push($.getdata("HHA"));
+        HHBArr.push($.getdata("HHB"));
+        HHCArr.push($.getdata("HHC"));
+        HHDArr.push($.getdata("HHD"));
+        HHEArr.push($.getdata("HHE"));
+        HHFArr.push($.getdata("HHF"));
+        HHGArr.push($.getdata("HHG"));
+        HHHArr.push($.getdata("HHH"));
+        HHIArr.push($.getdata("HHI"));
+        HHJArr.push($.getdata("HHJ"));
+        HHKArr.push($.getdata("HHK"));
+        HHLArr.push($.getdata("HHL"));
+        MMAArr.push($.getdata("MMA"));
+        MMBArr.push($.getdata("MMB"));
+        MMCArr.push($.getdata("MMC"));
+        MMDArr.push($.getdata("MMD"));
+        MMEArr.push($.getdata("MME"));
+        MMFArr.push($.getdata("MMF"));
+        MMGArr.push($.getdata("MMG"));
+        MMHArr.push($.getdata("MMH"));
+        MMIArr.push($.getdata("MMI"));
+        MMJArr.push($.getdata("MMJ"));
+        MMKArr.push($.getdata("MMK"));
+        MMLArr.push($.getdata("MML"));
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        if ("iboxpayCASH") {
-            CASH = $.getval("iboxpayCASH") || '0';
-        }
-        if ("iboxpayLIVE") {
-            LIVE = $.getval("iboxpayLIVE") || '60';
-        }
+
+        let githubACCount = ($.getval('githubACCount') || '1') - 0;
+        for (let i = 2; i <= githubACCount; i++) {
+            if ($.getdata(`githubACheader${i}`)) {
+                githubACnameArr.push($.getdata(`githubACname${i}`));
+                githubACurlArr.push($.getdata(`githubACurl${i}`));
+                githubACheaderArr.push($.getdata(`githubACheader${i}`));
+                githubACbodyArr.push($.getdata(`githubACbody${i}`));
+                HHAArr.push($.getdata(`HHA${i}`));
+                HHBArr.push($.getdata(`HHB${i}`));
+                HHCArr.push($.getdata(`HHC${i}`));
+                HHDArr.push($.getdata(`HHD${i}`));
+                HHEArr.push($.getdata(`HHE${i}`));
+                HHFArr.push($.getdata(`HHF${i}`));
+                HHGArr.push($.getdata(`HHG${i}`));
+                HHHArr.push($.getdata(`HHH${i}`));
+                HHIArr.push($.getdata(`HHI${i}`));
+                HHJArr.push($.getdata(`HHJ${i}`));
+                HHKArr.push($.getdata(`HHK${i}`));
+                HHLArr.push($.getdata(`HHL${i}`));
+                MMAArr.push($.getdata(`MMA${i}`));
+                MMBArr.push($.getdata(`MMB${i}`));
+                MMCArr.push($.getdata(`MMC${i}`));
+                MMDArr.push($.getdata(`MMD${i}`));
+                MMEArr.push($.getdata(`MME${i}`));
+                MMFArr.push($.getdata(`MMF${i}`));
+                MMGArr.push($.getdata(`MMG${i}`));
+                MMHArr.push($.getdata(`MMH${i}`));
+                MMIArr.push($.getdata(`MMI${i}`));
+                MMJArr.push($.getdata(`MMJ${i}`));
+                MMKArr.push($.getdata(`MMK${i}`));
+                MMLArr.push($.getdata(`MML${i}`));
 
 
-        let iboxpayCount = ($.getval('iboxpayCount') || '1') - 0;
-        for (let i = 2; i <= iboxpayCount; i++) {
-            if ($.getdata(`iboxpayheader${i}`)) {
-                iboxpayheaderArr.push($.getdata(`iboxpayheader${i}`));
-                refreshtokenArr.push($.getdata(`refreshtoken${i}`));
+
             }
         }
     }
-    Length = iboxpayheaderArr.length
+    Length = githubACheaderArr.length
 }
+
+
 
 
 function GetCookie() {
+    if ($request && $request.url.indexOf("actions") >= 0 && $request.url.indexOf("manual") >= 0) {
 
-    if ($request && $request.url.indexOf("nf-user-auth-web") >= 0) {
-        const refreshtokenVal = JSON.parse($response.body).data.refreshToken
-        $.setdata(refreshtokenVal, "refreshtoken" + $.idx);
-        $.log(
-            `[${$.name + $.idx}] 获取refreshtoken✅: 成功,refreshtokenVal: ${refreshtokenVal}`
-        );
-        $.msg($.name + $.idx, `获取refreshtoken: 成功🎉`, ``);
-    }
-    //用户名
 
-    if ($request && $request.url.indexOf("nf_user_center_web") >= 0 && $request.url.indexOf("get_context_info") >= 0) {
-        const iboxpayheaderVal = JSON.stringify($request.headers);
-        if (iboxpayheaderVal) $.setdata(iboxpayheaderVal, "iboxpayheader" + $.idx);
+
+
+        const githubACurlVal = $request.url
+        $.setdata(githubACurlVal, "githubACurl" + $.idx);
         $.log(
-            `[${$.name + $.idx}] 获取header✅: 成功,iboxpayheaderVal: ${iboxpayheaderVal}`
+            `[${$.name + $.idx}] 获取githubACurl✅: 成功,githubACurlVal: ${githubACurlVal}`
         );
-        $.msg($.name + $.idx, `获取header: 成功🎉`, ``);
+        $.msg($.name + $.idx, `获取githubACurl: 成功🎉`, ``);
+
+
+
+        const githubACheaderVal = JSON.stringify($request.headers);
+        if (githubACheaderVal) {
+            $.setdata(githubACheaderVal, "githubACheader" + $.idx);
+            $.log(
+                `[${$.name + $.idx}] 获取githubACheaderVal✅: 成功,githubACheaderVal: ${githubACheaderVal}`
+            );
+            $.msg($.name + $.idx, `获取githubACheaderVal: 成功🎉`, ``);
+
+
+            const githubACnameVal = decodeURIComponent($request.headers.Referer).split('workflow:')[1];
+
+            $.setdata(githubACnameVal, "githubACname" + $.idx);
+            $.log(
+                `[${$.name + $.idx}] 获取githubACname✅: 成功,githubACnameVal: ${githubACnameVal}`
+            );
+            $.msg($.name + $.idx, `获取githubACname: 成功🎉`, ``);
+
+        }
+        const githubACbodyVal = $request.body;
+        if (githubACbodyVal) $.setdata(githubACbodyVal, "githubACbody" + $.idx);
+        $.log(
+            `[${$.name + $.idx}] 获取githubACbodyVal✅: 成功,githubACbodyVal: ${githubACbodyVal}`
+        );
+        $.msg($.name + $.idx, `获取githubACbodyVal: 成功🎉`, ``);
+
+
+
+
     }
+
 }
-
-
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
     new Date().getTime() +
@@ -229,12 +832,66 @@ console.log(
 console.log(
     `============ 共 ${Length} 个${$.name}账号=============\n`
 );
-console.log(`============ 提现标准为：${CASH} =============\n`);
-if (LIVE >= 1) {
-    console.log(`============ 直播次数为：${LIVE} =============\n`);
-} else {
-    console.log(`============ 看直播关闭 =============\n`);
-}
+
+
+//时间
+nowTimes = new Date(
+    new Date().getTime() +
+    new Date().getTimezoneOffset() * 60 * 1000 +
+    8 * 60 * 60 * 1000
+);
+//今天
+Y = nowTimes.getFullYear() + '-';
+M = (nowTimes.getMonth() + 1 < 10 ? '0' + (nowTimes.getMonth() + 1) : nowTimes.getMonth() + 1) + '-';
+D = (nowTimes.getDate() + 1 < 10 ? '0' + (nowTimes.getDate()) : nowTimes.getMonth());
+ddtime = Y + M + D;
+console.log(ddtime)
+
+function tts(inputTime) {
+    if ($.isNode()) {
+        TTS = Math.round(new Date().getTime() +
+            new Date().getTimezoneOffset() * 60 * 1000).toString();
+    } else TTS = Math.round(new Date().getTime() +
+        new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
+    return TTS;
+};
+
+
+
+//当前10位时间戳
+function ts(inputTime) {
+    if ($.isNode()) {
+        TS = Math.round((new Date().getTime() +
+            new Date().getTimezoneOffset() * 60 * 1000) / 1000).toString();
+    } else TS = Math.round((new Date().getTime() +
+        new Date().getTimezoneOffset() * 60 * 1000 +
+        8 * 60 * 60 * 1000) / 1000).toString();
+    return TS;
+};
+//今天0点时间戳时间戳
+function daytime(inputTime) {
+    if ($.isNode()) {
+        DAYTIME =
+            new Date(new Date().toLocaleDateString()).getTime() - 8 * 60 * 60 * 1000;
+    } else DAYTIME = new Date(new Date().toLocaleDateString()).getTime();
+    return DAYTIME;
+};
+//时间戳格式化日期
+function time(inputTime) {
+
+    if ($.isNode()) {
+        var date = new Date(inputTime + 8 * 60 * 60 * 1000);
+    } else var date = new Date(inputTime);
+
+
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y + M + D + h + m + s;
+};
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
     GetCookie()
@@ -242,6 +899,7 @@ if (isGetCookie) {
 } else {
     !(async () => {
         await all();
+        await $.wait(1000);
         await msgShow();
     })()
     .catch((e) => {
@@ -255,66 +913,109 @@ async function all() {
     if (!Length) {
         $.msg(
             $.name,
-            '提示：⚠️请点击前往获取https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970\n',
-            'https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970', {
-                "open-url": "https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970"
+            '提示：⚠️请点击前往获取CK  https://github.com\n',
+            'https://github.com', {
+                "open-url": "https://github.com"
             }
         );
         return;
     }
     for (let i = 0; i < Length; i++) {
-        if (COOKIE.iboxpayheaderVal) {
-            iboxpayheaderVal = XP_COOKIES.iboxpayheaderVal[i];
-            refreshtokenVal = XP_COOKIES.refreshtokenVal[i];
+
+        if (COOKIE.githubACheaderVal) {
+            githubACnameVal = GIT_COOKIES.githubACnameVal[i];
+            githubACurlVal = GIT_COOKIES.githubACurlVal[i];
+            githubACheaderVal = GIT_COOKIES.githubACheaderVal[i];
+            githubACbodyVal = GIT_COOKIES.githubACbodyVal[i];
+            HHAVal = GIT_COOKIES.HHAVal[i];
+            HHBVal = GIT_COOKIES.HHBVal[i];
+            HHCVal = GIT_COOKIES.HHCVal[i];
+            HHDVal = GIT_COOKIES.HHDVal[i];
+            HHEVal = GIT_COOKIES.HHEVal[i];
+            HHFVal = GIT_COOKIES.HHFVal[i];
+            HHGVal = GIT_COOKIES.HHGVal[i];
+            HHHVal = GIT_COOKIES.HHHVal[i];
+            HHIVal = GIT_COOKIES.HHIVal[i];
+            HHJVal = GIT_COOKIES.HHJVal[i];
+            HHKVal = GIT_COOKIES.HHKVal[i];
+            HHLVal = GIT_COOKIES.HHLVal[i];
+            MMAVal = GIT_COOKIES.MMAVal[i];
+            MMBVal = GIT_COOKIES.MMBVal[i];
+            MMCVal = GIT_COOKIES.MMCVal[i];
+            MMDVal = GIT_COOKIES.MMDVal[i];
+            MMEVal = GIT_COOKIES.MMEVal[i];
+            MMFVal = GIT_COOKIES.MMFVal[i];
+            MMGVal = GIT_COOKIES.MMGVal[i];
+            MMHVal = GIT_COOKIES.MMHVal[i];
+            MMIVal = GIT_COOKIES.MMIVal[i];
+            MMJVal = GIT_COOKIES.MMJVal[i];
+            MMKVal = GIT_COOKIES.MMKVal[i];
+            MMLVal = GIT_COOKIES.MMLVal[i];
+
+
+
+
+
+
+
         }
-        if (!COOKIE.iboxpayheaderVal) {
-            iboxpayheaderVal = iboxpayheaderArr[i];
-            refreshtokenVal = refreshtokenArr[i];
+        if (!COOKIE.githubACheaderVal) {
+            githubACnameVal = githubACnameArr[i];
+            githubACurlVal = githubACurlArr[i];
+            githubACheaderVal = githubACheaderArr[i];
+            githubACbodyVal = githubACbodyArr[i];
+			
+            HHAVal = HHAArr[i];
+            HHBVal = HHBArr[i];
+            HHCVal = HHCArr[i];
+            HHDVal = HHDArr[i];
+            HHEVal = HHEArr[i];
+            HHFVal = HHFArr[i];
+            HHGVal = HHGArr[i];
+            HHHVal = HHHArr[i];
+            HHIVal = HHIArr[i];
+            HHJVal = HHJArr[i];
+            HHKVal = HHKArr[i];
+            HHLVal = HHLArr[i];
+            MMAVal = MMAArr[i];
+            MMBVal = MMBArr[i];
+            MMCVal = MMCArr[i];
+            MMDVal = MMDArr[i];
+            MMEVal = MMEArr[i];
+            MMFVal = MMFArr[i];
+            MMGVal = MMGArr[i];
+            MMHVal = MMHArr[i];
+            MMIVal = MMIArr[i];
+            MMJVal = MMJArr[i];
+            MMKVal = MMKArr[i];
+            MMLVal = MMLArr[i];
+
+
+
+
         }
 
-        ts = Math.round((new Date().getTime() +
-            new Date().getTimezoneOffset() * 60 * 1000 +
-            8 * 60 * 60 * 1000) / 1000).toString();
 
-        traceid = JSON.parse(iboxpayheaderVal)["traceid"];
-        token = JSON.parse(iboxpayheaderVal)["token"];
-        oldtime = traceid.substr(traceid.indexOf("161"), 13);
         O = (`${$.name + (i + 1)}🔔`);
-        await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
+        await console.log(`-------------------------\n\n🔔开始运行${$.name+(i+1)}【${githubACnameVal}】`)
 
-        console.log('CK获取时间:' + time(Number(oldtime)))
+        $.message += `【${githubACnameVal}】${HHAVal}-${HHBVal} ${HHCVal}-${HHDVal} ${HHEVal}-${HHFVal} ${HHGVal}-${HHHVal} ${HHIVal}-${HHJVal} ${HHKVal}-${HHLVal} 的 ${MMAVal} ${MMBVal} ${MMCVal} ${MMDVal} ${MMEVal} ${MMFVal} ${MMGVal} ${MMHVal} ${MMIVal} ${MMJVal} ${MMKVal} ${MMLVal} 分运行\n`
+        
+        if (((nowTimes.getHours() >= HHAVal && nowTimes.getHours() <= HHBVal) || (nowTimes.getHours() >= HHCVal && nowTimes.getHours() <= HHDVal) || (nowTimes.getHours() >= HHEVal && nowTimes.getHours() <= HHFVal) || (nowTimes.getHours() >= HHGVal && nowTimes.getHours() <= HHHVal) || (nowTimes.getHours() >= HHIVal && nowTimes.getHours() <= HHJVal) || (nowTimes.getHours() >= HHKVal && nowTimes.getHours() <= HHLVal)) && (nowTimes.getMinutes() == MMAVal || nowTimes.getMinutes() == MMBVal || nowTimes.getMinutes() == MMCVal || nowTimes.getMinutes() == MMDVal || nowTimes.getMinutes() == MMEVal || nowTimes.getMinutes() == MMFVal || nowTimes.getMinutes() == MMGVal || nowTimes.getMinutes() == MMHVal || nowTimes.getMinutes() == MMIVal || nowTimes.getMinutes() == MMJVal || nowTimes.getMinutes() == MMKVal || nowTimes.getMinutes() == MMLVal)) {
 
-        await refreshtoken(); //更新TOKEN
-        let cookie_is_live = await user(i + 1); //用户名
-        if (!cookie_is_live) {
-            continue;
-        }
-        await cktime(); //CK获取时间
-        await goldcoin(); //金币信息
-        await coin(); //账户信息	
-        await hdid(); //活动id
-        await cashlist(); //提现查询
-        if (!cashcs.amount && CASH >= 1 && $.coin.data.balance / 100 >= CASH) {
-            await withdraw(); //提现
-        }
-        //await play();//播放
-        //let video_is_live = await video(i + 1);//视频
-        //if (!video_is_live) {
-        //continue;
-        //}
-        //await goldvideo();//金蛋视频
-        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23) {
-            await sylist(); //收益列表
-            if ($.sylist.resultCode && livecs < LIVE) {
-                await lives(); //看直播
-            }
+            await githubAC(); //运行
+
+        } else {
+            console.log(`${githubACnameVal}:时间未到\n\n`)
+            $.message += `${githubACnameVal}:时间未到\n\n`
 
         }
+
+
+
 
     }
-
 }
-
 //通知
 function msgShow() {
     return new Promise(async resolve => {
@@ -336,44 +1037,25 @@ function msgShow() {
     })
 }
 
-function cktime() {
-    $.message += '【CK获取时间】：' + time(Number(oldtime)) + '\n'
-};
 
-function time(inputTime) {
-    var date = new Date(inputTime);
-    Y = date.getFullYear() + '-';
-    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    D = date.getDate() + ' ';
-    h = date.getHours() + ':';
-    m = date.getMinutes() + ':';
-    s = date.getSeconds();
-
-    return Y + M + D + h + m + s;
-};
-//TOKEN更新  
-function refreshtoken(timeout = 0) {
+//githubAC
+function githubAC(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${oldtime}`, `${tts}`)
-            refreshtokenbodyVal = `{"refreshToken":"${refreshtokenVal}","source":"VEISHOP_APP_IOS"}`
             let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_auth_web/uc/ignore_tk/v1/refresh_access_token_to_c.json`,
-                headers: JSON.parse(header),
-                body: refreshtokenbodyVal,
+                url: githubACurlVal,
+                headers: JSON.parse(githubACheaderVal),
+                body: githubACbodyVal,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, TOKEN更新🚩: ${data}`);
-                    $.refreshtoken = JSON.parse(data);
-                    if ($.refreshtoken.resultCode == 1) {
-                        TOKEN = $.refreshtoken.data.accessToken
-                        console.log('更新TOKEN成功:' + TOKEN + '\n');
+                    if (logs) $.log(`${O}, 运行🚩: ${data}`);
+                    if (data.match(/github.com/g)) {
+                        console.log(githubACnameVal + `${time(Number(tts()))}运行成功\n\n`)
+                        $.message += githubACnameVal + `${time(Number(tts()))}运行成功\n\n`
+                    } else {
+                        console.log(githubACnameVal + `请检查github的Action是否开启\n\n`)
+                        $.message += githubACnameVal + `请检查github的Action是否开启\n\n`
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -384,452 +1066,7 @@ function refreshtoken(timeout = 0) {
         }, timeout)
     })
 }
-//用户名
-function user(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_center_web/shopkeeper/v1/get_context_info.json`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 用户名🚩: ${data}`);
-                    $.user = JSON.parse(data);
-                    if ($.user.resultCode == 1) {
-                        $.message += `\n${O}`;
-                        $.message += `\n========== 【${$.user.data.customerInfo.nickname}】 ==========\n`;
-                        resolve(true);
-                    }
-                    if ($.user.resultCode == 0) {
-                        let cookie_not_live_message = new Date(
-                            new Date().getTime() +
-                            new Date().getTimezoneOffset() * 60 * 1000 +
-                            8 * 60 * 60 * 1000
-                        ).toLocaleString() + "❌❌❌COOKIE失效";
-                        $.msg(O, cookie_not_live_message);
-                        if ($.isNode()) {
-                            notify.sendNotify(O, cookie_not_live_message);
-                        }
-                        resolve(false);
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//金币信息  
-function goldcoin(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/balance.json?source=WX_APP_KA_HTZP`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 金币信息🚩: ${data}`);
-                    $.goldcoin = JSON.parse(data);
-                    $.message += '【金币信息】：今日金币' + $.goldcoin.data.coinSum + ',预估金额' + $.goldcoin.data.balanceSum / 100 + '元' + '\n';
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//活动id 
-function hdid(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/ignore_tk/v1/query_act_list.json?source=WX_APP_KA_HTZP`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 活动id🚩: ${data}`);
-                    $.hdid = JSON.parse(data);
-                    if ($.hdid.resultCode == 1) {
-                        spid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 9)
-                        zbid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 10)
 
-                        $.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n' +
-                            '【' + zbid.actName + 'ID】：' + zbid.actId + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//账户信息  
-function coin(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/withdraw_detail.json?source=WX_APP_KA_HTZP`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 账户信息🚩: ${data}`);
-                    $.coin = JSON.parse(data);
-                    $.message += '【账户信息】：可提余额' + $.coin.data.balance / 100 + ',明日入账' + $.coin.data.tomorrowAmt / 100 + '元' + '\n';
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//播放
-function play(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            for (let i = 0; i < CS; i++) {
-                setTimeout(() => {
-                    if ($.isNode()) {
-                        tts = Math.round(new Date().getTime() +
-                            new Date().getTimezoneOffset() * 60 * 1000).toString();
-                    } else tts = Math.round(new Date().getTime() +
-                        new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-                    header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-                    do playTime = Math.floor(Math.random() * 31);
-                    while (playTime < 20)
-                    do playTimess = Math.floor(Math.random() * 41);
-                    while (playTimess < 30)
-                    do playid = Math.floor(Math.random() * 49600000000000000);
-                    while (playid < 10000000000000000)
-                    playbodyVal = `{"videoPublishId":"13${playid}","playTimeLenght":${playTime},"type":1,"videoTime":${playTimess}}`;
-                    videoPublishId = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    if (i == 2) {
-                        videoPublishId3 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 3) {
-                        videoPublishId4 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 4) {
-                        videoPublishId5 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 5) {
-                        videoPublishId6 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    console.log(`视频ID${i+1}📍${videoPublishId}`)
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/video/ignore_tk/v1/video_channel/uplaod_play_video_recode.json`,
-                        headers: JSON.parse(header),
-                        body: playbodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 播放ID${i+1}🚩: ${data}`);
-                            $.play = JSON.parse(data);
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
-                        }
-                    })
-                }, i * 30000);
-            }
-        }, timeout)
-    })
-}
-//视频
-function video(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            for (let i = 0; i < CS; i++) {
-                $.index = i + 1
-                setTimeout(() => {
-
-                    if ($.isNode()) {
-                        tts = Math.round(new Date().getTime() +
-                            new Date().getTimezoneOffset() * 60 * 1000).toString();
-                    } else tts = Math.round(new Date().getTime() +
-                        new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-                    header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-                    videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"284"}`
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-                        headers: JSON.parse(header),
-                        body: videobodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 视频🚩: ${data}`);
-                            $.video = JSON.parse(data);
-                            if ($.video.resultCode == 0) {
-                                $.message += '⚠️' + $.video.errorDesc + '\n'
-                                resolve(false);
-                            } else {
-                                console.log(`开始领取第${i+1}次视频奖励，获得${$.video.data.goldCoinNumber}金币\n`);
-                                ins += $.video.data.goldCoinNumber;
-                                await $.wait($.index * 30000 - 29000);
-                                $.message +=
-                                    `【视频奖励】：共领取${$.index}次视频奖励，共${ins}金币\n`
-                                resolve(true);
-                            }
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
-                        }
-                    })
-                }, i * 30000);
-            }
-        }, timeout)
-    })
-}
-//金蛋视频
-function goldvideo(timeout = 60000) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            goldvideobodyVal = `{"type":2,"videoList":[{"videoId":"${videoPublishId3}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId4}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId5}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId6}","type":1,"isFinishWatch":false}],"actId":"284"}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-                headers: JSON.parse(header),
-                body: goldvideobodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 金蛋视频🚩: ${data}`);
-                    $.goldvideo = JSON.parse(data);
-                    if ($.goldvideo.resultCode == 1) {
-                        console.log('金蛋视频奖励，获得' + $.goldvideo.data.goldCoinNumber + '金币')
-                        $.message +=
-                            '【金蛋视频奖励】：获得' + $.goldvideo.data.goldCoinNumber + '金币\n'
-                    }
-                    if ($.goldvideo.resultCode == 0) {
-                        console.log($.goldvideo.errorDesc + '\n');
-                        $.message +=
-                            '【金蛋视频奖励】：' + $.goldvideo.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//直播
-function lives(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            for (let i = 0; i < CS; i++) {
-                $.index = i + 1
-                do RT = Math.floor(Math.random() * 45000);
-                while (RT < 35000)
-                setTimeout(() => {
-
-                    if ($.isNode()) {
-                        tts = Math.round(new Date().getTime() +
-                            new Date().getTimezoneOffset() * 60 * 1000).toString();
-                    } else tts = Math.round(new Date().getTime() +
-                        new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-                    do liveid = Math.floor(Math.random() * 4274552669282305);
-                    while (liveid < 3654320204128256)
-
-                    header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-                    livesbodyVal = `{
- "actId": "283",
- "liveId": "135${liveid}"
-}`
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
-                        headers: JSON.parse(header),
-                        body: livesbodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 直播🚩: ${data}`);
-                            $.lives = JSON.parse(data);
-                            if ($.lives.resultCode == 1) {
-                                console.log(`开始领取第${i+1}次直播奖励，获得500金币,等待${RT/1000}秒继续\n`);
-                                ins += $.lives.data.goldCoinAmt;
-                                await $.wait($.index * 45000 - 44000);
-                                $.message += `【直播奖励】：共领取${$.index}次直播奖励，共2000金币\n`
-                            }
-                            if ($.lives.resultCode == 0) {
-                                console.log($.lives.errorDesc + '\n');
-                                $.message += '【直播奖励】：' + $.lives.errorDesc + '\n';
-                            }
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
-                        }
-                    })
-
-                }, i * RT);
-            }
-        }, timeout)
-    })
-}
-//收益列表
-function sylist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/list_gold_coin.json?source=WX_APP_KA_HTZP&date=${ddtime}&actTypeId=0&size=800`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 收益列表🚩: ${data}`);
-                    $.sylist = JSON.parse(data);
-                    if ($.sylist.resultCode == 1 && data.match(/:500,/g)) {
-                        live = data.match(/:500,/g);
-                        livecs = live.length;
-                        console.log('已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n')
-                        $.message +=
-                            '【直播收益】：已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n'
-                    } else livecs = 0
-                    if ($.sylist.resultCode == 0) {
-                        console.log($.sylist.errorDesc + '\n');
-                        $.message +=
-                            '【直播收益】：' + $.sylist.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//提现记录
-function cashlist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/in_out.json?source=WX_APP_KA_HTZP&date=${ddtime}&tradeType=0&current=1&size=40`,
-                headers: JSON.parse(header),
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 提现记录🚩: ${data}`);
-                    $.cashlist = JSON.parse(data);
-                    if ($.cashlist.resultCode == 1 && data.match(/提现/g)) {
-                        cashcs = $.cashlist.data.records.find(item => item.tradeTypeName === "提现")
-                        console.log('今日已提现' + cashcs.amount / 100 + '元\n')
-                        $.message +=
-                            '【提现查询】：今日已提现' + cashcs.amount / 100 + '元\n'
-                    }
-                    if ($.cashlist.resultCode == 0) {
-                        console.log($.cashlist.errorDesc + '\n');
-                        $.message +=
-                            '【提现查询】：' + $.cashlist.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//提现
-function withdraw(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            if ($.isNode()) {
-                tts = Math.round(new Date().getTime() +
-                    new Date().getTimezoneOffset() * 60 * 1000).toString();
-            } else tts = Math.round(new Date().getTime() +
-                new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
-            header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts}`)
-            withdrawbodyVal = `{
- "source": "WX_APP_KA_HTZP",
- "bizType": 2,
- "amount": ${CASH*100}
-}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/activity/v1/withdraw.json`,
-                headers: JSON.parse(header),
-                body: withdrawbodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 提现🚩: ${data}`);
-                    $.withdraw = JSON.parse(data);
-                    if ($.withdraw.resultCode == 1 && $.withdraw.data.withdrawRes == 1) {
-                        console.log('成功提现 ' + CASH + ' 元\n')
-                        $.message +=
-                            '【余额提现】：成功提现 ' + CASH + ' 元\n'
-                    }
-                    if ($.withdraw.resultCode == 0) {
-                        console.log($.withdraw.errorDesc + '\n');
-                        $.message +=
-                            '【余额提现】：' + $.withdraw.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
 // prettier-ignore
 function Env(t, e) {
     class s {
@@ -1169,3 +1406,70 @@ function Env(t, e) {
         }
     }(t, e)
 }
+                                                                                                                                                              /*
+东东-美丽颜究院
+活动入口：app首页-美妆馆-底部中间按钮
+添加好脚本以后如果报错找不到ws模块请先cd 到scripts里 npm install ws
+
+新手写脚本，难免有bug，能用且用。
+多谢 whyour 大佬 帮忙修改
+
+脚本内置了一个给作者任务助力的网络请求，默认开启，如介意请自行关闭。
+助力活动链接： https://h5.m.jd.com/babelDiy/Zeus/4ZK4ZpvoSreRB92RRo8bpJAQNoTq/index.html
+参数 helpAuthor = false
+
+更新地址：https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_mlyjy.js
+脚本仅支持Node环境，手机上的均不支持。
+0 0,9,13,20 * * *
+*/
+const $ = new Env('美丽颜究院');
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
+const WebSocket = require("ws");
+const { sendNotify } = require("./sendNotify.js");
+const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
+const notify = $.isNode() ? require('./sendNotify') : '';
+const needNotify = true;
+const productMachinel = {};
+const materialWaitForProduce = { "base": [], "high": [], "special": [] };
+const hasProducePosition = {}
+let cookiesArr = [], cookie = '', originCookie = '';
+let helpAuthor = false;//为作者助力的开关
+let msg = {
+  //初始化 请求
+  get_package: { "msg": { "type": "action", "args": { "source": 1 }, "action": "get_package" } },
+  init: { "msg": { "type": "action", "args": { "source": 1 }, "action": "_init_" } },
+  stats: { "msg": { "type": "action", "args": { "source": "meizhuangguandibudaohang" }, "action": "stats" } },
+  //签到 请求
+  sign_in_1: { "msg": { "type": "action", "args": {}, "action": "sign_in" } },
+  sign_in_2: { "msg": { "action": "write", "type": "action", "args": { "action_type": 1, "channel": 2, "source_app": 2 } } },
+  //获取任务进度 请求
+  checkUp: { "msg": { "type": "action", "args": {}, "action": "check_up" } },
+  //获取店铺及商品信息 请求
+  shopProducts: { "msg": { "type": "action", "args": {}, "action": "shop_products" } },
+  //完成浏览会场任务 请求
+  meetingplace_view: { "msg": { "type": "action", "args": { "source": 1 }, "action": "meetingplace_view" } },
+  //完成浏览商品任务 请求
+  add_product_view_1: { "msg": { "type": "action", "args": { "add_product_id": 0 }, "action": "add_product_view" } },
+  add_product_view_2: { "msg": { "action": "write", "type": "action", "args": { "action_type": 9, "channel": 2, "source_app": 2, "vender": "" } } },
+  add_product_view_3: { "msg": { "action": "write", "type": "action", "args": { "action_type": 5, "channel": 2, "source_app": 2, "vender": "" } } },
+  //完成店铺浏览任务 请求
+  shop_view_1: { "msg": { "type": "action", "args": { "shop_id": "" }, "action": "shop_view" } },
+  shop_view_2: { "msg": { "action": "write", "type": "action", "args": { "action_type": 6, "channel": 2, "source_app": 2, "vender": "" } } },
+  //获取每日问题题目 请求
+  get_question: { "msg": { "type": "action", "args": {}, "action": "get_question" } },
+  //提交每日问答 请求
+  submit_answer: { "msg": { "type": "action", "args": { "commit": {}, "correct": 3 }, "action": "submit_answer" } },
+  //查询生产坑位信息 请求
+  produce_position_info: { "msg": { "type": "action", "args": { "position": "" }, "action": "produce_position_info" } },
+  //新手任务 请求
+  newcomer_update: { "msg": { "type": "action", "args": {}, "action": "newcomer_update" } },
+  //获取生产材料列表 请求
+  get_produce_material: { "msg": { "type": "action", "args": {}, "action": "get_produce_material" } },
+  //收取生产材料 请求
+  material_fetch: { "msg": { "type": "action", "args": { "position": "", "replace_material": false }, "action": "material_fetch" } },
+  //生产材料 请求
+  material_produce: { "msg": { "type": "action", "args": { "position": "", "material_id": 0 }, "action": "material_produce" } },
+  //研发产品列表 请求
+  product_lists: { "msg": { "type": "action", "args": { "page": 1, "num": 10 }, "action": "product_lists" } },
+  //获取正在研发产品列表 请求
+  product_producing: { "msg": { "type": "action", "args": {}, "acti

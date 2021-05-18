@@ -1,82 +1,140 @@
 /* ziye 
-github地址 https://github.com/ziye66666
+github地址 https://github.com/ziye11
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/ziye.boxjs.json
-
+boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
 转载请备注个名字，谢谢
 
-⚠️步步宝
-点击 http://bububao.yichengw.cn/?id=529742 下载APP  谢谢支持
+⚠️笑谱
+脚本运行一次   
+则运行6次视频 1次金蛋 1次直播（直播默认关闭，且在8点到23点有效）
 
+1.15 调整金蛋延迟为60秒
+1.17 增加ck失效提醒，以及金币满额停止
+1.27 笑谱恢复，活动id284
+1.27-2 增加看直播功能，默认关闭，设置LIVE来开启  如 设置LIVE 为 60 则开启直播，并且次数达到60次停止
+1.27-3 调整直播运行次数，运行一次脚本，执行6次直播
+1.27-4 调整策略，6次视频1次金蛋1次直播
+1.28 修复收益列表问题
+1.29 活动id302
+1.30 修复活动id频繁变动问题，修复金蛋视频id
+1.30 解决ck失效问题
+1.30-3 增加提现
+1.31 增加180秒任务,优先直播，修改直播金币显示
+1.31-2 调整判定
+2.1 增加CK获取时间
+2.2 优化
+2.3 修复直播问题，采用真实直播id
+2.3 设置LIVE 为61 时  单跑直播
+2.3 修复错误，修复直播收益显示
+2.4 修复金蛋问题，增加视频收益统计，增加上限判定，达到上限以及19点后不执行视频，
+2.4 直播限制为30  设置LIVE为0 不跑直播，1跑直播和视频，2单跑直播
+2.5 增加首次视频验证，灰号直接停止视频
+2.6 修复判定错误,增加surge获取token重写
+2.7 增加红包雨，设置LIVE等于3 开启
+2.7-2 调整红包雨运行机制
+2.8 修复无人直播出现的错误
+2.8-2 修复红包雨结束报错
+2.8-3 增加通过验证码获取token功能，并且内置header，新人设置LIVE为888
+2.8-4 修复错误
+2.10 修复红包雨问题，LIVE设置3  启动红包雨活动，修复版本问题
+2.10-2 移除红包雨模块
+2.11 移除视频时间限制，LIVE设置666做新人180秒任务
+2.26 适配直播上限20次
+3.5 设置888由上至下循环提现
 
-2.21 制作
-2.23 完成
-2.23 修复ck问题
-2.24 调整通知布局，修复抽奖宝箱
-3.1 修复看看赚
-3.2 调整抽奖机制， 一次运行5次抽奖， 抽中1000金币则兑奖
-3.3 修复签到，增加10分钟限速，完善提现判定，修复睡觉，调整为抽奖200金币也领取
-3.3-2 调整刮奖机制 分3个时间段刮奖
-3.4 取消限速
-3.5 优化提现
-
-⚠️ 时间设置    0,30 0-23 * * *    每天 35次以上就行   
-
- 
-一 视频助力手动也是不行的 
-二 默认0点睡23点醒，时间务必包括这两个点 
-
-(已内置随机udid，添加重写无视多设备检测，如非必要，勿频繁登录)
-
-
-⚠️一共1个位置 1个ck  👉 2条 Secrets 
+⚠️一共1个位置 1个ck  👉 5条 Secrets 
 多账号换行
 
-第一步 添加  hostname=bububao.duoshoutuan.com,
 
-第二步 ⚠️添加步步宝获取TOKEN重写  
+⚠️方法一
 
-登录步步宝  获取token
-bububaotokenVal 👉BBB_bububaoTOKEN
+第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码
+
+第二步 ⚠️进入boxjs（其他平台则输入对应环境变量）  输入当前账号序号   输入手机号  和  验证码
+
+第三步 运行js  手机则自动获取token（其他平台则复制token，填写环境变量）  然后回到boxjs 修改验证码为0
 
 
-CASH  👉  BBB_CASH     可设置0 0.3 50 100 200 888  默认0关闭提现，设置888由上至下循环提现
+已全部操作完成
 
+
+⚠️方法二
+
+第一步 添加  hostname=veishop.iboxpay.com,
+
+第二步 ⚠️添加笑谱获取更新TOKEN重写  
+
+登录笑谱(在登录状态就退出，重新登录)  获取更新TOKEN
+
+
+
+refreshtokenVal 👉XP_refreshTOKEN
+
+设置任务 可设置 0 1 2    0开视频关直播 1开视频开直播 2关视频开直播
+ LIVE  👉  XP_live
+
+设置提现金额 可设置 0 1 15 30 50 100 888 默认0关闭  设置888由上至下循环提现
+CASH  👉  XP_CASH 
+
+设置手机号 
+ phone  👉  XP_phone
+
+设置验证码   默认0关闭获取token功能
+sms  👉  XP_sms
 
 ⚠️主机名以及重写👇
-hostname=bububao.duoshoutuan.com,
+
+（手机可以获取refreshTOKEN     其他开启抓包，然后登录笑谱，找到 https://veishop.iboxpay.com/nf_gateway/nf-user-auth-web/ignore_tk/veishop/v1/ 里的响应体 refreshTOKEN）
+
+hostname=veishop.iboxpay.com
 
 ############## 圈x
-#步步宝获取TOKEN
-https:\/\/bububao\.duoshoutuan\.com\/user\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/bububao.js
+
+#笑谱获取更新TOKEN
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js
 
 ############## loon
-#步步宝获取TOKEN
-http-response https:\/\/bububao\.duoshoutuan\.com\/user\/* script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/bububao.js, requires-body=1,max-size=0, tag=步步宝获取TOKEN
+http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
 
 ############## surge
-#步步宝获取TOKEN
-步步宝获取TOKEN = type=http-response,pattern=https:\/\/bububao\.duoshoutuan\.com\/user\/*,script-path=https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/bububao.js
-*/
 
-const $ = Env("步步宝");
-$.idx = ($.idx = ($.getval('bububaoSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
+#笑谱获取更新TOKEN
+笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js
+
+
+
+*/
+const $ = Env("笑谱");
+$.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const COOKIE = $.isNode() ? require("./bububaoCOOKIE") : ``;
+const COOKIE = $.isNode() ? require("./iboxpayCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
-$.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
-CZ = 10
-const bububaotokenArr = [];
-let bububaotokenVal = ``;
-let middlebububaoTOKEN = [];
+const CS = 5
+$.message = '', COOKIES_SPLIT = '', CASH = '', LIVE = '', phone = '', sms = '', ddtime = '', spid = '', TOKEN = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', zbid = '', cashcs = '', newcashcs = '', liveId = '';
+let livecs = 0,
+    videoscs = 0,
+    LIVES = 0,
+    HBY = 0,
+    liveIdcd = 0;
+RT = 30000;
+const refreshtokenArr = [];
+let refreshtokenVal = ``;
+let middlerefreshTOKEN = [];
 if ($.isNode()) {
-    // 没有设置 FL_DHCASH 则默认为 0 不兑换
-    CASH = process.env.BBB_CASH || 0;
+    // 没有设置 XP_CASH 则默认为 0 不提现
+    CASH = process.env.XP_CASH || 0;
+    // 没有设置 XP_live 则默认0
+    LIVE = process.env.XP_live || 0;
+    // 没有设置 XP_phone 则默认为 0 
+    phone = process.env.XP_phone || 0;
+    // 没有设置 XP_sms 则默认0  不获取TOKEN
+    sms = process.env.XP_sms || 0
+
 }
-if ($.isNode() && process.env.BBB_bububaoTOKEN) {
+if ($.isNode() && process.env.XP_refreshTOKEN) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
     console.log(
         `============ cookies分隔符为：${JSON.stringify(
@@ -84,62 +142,64 @@ if ($.isNode() && process.env.BBB_bububaoTOKEN) {
     )} =============\n`
     );
     if (
-        process.env.BBB_bububaoTOKEN &&
-        process.env.BBB_bububaoTOKEN.indexOf(COOKIES_SPLIT) > -1
+        process.env.XP_refreshTOKEN &&
+        process.env.XP_refreshTOKEN.indexOf(COOKIES_SPLIT) > -1
     ) {
-        middlebububaoTOKEN = process.env.BBB_bububaoTOKEN.split(COOKIES_SPLIT);
+        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split(COOKIES_SPLIT);
     } else {
-        middlebububaoTOKEN = process.env.BBB_bububaoTOKEN.split();
+        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split();
     }
 }
-if (COOKIE.bububaotokenVal) {
-    BBB_COOKIES = {
-        "bububaotokenVal": COOKIE.bububaotokenVal.split('\n'),
+if (COOKIE.refreshtokenVal) {
+    XP_COOKIES = {
+
+        "refreshtokenVal": COOKIE.refreshtokenVal.split('\n'),
     }
-    Length = BBB_COOKIES.bububaotokenVal.length;
+    Length = XP_COOKIES.refreshtokenVal.length;
 }
-if (!COOKIE.bububaotokenVal) {
+if (!COOKIE.refreshtokenVal) {
     if ($.isNode()) {
-        Object.keys(middlebububaoTOKEN).forEach((item) => {
-            if (middlebububaoTOKEN[item]) {
-                bububaotokenArr.push(middlebububaoTOKEN[item]);
+        Object.keys(middlerefreshTOKEN).forEach((item) => {
+            if (middlerefreshTOKEN[item]) {
+                refreshtokenArr.push(middlerefreshTOKEN[item]);
             }
         });
     } else {
-        bububaotokenArr.push($.getdata("bububaotoken"));
+        refreshtokenArr.push($.getdata("refreshtoken"));
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        if ("bububaoCASH") {
-            CASH = $.getval("bububaoCASH") || '0';
+        if ("iboxpayCASH") {
+            CASH = $.getval("iboxpayCASH") || '0';
         }
-        let bububaoCount = ($.getval('bububaoCount') || '1') - 0;
-        for (let i = 2; i <= bububaoCount; i++) {
-            if ($.getdata(`bububaotoken${i}`)) {
-                bububaotokenArr.push($.getdata(`bububaotoken${i}`));
+        if ("iboxpayLIVE") {
+            LIVE = $.getval("iboxpayLIVE") || '0';
+        }
+        if ("iboxpayphone") {
+            phone = $.getval("iboxpayphone") || '0';
+        }
+        if ("iboxpaysms") {
+            sms = $.getval("iboxpaysms") || '0';
+        }
+        let iboxpayCount = ($.getval('iboxpayCount') || '1') - 0;
+        for (let i = 2; i <= iboxpayCount; i++) {
+            if ($.getdata(`refreshtoken${i}`)) {
+                refreshtokenArr.push($.getdata(`refreshtoken${i}`));
             }
         }
     }
-    if (bububaotokenArr == '') {
-        Length = 0
-    } else Length = bububaotokenArr.length
+    Length = refreshtokenArr.length
 }
 
+
 function GetCookie() {
-    if ($request && $request.url.indexOf("login") >= 0) {
-        modifiedHeaders = $request.headers;
-        modifiedHeaders['imei'] = udid()
-        console.log(JSON.stringify(modifiedHeaders));
-        $done({
-            headers: modifiedHeaders
-        });
-    }
-    if ($request && $request.url.indexOf("profile") >= 0) {
-        const bububaotokenVal = $request.headers.tokenstr;
-        if (bububaotokenVal) $.setdata(bububaotokenVal, "bububaotoken" + $.idx);
+    if ($request && $request.url.indexOf("nf-user-auth-web") >= 0) {
+        const refreshtokenVal = JSON.parse($response.body).data.refreshToken
+        $.setdata(refreshtokenVal, "refreshtoken" + $.idx);
         $.log(
-            `[${$.name + $.idx}] 获取bububaotokenVal✅: 成功,bububaotokenVal: ${bububaotokenVal}`
+            `[${$.name + $.idx}] 获取refreshtoken✅: 成功,refreshtokenVal: ${refreshtokenVal}`
         );
-        $.msg($.name + $.idx, `获取bububaotokenVal: 成功🎉`, ``);
+        $.msg($.name + $.idx, `获取refreshtoken: 成功🎉`, ``);
     }
+
 }
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
@@ -151,6 +211,19 @@ console.log(
 console.log(
     `============ 共 ${Length} 个${$.name}账号=============\n`
 );
+console.log(`============ 提现标准为：${CASH} =============\n`);
+if (LIVE == 0) {
+    console.log(`============ 看直播关闭，看视频开启 =============\n`);
+}
+if (LIVE == 1) {
+    console.log(`============ 看直播开启，看视频开启 =============\n`);
+}
+if (LIVE == 2) {
+    console.log(`============ 看直播开启，看视频关闭 =============\n`);
+}
+if (sms >= 1) {
+    console.log(`============ TOKEN获取开启 =============\n`);
+}
 //时间
 nowTimes = new Date(
     new Date().getTime() +
@@ -203,14 +276,6 @@ function time(inputTime) {
     s = date.getSeconds();
     return Y + M + D + h + m + s;
 };
-//日期格式化时间戳
-function timecs() {
-    if ($.isNode()) {
-        var date = new Date(newtime).getTime() - 8 * 60 * 60 * 1000
-    } else var date = new Date(newtime).getTime()
-
-    return date;
-};
 //随机udid 大写
 function udid() {
     var s = [];
@@ -244,14 +309,20 @@ function decodeUnicode(str) {
     str = str.replace(/\\/g, "%");
     return unescape(str);
 }
+
+
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
     GetCookie()
     $.done();
 } else {
     !(async () => {
-        await all();
-        await $.wait(1000)
+        if (sms >= 1) {
+            await getTOKEN();
+        } else await all();
+        if (HBY == 1) {
+            await $.wait(500)
+        }
         await msgShow();
     })()
     .catch((e) => {
@@ -265,65 +336,99 @@ async function all() {
     if (!Length) {
         $.msg(
             $.name,
-            '提示：⚠️请点击前往获取http://bububao.yichengw.cn/?id=529742\n',
-            'http://bububao.yichengw.cn/?id=529742', {
-                "open-url": "http://bububao.yichengw.cn/?id=529742"
+            '提示：⚠️请点击前往获取https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970\n',
+            'https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970', {
+                "open-url": "https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970"
             }
         );
         return;
     }
     for (let i = 0; i < Length; i++) {
-        if (COOKIE.bububaotokenVal) {
-            bububaotokenVal = BBB_COOKIES.bububaotokenVal[i];
+
+        if (COOKIE.refreshtokenVal) {
+
+            refreshtokenVal = XP_COOKIES.refreshtokenVal[i];
         }
-        if (!COOKIE.bububaotokenVal) {
-            bububaotokenVal = bububaotokenArr[i];
+        if (!COOKIE.refreshtokenVal) {
+
+            refreshtokenVal = refreshtokenArr[i];
         }
-        header = {
-            'store': `appstore`,
-            'tokenstr': `${bububaotokenVal}`,
-            'Connection': `keep-alive`,
-            'Accept-Encoding': `gzip, deflate, br`,
-            'version': `10`,
-            'idfa': ``,
-            'Content-Type': `application/x-www-form-urlencoded`,
-            'User-Agent': `BBB/132 CFNetwork/1206 Darwin/20.1.0`,
-            'platform': `2`,
-            'imei': ``,
-            'Cookie': ``,
-            'Host': `bububao.duoshoutuan.com`,
-            'Accept-Language': `zh-cn`,
-            'Accept': `*/*`
-        };
+
+
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
-        let cookie_is_live = await user(); //用户名
+
+        await refreshtoken(); //更新TOKEN       
+        let cookie_is_live = await user(i + 1); //用户名
         if (!cookie_is_live) {
             continue;
         }
-        //await userjinbi() //收益记录
-        if (CZ >= 10) {
-            await help_index() //助力活动
-            await home() //首页信息
-            await jindan_click() //首页金蛋
-            await sign_html() //签到
-            await dk_info() //打卡
-            await cy_info() //答题
-            await water_info() //喝水
-            await sleep_info() //睡觉
-            await ggk() //刮刮卡
-            await $.wait(8000)
-            await lucky() //转盘抽奖
-            await $.wait(1000)
-            await lucky() //转盘抽奖
-            await $.wait(1000)
-            await lucky() //转盘抽奖
-            await $.wait(1000)
-            await h5_list() //看看赚
-            await news() //看文章
-            await renwu() //赚赚任务
-            await tixian_html() //提现
+        await hdid(); //活动id
+        await goldcoin(); //金币信息
+        await coin(); //账户信息
+        await sylist(); //收益列表
+        await splimit(); //视频上限
+        await newcashlist(); //提现查询
+        await cashlist(); //今日提现查询
+        if (!cashcs.amount && CASH >= 1 && CASH <= 100 && $.coin.data.balance / 100 >= CASH) {
+            await withdraw(); //提现
         }
+
+        if (!cashcs.amount && CASH == 888) {
+
+            if ($.coin.data.balance / 100 >= 100) {
+                CASH = 100
+            } else if ($.coin.data.balance / 100 >= 50) {
+                CASH = 50
+            } else if ($.coin.data.balance / 100 >= 30) {
+                CASH = 30
+            } else if ($.coin.data.balance / 100 >= 15) {
+                CASH = 15
+            } else if ($.coin.data.balance / 100 >= 1) {
+                CASH = 1
+            }
+
+            if (CASH != 888) {
+                await withdraw(); //提现
+            }
+        }
+
+        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 20) {
+            await liveslist(); //直播节目表
+            if (liveIdcd >= 1) {
+                dd = liveIdcd * 35 - 34
+                console.log(`📍本次直播运行需要${dd}秒` + '\n')
+
+                await lives(); //看直播
+                await $.wait(dd * 1000)
+            }
+        }
+
+        if (LIVE != 2 && $.splimit.data.isUperLimit == false || LIVE == 888) {
+
+            await playo(); //播放o       
+            await videoo(); //视频o
+
+            if (LIVES != 2) {
+                await $.wait(30000)
+                tt = CS * 30 - 29
+                console.log(`📍本次视频运行需要${tt}秒` + '\n')
+                await play(); //播放       
+                await video(); //视频
+                await $.wait(tt * 1000)
+                if (LIVE == 666) {
+                    await newvideo(); //新人福利
+                }
+                if ($.video.data && $.video.data.goldCoinNumber != 0 && videoPublishId6) {
+                    await goldvideo(); //金蛋视频
+                }
+
+
+            }
+
+        }
+
+
     }
 }
 //通知
@@ -346,24 +451,136 @@ function msgShow() {
         resolve()
     })
 }
+
+
+//TOKEN获取  
+function getTOKEN(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            getTOKENbodyVal = `{"userPhone":"${phone}","smsCode":"${sms}","source":"VEISHOP_APP_IOS"}`
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf-user-auth-web/ignore_tk/veishop/v1/app_register_by_phone.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: getTOKENbodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, TOKEN获取🚩: ${data}`);
+                    $.getTOKEN = JSON.parse(data);
+                    if ($.getTOKEN.resultCode == 1) {
+                        const refreshtokenVal = $.getTOKEN.data.refreshToken
+                        $.setdata(refreshtokenVal, "refreshtoken" + $.idx);
+                        $.log(
+                            `[${$.name + $.idx}] 获取refreshtoken✅: 成功,refreshtokenVal: ${refreshtokenVal}`
+                        );
+                        $.msg($.name + $.idx, `获取refreshtoken: 成功🎉`, ``);
+                        $.message += '【TOKEN获取】：成功' + $.getTOKEN.data.refreshToken + '\n';
+                    }
+                    if ($.getTOKEN.resultCode == 0) {
+                        console.log(`TOKEN获取：${$.getTOKEN.errorCode}\n`);
+                        $.message += `【TOKEN获取】：${$.getTOKEN.errorCode}\n`;
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//TOKEN更新  
+function refreshtoken(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            refreshtokenbodyVal = `{"refreshToken":"${refreshtokenVal}","source":"VEISHOP_APP_IOS"}`
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_auth_web/uc/ignore_tk/v1/refresh_access_token_to_c.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: refreshtokenbodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, TOKEN更新🚩: ${data}`);
+                    $.refreshtoken = JSON.parse(data);
+                    if ($.refreshtoken.resultCode == 1) {
+                        TOKEN = $.refreshtoken.data.accessToken
+                        console.log('更新TOKEN成功:' + TOKEN + '\n');
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
 //用户名
 function user(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
+
             let url = {
-                url: `https://bububao.duoshoutuan.com/user/profile?`,
-                headers: header,
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_center_web/shopkeeper/v1/get_context_info.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
             }
-            $.post(url, async (err, resp, data) => {
+            $.get(url, async (err, resp, data) => {
                 try {
                     if (logs) $.log(`${O}, 用户名🚩: ${data}`);
                     $.user = JSON.parse(data);
-                    if ($.user.uid) {
-                        console.log(`\n${O}\n========== ${$.user.username} ==========\n微信绑定：${$.user.wx_username},今日收益：${$.user.day_jinbi/10000}元\n现金余额：${$.user.money}元,累计收益：${$.user.leiji_jinbi/10000}元,今日步数：${$.user.steps}步\n`)
-                        $.message += `\n${O}\n========== 【${$.user.username}】 ==========\n【微信绑定】：${$.user.wx_username},今日收益：${$.user.day_jinbi/10000}元\n【现金余额】：${$.user.money}元,累计收益：${$.user.leiji_jinbi/10000}元,今日步数：${$.user.steps}步\n`;
+                    if ($.user.resultCode == 1) {
+                        $.message += `\n${O}`;
+                        $.message += `\n========== 【${$.user.data.customerInfo.nickname}】 ==========\n`;
                         resolve(true);
                     }
-                    if (!$.user.uid) {
+
+                    if ($.user.resultCode == 0) {
                         $.msg(O, time(Number(tts())) + "❌❌❌COOKIE失效");
                         if ($.isNode()) {
                             notify.sendNotify(O, time(Number(tts())) + "❌❌❌COOKIE失效");
@@ -379,1350 +596,408 @@ function user(timeout = 0) {
         }, timeout)
     })
 }
+//金币信息  
+function goldcoin(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
 
-
-//收益记录
-function userjinbi(timeout = 0) {
-    return new Promise(async (resolve) => {
-        setTimeout(() => {
-                let url = {
-                    url: `https://bububao.duoshoutuan.com/user/userjinbi?`,
-                    headers: header,
-                    body: `page=1&page_limit=25&`,
-                }
-                $.post(url, async (err, resp, data) => {
-                    try {
-                        if (logs) $.log(`${O}, 收益记录🚩: ${data}`);
-                        $.userjinbi = JSON.parse(data);
-
-                        if ($.userjinbi && $.userjinbi[0].add_date) {
-                            newtime = $.userjinbi[0].add_date + 'T' + $.userjinbi[0].add_time
-                            CZ = ((tts() - timecs(newtime)) / 60000).toFixed(0)
-
-                            console.log(`收益记录：距离上次收益${CZ}分钟，已限速10分钟\n`);
-                            $.message += `【收益记录】：距离上次收益${CZ}分钟，已限速10分钟\n`;
-
-                        }
-
-
-                    } catch (e) {
-                        $.logErr(e, resp);
-                    } finally {
-                        resolve()
-                    }
-                })
-            },
-            timeout)
-    })
-}
-
-
-
-//首页信息
-function home(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
             let url = {
-                url: `https://bububao.duoshoutuan.com/user/home?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 首页信息🚩: ${data}`);
-                    $.home = JSON.parse(data);
-                    if ($.home.right_jinbi) {
-                        console.log(`首页信息：金币：${$.home.right_jinbi}金币,红包：${$.home.hb_jinbi}金币\n`);
-                        $.message += `【首页信息】：金币：${$.home.right_jinbi}金币,红包：${$.home.hb_jinbi}金币\n`;
-                        if ($.home.right_time) {
-                            console.log(`金币等待：${$.home.right_time}秒\n`);
-                            $.message += `【金币等待】：${$.home.right_time}秒\n`;
-                        }
-                        if ($.home.hb_time) {
-                            console.log(`红包等待：${$.home.hb_time}秒\n`);
-                            $.message += `【红包等待】：${$.home.hb_time}秒\n`;
-                        }
-                        if ((!$.home.hb_time || $.home.hb_time <= 0) && $.home.hb_st != 2) {
-                            await syhb() //首页红包
-                        }
-                        if ((!$.home.right_time || $.home.right_time <= 0) && $.home.right_st != 2) {
-                            await homejin() //首页金币
-                        }
-                        if ($.home.right_st == 2) {
-                            console.log(`首页金币：已完成\n`);
-                            $.message += `【首页金币】：已完成\n`;
-                        }
-                        if ($.home.hb_st == 2) {
-                            console.log(`首页红包：已完成\n`);
-                            $.message += `【首页红包】：已完成\n`;
-                        }
-                        if ($.home.steps_btn_st == 1) {
-                            await donejin() //步数奖励
-                        }
-                        if ($.home.jinbi > 0) {
-                            collsteps() //步数金币
-                        }
-                        await step7() //7日达标
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//步数奖励
-function donejin(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/donejin?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 步数奖励🚩: ${data}`);
-                    $.donejin = JSON.parse(data);
-                    if ($.donejin.code == 1) {
-                        console.log(`步数奖励：${$.donejin.tip},${$.donejin.msg}\n`);
-                        $.message += `【步数奖励】：${$.donejin.tip},${$.donejin.msg}\n`;
-                        nonce_str = $.donejin.nonce_str
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//步数金币
-function collsteps(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/collsteps?`,
-                headers: header,
-                body: `duihuan_dialog=0&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 步数金币🚩: ${data}`);
-                    $.collsteps = JSON.parse(data);
-                    if ($.collsteps.code == 1) {
-                        console.log(`步数金币：${$.collsteps.jinbi}金币,${$.collsteps.msg}\n`);
-                        $.message += `【步数金币】：${$.collsteps.jinbi}金币,${$.collsteps.msg}\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//7天达标
-function step7(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/step7?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 7天达标🚩: ${data}`);
-                    $.step7 = JSON.parse(data);
-                    if (data.match(/month_day/g) && !data.match(/"is_dabiao": 0/g)) {
-                        console.log(`7天达标：已达标\n`);
-                        $.message += `【7天达标】：已达标\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//附加处理
-function callback(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/you/callback?`,
-                headers: header,
-                body: `nonce_str=${nonce_str}&tid=${tid}&pos=${pos}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 附加处理🚩:${data}`);
-                    $.callback = JSON.parse(data);
-                    if ($.callback.code == 1) {
-                        console.log(`附加处理：成功\n`);
-                        //$.message += `【附加处理】：成功\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//前置处理
-function chuansj(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/chuansj?`,
-                headers: header,
-                body: `mini_pos=${mini_pos}&c_type=${c_type}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 前置处理🚩: ${data}`);
-                    $.chuansj = JSON.parse(data);
-                    if ($.chuansj.code == 1) {
-                        console.log(`前置处理：成功\n`);
-                        //$.message += `【前置处理】：成功\n`;
-                        nonce_str = $.chuansj.nonce_str
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//首页金币
-function homejin(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/homejin?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 首页金币🚩: ${data}`);
-                    $.homejin = JSON.parse(data);
-                    if ($.homejin.code == 1) {
-                        console.log(`首页金币：成功领取${$.homejin.jinbi}金币\n`);
-                        $.message += `【首页金币】：成功领取${$.homejin.jinbi}金币\n`;
-                    }
-                    tid = 21
-                    pos = 1
-                    nonce_str = $.homejin.nonce_str
-                    await callback()
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//首页红包
-async function syhb() {
-    console.log(`首页红包：开始执行\n`);
-    $.message += `【首页红包】：开始执行\n`;
-    mini_pos = 0
-    c_type = 2
-    tid = 17
-    pos = 2
-    await chuansj()
-    await callback()
-}
-//金蛋前置
-function jindan_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/jindan_click?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 金蛋前置🚩: ${data}`);
-                    $.jindan_click = JSON.parse(data);
-                    if ($.jindan_click.code == 1) {
-                        taskid = $.jindan_click.taskid
-                        nonce_str = $.jindan_click.nonce_str
-                        await jindan_done() //首页金蛋
-                    }
-                    if ($.jindan_click.code == -1) {
-                        console.log(`首页金蛋：已完成\n`);
-                        $.message += `【首页金蛋】：已完成\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//首页金蛋
-function jindan_done(timeout = 0) {
-    return new Promise(async (resolve) => {
-        setTimeout(() => {
-                let url = {
-                    url: `https://bububao.duoshoutuan.com/user/jindan_done?`,
-                    headers: header,
-                    body: `taskid=${taskid}&clicktime=${ts()}&donetime=${ts()}&nonce_str=${nonce_str}&`,
-                }
-                $.post(url, async (err, resp, data) => {
-                    try {
-                        if (logs) $.log(`${O}, 首页金蛋🚩: ${data}`);
-                        $.jindan_done = JSON.parse(data);
-                        if ($.jindan_done.code == 1) {
-                            console.log(`首页金蛋：${$.jindan_done.jinbi}金币,领取成功\n`);
-                            $.message += `【首页金蛋】：${$.jindan_done.jinbi}金币,领取成功\n`;
-                            nonce_str = $.jindan_done.nonce_str
-                            tid = 5
-                            pos = 2
-                            await callback()
-                        }
-                    } catch (e) {
-                        $.logErr(e, resp);
-                    } finally {
-                        resolve()
-                    }
-                })
-            },
-            timeout)
-    })
-}
-//助力活动
-function help_index(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/help_index?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 助力活动🚩: ${data}`);
-                    $.help_index = JSON.parse(data);
-                    if ($.help_index.code == 1) {
-                        console.log(`助力活动：现金${$.help_index.jinbi}元,差${$.help_index.diff_jinbi}元,时间剩余${($.help_index.time/3600).toFixed(0)}小时\n`);
-                        $.message += `【助力活动】：现金${$.help_index.jinbi}元,差${$.help_index.diff_jinbi}元,时间剩余${($.help_index.time/3600).toFixed(0)}小时\n`;
-                        nonce_str = $.help_index.nonce_str
-                        //if ($.help_index.diff_jinbi > 0) {
-                        //await help_click()
-                        //}
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//视频助力
-function help_click(timeout = 0) {
-    return new Promise(async (resolve) => {
-        mini_pos = 5
-        c_type = 1
-        await chuansj()
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/help_click?`,
-                headers: header,
-                body: `nonce_str=${nonce_str}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 视频助力🚩: ${data}`);
-                    $.help_click = JSON.parse(data);
-                    if ($.help_click.code == 1) {
-                        console.log(`视频助力：${$.help_click.jinbi/10000}元,领取成功\n`);
-                        $.message += `【视频助力】：${$.help_click.jinbi/10000}金币,领取成功\n`;
-                        nonce_str = $.help_click.nonce_str
-                        tid = 22
-                        pos = 1
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//每日签到
-function signget(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/sign?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 每日签到🚩: ${data}`);
-                    $.signget = JSON.parse(data);
-                    if ($.signget.code == 1) {
-                        console.log(`每日签到：${$.signget.msg}\n`);
-                        $.message += `【每日签到】：${$.signget.msg}\n`;
-                        tid = 2
-                        pos = 1
-                        nonce_str = $.signget.nonce_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//签到列表
-function sign_html(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/sign_html?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 签到列表🚩: ${data}`);
-                    $.sign_html = JSON.parse(data);
-                    if ($.sign_html.jinbi_html) {
-                        console.log(`签到列表：已签到${$.sign_html.sign_day}天\n`);
-                        $.message += `【签到列表】：已签到${$.sign_html.sign_day}天\n`;
-                        if ($.sign_html.is_sign_day == 0) {
-                            await signget() //签到
-                        } else {
-                            console.log(`每日签到：已签到\n`);
-                            $.message += `【每日签到】：已签到\n`;
-
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//早晚打卡页
-function dk_info(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/dk_info?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 早晚打卡页🚩: ${data}`);
-                    $.dk_info = JSON.parse(data);
-                    if ($.dk_info.code == 1) {
-                        now_time = $.dk_info.now_time
-                        console.log(`早晚打卡页：${$.dk_info.day},${$.dk_info.title1}\n`);
-                        $.message += `【早晚打卡页】：${$.dk_info.day},${$.dk_info.title1}\n`;
-                        if ($.dk_info.is_dk == 0) {
-                            await dk_click() //早晚打卡
-                        }
-                        if ($.dk_info.is_dk == 1) {
-                            console.log(`早晚打卡：已完成\n`);
-                            $.message += `【早晚打卡】：已完成\n`;
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//早晚打卡
-function dk_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/dk_click?`,
-                headers: header,
-                body: `now_time=${now_time}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 早晚打卡🚩: ${data}`);
-                    $.dk_click = JSON.parse(data);
-                    if ($.dk_click.code == 1) {
-                        console.log(`早晚打卡：获得${$.dk_click.jinbi}金币\n`);
-                        $.message += `【早晚打卡】：获得${$.dk_click.jinbi}金币\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//答题活动页
-function cy_info(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/cy_info?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 答题活动页🚩: ${data}`);
-                    $.cy_info = JSON.parse(data);
-                    if ($.cy_info.code == 1) {
-                        console.log(`答题活动页：剩余${$.cy_info.day_num}次\n`);
-                        $.message += `【答题活动页】：剩余${$.cy_info.day_num}次\n`;
-                        cy_id = $.cy_info.cy_id
-                        site = $.cy_info.site
-                        day_num = $.cy_info.day_num
-                        if ($.cy_info.day_num >= 1) {
-                            await cy_sp() //答题前置
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//答题前置
-function cy_sp(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/cy_sp?`,
-                headers: header,
-                body: `day_num=${day_num}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 答题前置🚩: ${data}`);
-                    $.cy_sp = JSON.parse(data);
-                    if ($.cy_sp.code == 1) {
-                        console.log(`答题前置：${$.cy_sp.msg}\n`);
-                        $.message += `【答题前置】：${$.cy_sp.msg}\n`;
-                        await cy_click() //答题                                         
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//答题活动
-function cy_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/cy_click?`,
-                headers: header,
-                body: `cy_id=${cy_id}&site=${site}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 答题活动🚩: ${data}`);
-                    $.cy_click = JSON.parse(data);
-                    if ($.cy_click.code == 1) {
-                        console.log(`答题成功：获得${$.cy_click.jinbi}金币\n`);
-                        $.message += `【答题成功】：获得${$.cy_click.jinbi}金币\n`;
-                        tid = 18
-                        pos = 1
-                        nonce_str = $.cy_click.nonce_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//每天喝水
-function water_info(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/water_info?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 每天喝水🚩: ${data}`);
-                    $.water_info = JSON.parse(data);
-                    if ($.water_info.code == 1) {
-                        day_num = $.water_info.day_num
-                        if ($.water_info.day_num <= 6 && $.water_info.next_time == 0) {
-                            await water_click() //开始喝水
-                        }
-                        if ($.water_info.next_time) {
-                            console.log(`每天喝水：已喝${$.water_info.day_num}杯\n`);
-                            $.message += `【每天喝水】：已喝${$.water_info.day_num}杯\n`;
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//开始喝水
-function water_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/water_click?`,
-                headers: header,
-                body: `day_num=${day_num}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 开始喝水🚩: ${data}`);
-                    $.water_click = JSON.parse(data);
-                    if ($.water_click.code == 1) {
-                        console.log(`${$.water_click.msg}：获得${$.water_click.jinbi}金币\n`);
-                        $.message += `【${$.water_click.msg}】：获得${$.water_click.jinbi}金币\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//睡觉状态
-function sleep_info(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/sleep_info?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 睡觉状态🚩: ${data}`);
-                    $.sleep_info = JSON.parse(data);
-                    if ($.sleep_info.is_sleep == 1) {
-                        console.log(`睡觉状态：做梦中\n`);
-                        $.message += `【睡觉状态】：做梦中\n`;
-                        if (nowTimes.getHours() === 23) {
-                            await sleep_end()
-                        }
-                    }
-                    if ($.sleep_info.is_sleep == 0) {
-                        console.log(`睡觉状态：清醒中\n`);
-                        $.message += `【睡觉状态】：清醒中\n`;
-                        if (nowTimes.getHours() === 0) {
-                            await sleep_start()
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//开始睡觉
-function sleep_start(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/sleep_start?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 开始睡觉🚩: ${data}`);
-                    $.sleep_start = JSON.parse(data);
-                    if ($.sleep_start.code == 1) {
-                        console.log(`开始睡觉：开始睡觉\n`);
-                        $.message += `【开始睡觉】：开始睡觉\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//结束睡觉
-function sleep_end(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/sleep_end?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 结束睡觉🚩: ${data}`);
-                    $.sleep_end = JSON.parse(data);
-                    if ($.sleep_end.code == 1) {
-                        console.log(`结束睡觉：结束睡觉，产生${$.sleep_end.jinbi}金币\n`);
-                        $.message += `【结束睡觉】：结束睡觉，产生${$.sleep_end.jinbi}金币\n`;
-                        taskid = $.sleep_end.taskid
-                        nonce_str = $.sleep_end.nonce_str
-                        await sleep_done() //睡觉奖励
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//睡觉奖励
-function sleep_done(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/mini/sleep_done?`,
-                headers: header,
-                body: `taskid=${taskid}&nonce_str=${nonce_str}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 睡觉奖励🚩: ${data}`);
-                    $.sleep_done = JSON.parse(data);
-                    if ($.sleep_done.code == 1) {
-                        console.log(`睡觉奖励：睡觉奖励领取${$.sleep_done.jinbi}金币\n`);
-                        $.message += `【睡觉奖励】：睡觉奖励领取${$.sleep_done.jinbi}金币\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-//刮刮卡
-async function ggk() {
-    for (let i = 0; i < 5; i++) {
-        setTimeout(async () => {
-            await gualist()
-        }, i * 2000);
-    }
-}
-
-//刮刮卡列表
-function gualist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/gua/gualist?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 刮刮卡列表🚩: ${data}`);
-                    $.gualist = JSON.parse(data);
-                    if ($.gualist.ka && $.gualist.ka >= 1) {
-                        idlist = $.gualist.list.find(item => item.is_ad === '0');
-                        id = idlist.id
-                        console.log(`刮刮卡列表：剩余${$.gualist.ka}张，下一张${idlist.jine}元\n`);
-                        $.message += `【刮刮卡列表】：剩余${$.gualist.ka}张，下一张${idlist.jine}元\n`;
-                        await guadet() //刮卡
-                    }
-                    if ($.gualist.ka && $.gualist.ka == 0) {
-                        console.log(`刮刮卡列表：剩余${$.gualist.ka}张，已完成\n`);
-                        $.message += `【刮刮卡列表】：剩余${$.gualist.ka}张，已完成\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//刮刮卡
-function guadet(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/gua/guadet?`,
-                headers: header,
-                body: `gid=${id}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 刮刮卡🚩: ${data}`);
-                    $.guadet = JSON.parse(data);
-                    if ($.guadet.jine) {
-                        guacs = data.match(/x(\d+).png/g).length + 1
-
-                        if (!guacs) {
-                            console.log(`【刮刮卡查询】：开启${$.guadet.jine}元,抽中1等奖\n`)
-                            $.message += `【刮刮卡查询】：开启${$.guadet.jine}元,抽中1等奖\n`;
-                            console.log(`【刮刮卡领取】：成功领奖\n`)
-                            $.message += `【刮刮卡领取】：成功领奖\n`;
-                            sign = $.guadet.sign
-                            glid = $.guadet.glid
-                            await guapost() //刮卡奖励
-                        }
-                        if (guacs) {
-                            console.log(`【刮刮卡查询】：开启${$.guadet.jine}元,抽中${guacs}等奖\n`)
-                            $.message += `【刮刮卡查询】：开启${$.guadet.jine}元,抽中${guacs}等奖\n`;
-
-                            if (guacs <= 3 && nowTimes.getHours() >= 0 && nowTimes.getHours() <= 17) {
-                                console.log(`【刮刮卡领取】：成功领奖\n`)
-                                $.message += `【刮刮卡领取】：成功领奖\n`;
-                                sign = $.guadet.sign
-                                glid = $.guadet.glid
-                                await guapost() //刮卡奖励
-                            } else if (guacs <= 4 && nowTimes.getHours() >= 18 && nowTimes.getHours() <= 22) {
-                                console.log(`【刮刮卡领取】：成功领奖\n`)
-                                $.message += `【刮刮卡领取】：成功领奖\n`;
-                                sign = $.guadet.sign
-                                glid = $.guadet.glid
-                                await guapost() //刮卡奖励
-                            } else if (guacs <= 5 && nowTimes.getHours() == 23) {
-                                console.log(`【刮刮卡领取】：成功领奖\n`)
-                                $.message += `【刮刮卡领取】：成功领奖\n`;
-                                sign = $.guadet.sign
-                                glid = $.guadet.glid
-                                await guapost() //刮卡奖励
-                            } else {
-                                console.log(`【刮刮卡领取】：再来一次\n`)
-                                $.message += `【刮刮卡领取】：再来一次\n`;
-                            }
-                        }
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//刮刮卡奖励
-function guapost(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/gua/guapost?`,
-                headers: header,
-                body: `sign=${sign}&gid=${id}&glid=${glid}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 刮刮卡奖励🚩: ${data}`);
-                    $.guapost = JSON.parse(data);
-                    if ($.guapost.jf) {
-                        console.log(`刮刮卡奖励：获得${$.guapost.jf}金币\n`);
-                        $.message += `【刮刮卡奖励】：获得${$.guapost.jf}金币\n`;
-                        tid = 6
-                        pos = 1
-                        nonce_str = $.guapost.nonce_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//转盘列表
-function lucky(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/lucky?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 转盘列表🚩: ${data}`);
-                    $.lucky = JSON.parse(data);
-                    if ($.lucky.lucky_num) {
-                        console.log(`转盘列表：剩余${$.lucky.lucky_num}次，已运行${$.lucky.lucky_count}次\n`);
-                        $.message += `【转盘列表】：剩余${$.lucky.lucky_num}次，已运行${$.lucky.lucky_count}次\n`;
-                        if ($.lucky.lucky_num >= 1) {
-                            await lucky_click() //转盘抽奖
-                        }
-                    }
-                    if ($.lucky && $.lucky.lucky_box.indexOf('1') >= 0) {
-                        box = $.lucky.lucky_box.indexOf('1') + 1
-                        await lucky_box() //抽奖宝箱
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//转盘抽奖
-function lucky_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/lucky_click?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 转盘抽奖🚩: ${data}`);
-                    $.lucky_click = JSON.parse(data);
-                    if ($.lucky_click.jinbi) {
-                        console.log(`转盘抽奖：获得${$.lucky_click.jinbi}金币\n`);
-                        $.message += `【转盘抽奖】：获得${$.lucky_click.jinbi}金币\n`;
-                        tid = 16
-                        pos = 2
-                        nonce_str = $.lucky_click.nonce_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//抽奖宝箱
-function lucky_box(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/lucky_box?`,
-                headers: header,
-                body: `box=${box}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 抽奖宝箱🚩: ${data}`);
-                    $.lucky_box = JSON.parse(data);
-                    if ($.lucky_box.jinbi) {
-                        console.log(`抽奖宝箱：获得${$.lucky_box.jinbi}金币\n`);
-                        $.message += `【抽奖宝箱】：获得${$.lucky_box.jinbi}金币\n`;
-                        tid = 16
-                        pos = 2
-                        nonce_str = $.lucky_box.nonce_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//看看赚列表
-function h5_list(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/h5_list?`,
-                headers: header,
-                body: `page=1&page_limit=25&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 看看赚列表🚩: ${data}`);
-                    $.h5_list = JSON.parse(data);
-                    is_ok = $.h5_list.find(item => item.is_ok === 0);
-                    if (is_ok) {
-                        id = is_ok.id
-                        console.log(`看看赚列表：下个任务：${is_ok.mini_name}\n`);
-                        $.message += `【看看赚列表】：下个任务：${is_ok.mini_name}\n`;
-
-                        await h5_news() //看看赚执行
-                    } else {
-                        console.log(`看看赚：已完成\n`);
-                        $.message += `【看看赚】：已完成\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//看看赚执行
-function h5_news(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/h5_news?`,
-                headers: header,
-                body: `mini_id=${id}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 看看赚执行🚩: ${data}`);
-                    $.h5_news = JSON.parse(data);
-                    if ($.h5_news.taskid) {
-                        console.log(`看看赚执行：下个任务：${$.h5_news.mini_str}\n`);
-                        $.message += `【看看赚执行】：下个任务：${$.h5_news.mini_str}\n`;
-                        taskid = $.h5_news.taskid
-                        nonce_str = $.h5_news.nonce_str
-                        await $.wait(15000)
-                        await h5_h5() //看看上传
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-//看看赚上传
-function h5_h5(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://hunter-report.dui88.com/tuiaExtLog?group=1&type=9&json=%7B%22subtype%22%3A%22head%22%2C%22tck_rid_6c8%22%3A%220a56e7aaklm541ew-6681973%22%2C%22slotId%22%3A%22353024%22%2C%22activityId%22%3A%2216765%22%2C%22consumerId%22%3A%2226444115908%22%2C%22timestamp%22%3A${tts()}%7D`,
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/balance.json?source=WX_APP_KA_HTZP`,
                 headers: {
-                    "Host": "hunter-report.dui88.com"
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
                 },
-
             }
             $.get(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 看看赚上传🚩: ${data}`);
-                    $.h5_h5 = JSON.parse(data);
-                    console.log(`看看赚：${$.h5_h5.msg}\n`);
-                    $.message += `【看看赚】：${$.h5_h5.msg}\n`;
+                    if (logs) $.log(`${O}, 金币信息🚩: ${data}`);
+                    $.goldcoin = JSON.parse(data);
+                    $.message += '【金币信息】：今日金币' + $.goldcoin.data.coinSum + ',预估金额' + $.goldcoin.data.balanceSum / 100 + '元\n';
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//活动id 
+function hdid(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
 
-                    await $.wait(30000)
-                    await h5_newsdone() //看看赚完成
-
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-
-//看看赚完成
-function h5_newsdone(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
             let url = {
-                url: `https://bububao.duoshoutuan.com/user/h5_newsdone?`,
-                headers: header,
-                body: `taskid=${taskid}&nonce_str=${nonce_str}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 看看赚完成🚩: ${data}`);
-                    $.h5_newsdone = JSON.parse(data);
-                    if ($.h5_newsdone.msg) {
-                        console.log(`看看赚完成：${$.h5_newsdone.msg}${$.h5_newsdone.jinbi}金币\n`);
-                        $.message += `【看看赚完成】：${$.h5_newsdone.msg}${$.h5_newsdone.jinbi}金币\n`;
-                        tid = 10
-                        pos = 1
-                        nonce_str = $.h5_newsdone.fb_str
-                        await callback()
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//赚赚任务
-function renwu(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/renwu?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 赚赚任务🚩: ${data}`);
-                    $.renwu = JSON.parse(data);
-                    if ($.renwu.v_st == 0) {
-                        await sp() //看视频
-                    }
-                    if ($.renwu.first.admobile_st == 0) {
-                        await admobile_show() //看广告
-                    }
-                    if ($.renwu.v_st == 2) {
-                        console.log(`看视频：250金币，已完成\n`);
-                        $.message += `【看视频】：250金币，已完成\n`;
-                    }
-                    if ($.renwu.first.admobile_st == 2) {
-                        console.log(`看广告：200金币，已完成\n`);
-                        $.message += `【看广告】：200金币，已完成\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//看文章
-function news(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/news?`,
-                headers: header,
-                body: `type_class=1&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 看文章🚩: ${data}`);
-                    $.news = JSON.parse(data);
-                    if ($.news.code == 1 && $.news.is_max == 0) {
-                        nonce_str = $.news.nonce_str
-                        await donenews() //看文章完成
-                    }
-                    if ($.news.code == 1 && $.news.is_max == 1) {
-                        console.log(`看文章：900金币，完成\n`);
-                        $.message += `【看文章】：900金币，完成\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//看文章完成
-function donenews(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/donenews?`,
-                headers: header,
-                body: `nonce_str=${nonce_str}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 看文章完成🚩: ${data}`);
-                    $.donenews = JSON.parse(data);
-                    if ($.donenews.jinbi) {
-                        console.log(`看文章：获得${$.donenews.jinbi}金币，今日获得${$.donenews.day_jinbi}金币\n`);
-                        $.message += `【看文章】：获得${$.donenews.jinbi}金币，今日获得${$.donenews.day_jinbi}金币\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//观看视频
-async function sp() {
-    console.log(`观看视频：开始执行\n`);
-    $.message += `【观看视频】：开始执行\n`;
-    mini_pos = 0
-    c_type = 1
-    tid = 9
-    pos = 1
-    await chuansj()
-    await callback()
-}
-//激活广告
-function admobile_show(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/admobile_show?`,
-                headers: header,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 激活广告🚩: ${data}`);
-                    $.admobile_show = JSON.parse(data);
-                    if ($.admobile_show.code == 1) {
-                        ad_id = $.admobile_show.ad_id
-                        await admobile_click() //点击广告
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//点击广告
-function admobile_click(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/admobile_click?`,
-                headers: header,
-                body: `ad_id=${ad_id}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 点击广告🚩: ${data}`);
-                    $.admobile_click = JSON.parse(data);
-                    if ($.admobile_click.code == 1) {
-                        nonce_str = $.admobile_click.nonce_str
-                        await admobile_done() //广告奖励
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//广告奖励
-function admobile_done(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/admobile_done?`,
-                headers: header,
-                body: `nonce_str=${nonce_str}&ad_id=${ad_id}&`,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 广告奖励🚩: ${data}`);
-                    $.admobile_done = JSON.parse(data);
-                    if ($.admobile_done.code == 1) {
-                        console.log(`广告奖励：获得${$.admobile_done.jinbi}金币\n`);
-                        $.message += `【广告奖励】：获得${$.admobile_done.jinbi}金币\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//提现页
-function tixian_html(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let url = {
-                url: `https://bububao.duoshoutuan.com/user/tixian_html?`,
-                headers: header,
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/ignore_tk/v1/query_act_list.json?source=WX_APP_KA_HTZP`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
             }
             $.get(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 提现页🚩: ${data}`);
-                    $.tixian_html = JSON.parse(data);
-                    if ($.tixian_html.tixian_html) {
+                    if (logs) $.log(`${O}, 活动id🚩: ${data}`);
+                    $.hdid = JSON.parse(data);
+                    if ($.hdid.resultCode == 1) {
+                        spid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 9)
+                        zbid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 10)
+                        console.log(spid.actName + 'ID：' + spid.actId + '\n' +
+                            zbid.actName + 'ID：' + zbid.actId + '\n');
+                        $.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n' +
+                            '【' + zbid.actName + 'ID】：' + zbid.actId + '\n';
+                    }
 
-                        jine3 = $.tixian_html.tixian_html.find(item => item.jine === '50');
-                        jine4 = $.tixian_html.tixian_html.find(item => item.jine === '100');
-                        jine5 = $.tixian_html.tixian_html.find(item => item.jine === '200');
-                        day_tixian_tip = $.tixian_html.tixian_html.find(item => item.day_tixian_tip);
-                        fenshu3 = jine3.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
-                        fenshu4 = jine4.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
-                        fenshu5 = jine5.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
-                        if (day_tixian_tip) {
-                            console.log(`提现查询：今日已提现\n`);
-                            $.message += `【提现查询】：今日已提现\n`;
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+
+//账户信息  
+function coin(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/withdraw_detail.json?source=WX_APP_KA_HTZP`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 账户信息🚩: ${data}`);
+                    $.coin = JSON.parse(data);
+                    $.message += '【账户信息】：明日入账' + $.coin.data.tomorrowAmt / 100 + '元,可提余额' + $.coin.data.balance / 100 + '元\n';
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//播放o
+function playo(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+
+            do playTime = Math.floor(Math.random() * 31);
+            while (playTime < 20)
+            do playTimess = Math.floor(Math.random() * 36);
+            while (playTimess < 30)
+            do playid = Math.floor(Math.random() * 49600000000000000);
+            while (playid < 10000000000000000)
+            playbodyVal = `{"videoPublishId":"13${playid}","playTimeLenght":${playTime},"type":1,"videoTime":${playTimess}}`;
+            videoPublishId = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+            console.log(`视频ID1📍${videoPublishId}`)
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/video/ignore_tk/v1/video_channel/uplaod_play_video_recode.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: playbodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 播放ID1🚩: ${data}`);
+                    $.playo = JSON.parse(data);
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+
+        }, timeout)
+    })
+}
+//视频o
+function videoo(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            var inss = 0;
+
+            videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: videobodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 视频🚩: ${data}`);
+                    $.videoo = JSON.parse(data);
+                    if ($.videoo.resultCode == 0) {
+                        LIVES = 2
+                        console.log('视频奖励：⚠️' + $.videoo.errorDesc + '\n');
+                        $.message += '【视频奖励】：⚠️' + $.videoo.errorDesc + '\n'
+                    }
+                    if ($.videoo.data && $.videoo.data.goldCoinNumber == 0) {
+                        LIVES = 2
+                        console.log(`视频奖励：恭喜您的账号已灰，已无法获取视频奖励\n`);
+                        $.message += `【视频奖励】：恭喜您的账号已灰，已无法获取视频奖励\n`
+                    }
+                    if ($.videoo.data && $.videoo.data.goldCoinNumber != 0) {
+                        LIVES = 0
+                        console.log(`开始领取第1次视频奖励，获得${$.videoo.data.goldCoinNumber}金币\n`);
+                        console.log(`视频奖励：共领取1次视频奖励，共${$.videoo.data.goldCoinNumber}金币\n`);
+                        $.message += `【视频奖励】：共领取1次视频奖励，共${$.videoo.data.goldCoinNumber}金币\n`
+                    }
+
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+
+
+
+
+        }, timeout)
+    })
+}
+//播放
+function play(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            for (let i = 0; i < CS; i++) {
+                setTimeout(() => {
+
+                    do playTime = Math.floor(Math.random() * 31);
+                    while (playTime < 20)
+                    do playTimess = Math.floor(Math.random() * 36);
+                    while (playTimess < 30)
+                    do playid = Math.floor(Math.random() * 49600000000000000);
+                    while (playid < 10000000000000000)
+                    playbodyVal = `{"videoPublishId":"13${playid}","playTimeLenght":${playTime},"type":1,"videoTime":${playTimess}}`;
+                    videoPublishId = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+                    if (i == 1) {
+                        videoPublishId3 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+                    }
+                    if (i == 2) {
+                        videoPublishId4 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+                    }
+                    if (i == 3) {
+                        videoPublishId5 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+                    }
+                    if (i == 4) {
+                        videoPublishId6 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
+                    }
+                    console.log(`视频ID${i+2}📍${videoPublishId}`)
+                    let url = {
+                        url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/video/ignore_tk/v1/video_channel/uplaod_play_video_recode.json`,
+                        headers: {
+                            "Connection": "keep-alive",
+                            "Accept-Encoding": "gzip, deflate, br",
+                            "version": "1.4.8",
+                            "mchtNo": "100529600058887",
+                            "Content-Type": "application/json; charset=utf-8",
+                            "source": "VEISHOP_APP_IOS",
+                            "shopkeeperId": "1148855820752977920",
+                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "token": `${TOKEN}`,
+                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "traceid": "30000000000000000000" + tts() + "000000000000",
+                            "Host": "veishop.iboxpay.com",
+                            "Accept-Language": "zh-Hans-CN;q=1",
+                            "Accept": "*/*"
+                        },
+                        body: playbodyVal,
+                    }
+                    $.post(url, async (err, resp, data) => {
+                        try {
+                            if (logs) $.log(`${O}, 播放ID${i+2}🚩: ${data}`);
+                            $.play = JSON.parse(data);
+                        } catch (e) {
+                            $.logErr(e, resp);
+                        } finally {
+                            resolve()
                         }
-                        console.log(`${jine3.jine}元：${jine3.fenshu_tixian_tip}\n${jine4.jine}元：${jine4.fenshu_tixian_tip}\n${jine5.jine}元：${jine5.fenshu_tixian_tip}\n`);
-                        $.message += `【${jine3.jine}元】：${jine3.fenshu_tixian_tip}\n【${jine4.jine}元】：${jine4.fenshu_tixian_tip}\n【${jine5.jine}元】：${jine5.fenshu_tixian_tip}\n`;
+                    })
+                }, i * 30000);
+            }
+        }, timeout)
+    })
+}
+//视频
+function video(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            var inss = 0;
 
-                        if (!day_tixian_tip && ($.user.wx_username != "" || $.user.is_weixin == 1)) {
 
-                            if (CASH == 0.3 && $.user.day_jinbi >= 5000 && $.user.money >= CASH) {
-                                await tixian() //提现
+            for (let i = 0; i < CS; i++) {
+
+                setTimeout(() => {
+
+                    videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
+                    let url = {
+                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
+                        headers: {
+                            "Connection": "keep-alive",
+                            "Accept-Encoding": "gzip, deflate, br",
+                            "version": "1.4.8",
+                            "mchtNo": "100529600058887",
+                            "Content-Type": "application/json; charset=utf-8",
+                            "source": "VEISHOP_APP_IOS",
+                            "shopkeeperId": "1148855820752977920",
+                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "token": `${TOKEN}`,
+                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "traceid": "30000000000000000000" + tts() + "000000000000",
+                            "Host": "veishop.iboxpay.com",
+                            "Accept-Language": "zh-Hans-CN;q=1",
+                            "Accept": "*/*"
+                        },
+                        body: videobodyVal,
+                    }
+                    $.post(url, async (err, resp, data) => {
+                        try {
+                            if (logs) $.log(`${O}, 视频🚩: ${data}`);
+                            $.video = JSON.parse(data);
+
+                            if ($.video.data && $.video.data.goldCoinNumber != 0) {
+                                console.log(`开始领取第${i+2}次视频奖励，获得${$.video.data.goldCoinNumber}金币\n`);
+                                inss += $.video.data.goldCoinNumber;
                             }
-                            if (CASH > 0.3 && CASH <= 200 && $.user.money >= CASH) {
-                                await tixian() //提现
-                            }
-                            if (CASH == 888) {
-                                if ($.user.money >= 200 && fenshu5 > 0) {
-                                    CASH = 200
-                                } else if ($.user.money >= 100 && fenshu4 > 0) {
-                                    CASH = 100
-                                } else if ($.user.money >= 50 && fenshu5 > 0) {
-                                    CASH = 50
-                                }
-                                if (CASH != 888) {
-                                    await tixian() //提现
-                                }
-                            }
+                        } catch (e) {
+                            $.logErr(e, resp);
+                        } finally {
+                            resolve()
                         }
+                    })
+                }, i * 30000);
+            }
+            setTimeout(() => {
+                if ($.video.resultCode == 0) {
+                    console.log('视频奖励：⚠️' + $.video.errorDesc + '\n');
+                    $.message += '【视频奖励】：⚠️' + $.video.errorDesc + '\n'
+                }
+                if ($.video.data && $.video.data.goldCoinNumber == 0) {
+                    console.log(`视频奖励：恭喜您的账号已灰，已无法获取视频奖励\n`);
+                    $.message += `【视频奖励】：恭喜您的账号已灰，已无法获取视频奖励\n`
+                }
+                if ($.video.data && $.video.data.goldCoinNumber != 0) {
+                    console.log(`视频奖励：共领取${CS}次视频奖励，共${inss}金币\n`);
+                    $.message += `【视频奖励】：共领取${CS}次视频奖励，共${inss}金币\n`
+                }
+            }, CS * 30000 - 29000)
+
+        }, timeout)
+    })
+}
+//金蛋视频
+function goldvideo(timeout = 40000) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            goldvideobodyVal = `{"type":2,"videoList":[{"videoId":"${videoPublishId3}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId4}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId5}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId6}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: goldvideobodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 金蛋视频🚩: ${data}`);
+                    $.goldvideo = JSON.parse(data);
+                    if ($.goldvideo.resultCode == 1) {
+                        console.log('金蛋视频奖励，获得' + $.goldvideo.data.goldCoinNumber + '金币')
+                        $.message +=
+                            '【金蛋视频奖励】：获得' + $.goldvideo.data.goldCoinNumber + '金币\n'
+                    }
+                    if ($.goldvideo.resultCode == 0) {
+                        console.log($.goldvideo.errorDesc + '\n');
+                        $.message +=
+                            '【金蛋视频奖励】：' + $.goldvideo.errorDesc + '\n';
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -1733,22 +1008,422 @@ function tixian_html(timeout = 0) {
         }, timeout)
     })
 }
-//现金提现
-function tixian(timeout = 0) {
+//新人福利
+function newvideo(timeout = 40000) {
     return new Promise((resolve) => {
         setTimeout(() => {
+
+            newvideobodyVal = `{"videoList":[{"videoId":"${videoPublishId3}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId4}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId5}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId6}","type":1,"isFinishWatch":false}]}`
             let url = {
-                url: `https://bububao.duoshoutuan.com/user/tixian?`,
-                headers: header,
-                body: `tx=${CASH}&`,
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_cash_by_video.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: newvideobodyVal,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 现金提现🚩: ${data}`);
-                    $.tixian = JSON.parse(data);
-                    if ($.tixian.code == 1) {
-                        console.log(`现金提现：${$.tixian.msg}\n`);
-                        $.message += `【现金提现】：${$.tixian.msg}\n`;
+                    if (logs) $.log(`${O}, 新人福利🚩: ${data}`);
+                    $.newvideo = JSON.parse(data);
+                    if ($.newvideo.resultCode == 1) {
+                        console.log('新人福利奖励，获得' + $.newvideo.data / 100 + '元\n')
+                        $.message +=
+                            '【新人福利奖励】：获得' + $.newvideo.data / 100 + '元\n'
+                    }
+                    if ($.newvideo.resultCode == 0) {
+                        console.log($.newvideo.errorDesc + '\n');
+                        $.message +=
+                            '【新人福利奖励】：' + $.newvideo.errorDesc + '\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//直播节目表
+function liveslist(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/live/ignore_tk/v1/query_living_list_id.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 直播节目表🚩: ${data}`);
+                    $.liveslist = JSON.parse(data);
+                    if ($.liveslist.resultCode == 1 && $.liveslist.data.liveIdList.length) {
+                        liveId = $.liveslist.data.liveIdList
+                        liveIdcd = liveId.length
+                    }
+                    console.log(`直播节目表，当前${liveIdcd}个直播\n`);
+                    $.message += `【直播节目表】：当前${liveIdcd}个直播\n`
+
+                    if ($.liveslist.resultCode == 0) {
+                        console.log($.liveslist.errorDesc + '\n');
+                        $.message += '【直播节目表】：' + $.liveslist.errorDesc + '\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//直播
+function lives(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            var ins = 0;
+            for (let i = 0; i < liveIdcd; i++) {
+                $.index = i + 1
+                do RT = Math.floor(Math.random() * 35000);
+                while (RT < 30000)
+                setTimeout(() => {
+
+                    livesbodyVal = `{
+ "actId": "${zbid.actId}",
+ "liveId": "${liveId[i]}"
+}`
+                    let url = {
+                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
+                        headers: {
+                            "Connection": "keep-alive",
+                            "Accept-Encoding": "gzip, deflate, br",
+                            "version": "1.4.8",
+                            "mchtNo": "100529600058887",
+                            "Content-Type": "application/json; charset=utf-8",
+                            "source": "VEISHOP_APP_IOS",
+                            "shopkeeperId": "1148855820752977920",
+                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "token": `${TOKEN}`,
+                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                            "traceid": "30000000000000000000" + tts() + "000000000000",
+                            "Host": "veishop.iboxpay.com",
+                            "Accept-Language": "zh-Hans-CN;q=1",
+                            "Accept": "*/*"
+                        },
+                        body: livesbodyVal,
+                    }
+                    $.post(url, async (err, resp, data) => {
+                        try {
+                            if (logs) $.log(`${O}, 直播🚩: ${data}`);
+                            $.lives = JSON.parse(data);
+
+                            if ($.lives.resultCode == 1) {
+                                ins += $.lives.data.goldCoinAmt;
+                                console.log(`开始领取第${i+1}次直播奖励，获得${$.lives.data.goldCoinAmt}金币,等待${RT/1000}秒继续\n`);
+
+                            }
+                            if ($.lives.resultCode == 0) {
+                                console.log(`开始领取第${i+1}次直播奖励，${$.lives.errorDesc},等待${RT/1000}秒继续\n`);
+                            }
+                        } catch (e) {
+                            $.logErr(e, resp);
+                        } finally {
+                            resolve()
+                        }
+                    })
+
+                }, i * RT);
+
+            }
+            setTimeout(() => {
+                console.log(`直播奖励：共领取${ins/500}次直播奖励，共${ins}金币\n`);
+                $.message += `【直播奖励】：共领取${ins/500}次直播奖励，共${ins}金币\n`
+            }, liveIdcd * 35000 - 34000)
+        }, timeout)
+    })
+}
+//收益列表
+function sylist(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/list_gold_coin.json?source=WX_APP_KA_HTZP&date=${ddtime}&actTypeId=0&size=800`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 收益列表🚩: ${data}`);
+                    $.sylist = JSON.parse(data);
+
+                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":11,/g)) {
+                        hby = data.match(/"actTypeId":11,/g);
+                        hbycs = hby.length;
+                    } else hbycs = 0
+
+                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":10,/g)) {
+                        live = data.match(/"actTypeId":10,/g);
+                        livecs = live.length;
+                    } else livecs = 0
+
+                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":9,/g)) {
+
+                        videos = data.match(/"actTypeId":9,/g);
+                        videoscs = videos.length;
+                    } else videoscs = 0;
+
+                    spsy = $.goldcoin.data.coinSum - livecs * 500
+                    console.log('已获得红包雨奖励 ' + hbycs + ' 次\n')
+                    $.message +=
+                        '【红包雨收益】：已获得红包雨奖励 ' + hbycs + ' 次\n'
+                    console.log('已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n')
+                    $.message +=
+                        '【直播收益】：已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n'
+                    console.log('已获得视频奖励 ' + videoscs + ' 次，共' + spsy + '金币\n')
+                    $.message +=
+                        '【视频收益】：已获得视频奖励 ' + videoscs + ' 次，共' + spsy + '金币\n'
+
+                    if ($.sylist.resultCode == 0) {
+                        console.log($.sylist.errorDesc + '\n');
+                        $.message +=
+                            '【收益列表】：' + $.sylist.errorDesc + '\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//视频上限  
+function splimit(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/ignore_tk/v1/get_video_act.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 视频上限🚩: ${data}`);
+                    $.splimit = JSON.parse(data);
+                    if ($.splimit.resultCode == 1) {
+                        console.log('视频上限：今日上限' + $.splimit.data.goldCoinDayLimit + '金币,今日未得' + ($.splimit.data.goldCoinDayLimit - spsy) + '金币\n');
+                        $.message += '【视频上限】：今日上限' + $.splimit.data.goldCoinDayLimit + '金币,今日未得' + ($.splimit.data.goldCoinDayLimit - spsy) + '金币\n';
+                    }
+                    if ($.splimit.data.isUperLimit == true) {
+                        console.log('视频上限：今日达到上限\n');
+                        $.message += '【视频上限】：今日达到上限\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//提现记录
+function newcashlist(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/in_out.json?source=WX_APP_KA_HTZP&date=&tradeType=0&current=1&size=40`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 提现记录🚩: ${data}`);
+                    $.newcashlist = JSON.parse(data);
+                    if ($.newcashlist.resultCode == 1 && data.match(/新人福利/g)) {
+                        newcashcs = $.newcashlist.data.records.find(item => item.tradeTypeName === "新人福利")
+                    }
+                    if ($.newcashlist.resultCode == 0) {
+                        console.log($.newcashlist.errorDesc + '\n');
+                        $.message +=
+                            '【新人福利】：' + $.newcashlist.errorDesc + '\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//今日提现记录
+function cashlist(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/in_out.json?source=WX_APP_KA_HTZP&date=${ddtime}&tradeType=0&current=1&size=40`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 今日提现记录🚩: ${data}`);
+                    $.cashlist = JSON.parse(data);
+                    if ($.cashlist.resultCode == 1 && data.match(/提现/g)) {
+
+                        cashcs = $.cashlist.data.records.find(item => item.tradeTypeName === "提现")
+                        console.log('今日已提现' + cashcs.amount / 100 + '元\n')
+                        $.message +=
+                            '【提现查询】：今日已提现' + cashcs.amount / 100 + '元\n'
+                    }
+                    if ($.cashlist.resultCode == 0) {
+                        console.log($.cashlist.errorDesc + '\n');
+                        $.message +=
+                            '【提现查询】：' + $.cashlist.errorDesc + '\n';
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//提现
+function withdraw(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            withdrawbodyVal = `{
+ "source": "WX_APP_KA_HTZP",
+ "bizType": 2,
+ "amount": ${CASH*100}
+}`
+            let url = {
+                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/activity/v1/withdraw.json`,
+                headers: {
+                    "Connection": "keep-alive",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "version": "1.4.8",
+                    "mchtNo": "100529600058887",
+                    "Content-Type": "application/json; charset=utf-8",
+                    "source": "VEISHOP_APP_IOS",
+                    "shopkeeperId": "1148855820752977920",
+                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "token": `${TOKEN}`,
+                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
+                    "traceid": "30000000000000000000" + tts() + "000000000000",
+                    "Host": "veishop.iboxpay.com",
+                    "Accept-Language": "zh-Hans-CN;q=1",
+                    "Accept": "*/*"
+                },
+                body: withdrawbodyVal,
+            }
+            $.post(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 提现🚩: ${data}`);
+                    $.withdraw = JSON.parse(data);
+                    if ($.withdraw.resultCode == 1 && $.withdraw.data.withdrawRes == 1) {
+                        console.log('成功提现 ' + CASH + ' 元\n')
+                        $.message +=
+                            '【余额提现】：成功提现 ' + CASH + ' 元\n'
+                    }
+                    if ($.withdraw.resultCode == 0) {
+                        console.log($.withdraw.errorDesc + '\n');
+                        $.message +=
+                            '【余额提现】：' + $.withdraw.errorDesc + '\n';
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -2098,3 +1773,31 @@ function Env(t, e) {
         }
     }(t, e)
 }
+                                                                                                                                                                                                              /*
+华硕-爱奇艺
+活动地址:https://asusiqiyi.jd.com
+没有添加助力环节，仅完成可能获得京豆的任务；
+新手写脚本，难免有bug，能用且用。
+非常感谢 lxk0301 大佬的指导，让这个脚本支持了手机端运行。
+
+已支持IOS双京东账号,Node.js支持N个京东账号
+脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+============Quantumultx===============
+[task_local]
+#华硕-iqiyi
+0 0 22-28 2 * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_asus_iqiyi.js, tag=华硕-iqiyi, enabled=true
+================Loon==============
+[Script]
+cron "0 0 22-28 2 *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_asus_iqiyi.js,tag=华硕-iqiyi
+===============Surge=================
+华硕-iqiyi = type=cron,cronexp="0 0 22-28 2 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_asus_iqiyi.js
+============小火箭=========
+华硕-iqiyi = type=cron,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_asus_iqiyi.js, cronexpr="0 0 22-28 2 *", timeout=3600, enable=true
+
+脚本内置了一个给作者任务助力的网络请求，默认开启，如介意请自行关闭。
+助力活动链接： https://h5.m.jd.com/babelDiy/Zeus/4ZK4ZpvoSreRB92RRo8bpJAQNoTq/index.html
+参数 helpAuthor = false
+*/
+// prettier-ignore
+!function (t, r) { "object" == typeof exports ? module.exports = exports = r() : "function" == typeof define && define.amd ? define([], r) : t.CryptoJS = r() }(this, function () {
+  var t = t || function (t, r) { var e = Object.create || function () { function t() { } return function (r) { var e; return t.prototype = r, e = new t, t.prototype = null, e } }(), i = {}, n = i.lib = {}, o = n.Base = function () { return { extend: function (t) { var r = e(this); return t && r.mixIn(t), r.hasOwnProperty("init") && this.init !== r.init || (r.init = function () { r.$super.init.apply(this, arguments) }), r.init.prototype = r, r.$super = this, r }, create: function () { var t = this.extend(); return t.init.apply(t, arguments), t }, init: function () { }, mixIn: function (t) { for (var r in t) t.hasOwnProperty(r) && (this[r] = t[r]); t.hasOwnProperty("toString") && (this.toString = t.toString) }, clone: function () { return this.init.prototype.extend(this) } } }(), s = n.WordArray = o.extend({ init: function (t, e) { t = this.words = t || [], e != r ? this.sigBytes = e : this.sigBytes = 4 * t.length }, toString: function (t) { return (t || c).stringify(this) }, concat: function (t) { var r = this.words, e = t.words, i = this.sigBytes, n = t.sigBytes; if (this.clamp(), i % 4) for (var o = 0; o < n; o++) { var s = e[o >>> 2] >>> 24 - o % 4 * 8 & 255; r[i + o >>> 2] |= s << 24 - (i + o) % 4 * 8 } else for (var o = 0; o < n; o += 4)r[i + o >>> 2] = e[o >>> 2]; return this.sigBytes += n, this }, clamp: function () { var r = this.words, e = this.sigBytes; r[e >>> 2] &= 4294967295 << 32 - e % 4 * 8, r.length = t.ceil(e / 4) }, clone: function () { var t = o.clone.call(this); return t.words = this.words.slice(0), t }, random: function (r) { for (var e, i = [], n = function (r) { var r = r, e = 987654321, i = 4294967295; return function () { e = 36969 * (65535 & e) + (e >> 16) & i, r = 18e3 * (65535 & r) + (r >> 16) & i; var n = (e << 16) + r & i; return n /= 4294967296, n += .5, n * (t.random() > .5 ? 1 : -1) } }, o = 0; o < r; o += 4) { var a = n(4294967296 * (e || t.random())); e = 987654071 * a(), i.push(4294967296 * a() | 0) } return new s.init(i, r) } }), a = i.enc = {}, c = a.Hex = { stringify: function (t) { for (var r = t.words, e = t.sigBytes, i = [], n = 0; n < e; n++) { var o = r[n >>> 2] >>> 24 - n % 4 * 8 & 255; i.push((o >>> 4).toString(16)), i.push((15 & o).toString(16)) } return i.join("") }, parse: function (t) { for (var r = t.length, e = [], i = 0; i < r; i += 2)e[i >>> 3] |= parseInt(t.substr(i, 2), 16) << 24 - i % 8 * 4; return new s.init(e, r / 2) } }, h = a.Latin1 = { stringify: function (t) { for (var r = t.words, e = t.sigBytes, i = [], n = 0; n < e; n++) { var o = r[n >>> 2] >>> 24 - n % 4 * 8 & 255; i.push(String.fromCharCode(o)) } return i.join("") }, parse: function (t) { for (var r = t.length, e = [], i = 0; i < r; i++)e[i >>> 2] |= (255 & t.charCodeAt(i)) << 24 - i % 4 * 8; return new s.init(e, r) } }, l = a.Utf8 = { stringify: function (t) { try { return decodeURIComponent(escape(h.stringify(t))) } catch (t) { throw new Error("Malformed UTF-8 data") } }, parse: function (t) { return h.parse(unescape(encodeURIComponent(t))) } }, f = n.BufferedBlockAlgorithm = o.extend({ reset: function () { this._data = new s.init, this._nDataBytes = 0 }, _append: function (t) { "string" == typeof t && (t = l.parse(t)), this._data.concat(t), this._nDataBytes += t.sigBytes }, _process: function (r) { var e = this._data, i = e.words, n = e.sigBytes, o = this.blockSize, a = 4 * o, c = n / a; c = r ? t.ceil(c) : t.max((0 | c) - this._minBufferSize, 0); var h = c * o, l = t.min(4 * h, n); if (h) { for (var f = 0; f < h; f += o)this._doProcessBlock(i, f); var u = i.splice(0, h); e.sigBytes -= l } return new s.init(u, l) }, clone: function () { var t = o.clone.call(this); return t._data = this._data.clone(), t }, _minBufferSize: 0 }), u = (n.Hasher = f.extend({ cfg: o.extend(), init: function (t) { this.cfg = this.cfg.extend(t), this.reset() }, reset: function () { f.reset.call(this), this._doReset() }, update: function (t) { return this._append(t), this._process(), this }, finalize: function (t) { t && this._append(t); var r = this._doFinalize(); return r }, blockSize: 16, _createHelper: function (t) { return function (r, e) { return new t.init(e).finalize(r) } }, _createHmacHelper: function (t) { return function (r, e) { return new u.HMAC.init(t, e).finalize(r) } } }), i.algo = {}); return i }(Math); return function () { function r(t, r, e) { for (va

@@ -1,13 +1,11 @@
+
+
 //独立COOKIE文件     ck在``里面填写，多账号换行
-let QQreadurlVal = ``
+let flwurlVal= ``
+let flwheaderVal= ``
+let flwspbodyVal= ``
+let flwqwbodyVal= ``
+let flwydbodyVal= ``
 
 
-
-
-let QQreadurlcookie = {
-
-    QQreadurlVal: QQreadurlVal,
-
-}
-
-module.exports = QQreadurlcookie
+let flwcookie = {

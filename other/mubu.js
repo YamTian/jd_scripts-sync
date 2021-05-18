@@ -1,10 +1,1 @@
-/*
-#loon
-http-response https:\/\/api2\.mubu\.com\/v3\/api\/user\/current_user script-path=https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/mubu.js, requires-body=true, timeout=10, tag=幕布
-#quantumult-x
-https:\/\/api2\.mubu\.com\/v3\/api\/user\/current_user url script-response-body https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/mubu.js
-#mitm=api2.mubu.com
-*/
-let obj = JSON.parse($response.body);
-obj.data["level"] = "2";
-$done({body: JSON.stringify(obj)});
+hen(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>{const{message:s,response:i}=t;e(s,i,i&&i.body)})}}time(t){let e={"M+":(new Date).getMonth()+1,"d+":(new Date).getDate(),"H+":(new Date).getHours(),"m+":(new Date).getMinutes(),"s+":(new Date).getSeconds(),"q+":Math.floor(((new Date).getMonth()+3)/3),S:(new Date).getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,((new Date).getFullYear()+"").substr(4-RegExp.$1.length)));for(let s in

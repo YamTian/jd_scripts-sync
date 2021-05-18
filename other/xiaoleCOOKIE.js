@@ -1,18 +1,1 @@
-
-
-//独立COOKIE文件     ck在``里面填写，多账号换行
-let xiaoleurlVal= ``
-let xiaoleheaderVal= ``
-
-
-
-let xiaolecookie = {
-  xiaoleurlVal: xiaoleurlVal,	
-  xiaoleheaderVal: xiaoleheaderVal,  
-
-}
-
-module.exports =  xiaolecookie
-  
-
-
+this.post(a,(t,e,i)=>s(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),e=this.path.resolve(process.cwd(),this.data

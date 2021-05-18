@@ -3,138 +3,85 @@ github地址 https://github.com/ziye11
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
 boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
+
 转载请备注个名字，谢谢
 
-⚠️笑谱
-脚本运行一次   
-则运行6次视频 1次金蛋 1次直播（直播默认关闭，且在8点到23点有效）
+⚠️羊毛赚
+点击 http://share.xiaoniuaso.com/43?invitecode=10008933   下载APP  
+邀请码 10008933  谢谢支持
 
-1.15 调整金蛋延迟为60秒
-1.17 增加ck失效提醒，以及金币满额停止
-1.27 笑谱恢复，活动id284
-1.27-2 增加看直播功能，默认关闭，设置LIVE来开启  如 设置LIVE 为 60 则开启直播，并且次数达到60次停止
-1.27-3 调整直播运行次数，运行一次脚本，执行6次直播
-1.27-4 调整策略，6次视频1次金蛋1次直播
-1.28 修复收益列表问题
-1.29 活动id302
-1.30 修复活动id频繁变动问题，修复金蛋视频id
-1.30 解决ck失效问题
-1.30-3 增加提现
-1.31 增加180秒任务,优先直播，修改直播金币显示
-1.31-2 调整判定
-2.1 增加CK获取时间
-2.2 优化
-2.3 修复直播问题，采用真实直播id
-2.3 设置LIVE 为61 时  单跑直播
-2.3 修复错误，修复直播收益显示
-2.4 修复金蛋问题，增加视频收益统计，增加上限判定，达到上限以及19点后不执行视频，
-2.4 直播限制为30  设置LIVE为0 不跑直播，1跑直播和视频，2单跑直播
-2.5 增加首次视频验证，灰号直接停止视频
-2.6 修复判定错误,增加surge获取token重写
-2.7 增加红包雨，设置LIVE等于3 开启
-2.7-2 调整红包雨运行机制
-2.8 修复无人直播出现的错误
-2.8-2 修复红包雨结束报错
-2.8-3 增加通过验证码获取token功能，并且内置header，新人设置LIVE为888
-2.8-4 修复错误
-2.10 修复红包雨问题，LIVE设置3  启动红包雨活动，修复版本问题
-2.10-2 移除红包雨模块
-2.11 移除视频时间限制，LIVE设置666做新人180秒任务
-2.26 适配直播上限20次
-3.5 设置888由上至下循环提现
+⚠️ 模拟登录状态下可以获取ck，但是无法进行提现绑定操作，以及填写邀请码
 
-⚠️一共1个位置 1个ck  👉 5条 Secrets 
+2.26 制作
+2.27 完成
+2.28 调整运行时长
+3.1 修复提现问题
+3.3 修复模拟登录 
+3.4 修复提现，绑定时也可获取ck
+
+⚠️ 时间设置    0 8,12 * * *    每天1次以上就行   
+
+⚠️一共3个位置 3个ck  👉 4条 Secrets 
+
 多账号换行
+第一步 添加  hostname=ymz.iphonezhuan.com,
 
+第二步 ⚠️添加羊毛赚获取BODY重写  
+登录羊毛赚  手动完成一次任务获取body  提现一次获取提现body
 
-⚠️方法一
+ymzhuanggbodyVal 👉YMZ_ymzhuanggBODY
+ymzhuanspbodyVal 👉YMZ_ymzhuanspBODY
+ymzhuantxbodyVal 👉YMZ_ymzhuantxBODY
+BODY👉 ymzhuanUSERID   boxjs里填写4位数id即可模拟登陆(感谢蔡徐坤大佬提供模拟登录方法)
+(勿打开重写注册，请提前注册，注册不了，请打开关闭 隐私跟踪)
 
-第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码
-
-第二步 ⚠️进入boxjs（其他平台则输入对应环境变量）  输入当前账号序号   输入手机号  和  验证码
-
-第三步 运行js  手机则自动获取token（其他平台则复制token，填写环境变量）  然后回到boxjs 修改验证码为0
-
-
-已全部操作完成
-
-
-⚠️方法二
-
-第一步 添加  hostname=veishop.iboxpay.com,
-
-第二步 ⚠️添加笑谱获取更新TOKEN重写  
-
-登录笑谱(在登录状态就退出，重新登录)  获取更新TOKEN
-
-
-
-refreshtokenVal 👉XP_refreshTOKEN
-
-设置任务 可设置 0 1 2    0开视频关直播 1开视频开直播 2关视频开直播
- LIVE  👉  XP_live
-
-设置提现金额 可设置 0 1 15 30 50 100 888 默认0关闭  设置888由上至下循环提现
-CASH  👉  XP_CASH 
-
-设置手机号 
- phone  👉  XP_phone
-
-设置验证码   默认0关闭获取token功能
-sms  👉  XP_sms
-
+CASH  👉  YMZ_CASH     可设置0 3 10 20 50 100  默认0关闭提现，设置888由上至下循环提现
 ⚠️主机名以及重写👇
 
-（手机可以获取refreshTOKEN     其他开启抓包，然后登录笑谱，找到 https://veishop.iboxpay.com/nf_gateway/nf-user-auth-web/ignore_tk/veishop/v1/ 里的响应体 refreshTOKEN）
-
-hostname=veishop.iboxpay.com
+hostname=ymz.iphonezhuan.com,
 
 ############## 圈x
-
-#笑谱获取更新TOKEN
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js
+#羊毛赚获取BODY
+http:\/\/ymz\.iphonezhuan\.com\/* url script-request-body http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js
+#羊毛赚模拟登录
+http:\/\/ymz\.iphonezhuan\.com\/* url script-response-body http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js
 
 ############## loon
-http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
+#羊毛赚获取BODY
+http-request http:\/\/ymz\.iphonezhuan\.com\/* script-path=http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js, requires-body=1,max-size=0, tag=羊毛赚获取BODY
+#羊毛赚模拟登录BODY
+http-response http:\/\/ymz\.iphonezhuan\.com\/* script-path=http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js, requires-body=1,max-size=0, tag=羊毛赚获取BODY
 
 ############## surge
-
-#笑谱获取更新TOKEN
-笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/iboxpay.js
-
-
+#羊毛赚获取BODY
+羊毛赚获取BODY = type=http-request,pattern=https:\/\/ymz\.iphonezhuan\.com\/*,script-path=http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js
+#羊毛赚获取BODY
+羊毛赚模拟登录BODY = type=http-response,pattern=https:\/\/ymz\.iphonezhuan\.com\/*,script-path=http://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ymzhuan.js
 
 */
-const $ = Env("笑谱");
-$.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
+
+const $ = Env("羊毛赚");
+$.idx = ($.idx = ($.getval('ymzhuanSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const COOKIE = $.isNode() ? require("./iboxpayCOOKIE") : ``;
+const COOKIE = $.isNode() ? require("./ymzhuanCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
-const CS = 5
-$.message = '', COOKIES_SPLIT = '', CASH = '', LIVE = '', phone = '', sms = '', ddtime = '', spid = '', TOKEN = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', zbid = '', cashcs = '', newcashcs = '', liveId = '';
-let livecs = 0,
-    videoscs = 0,
-    LIVES = 0,
-    HBY = 0,
-    liveIdcd = 0;
-RT = 30000;
-const refreshtokenArr = [];
-let refreshtokenVal = ``;
-let middlerefreshTOKEN = [];
+$.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
+const ymzhuanggbodyArr = [];
+let ymzhuanggbodyVal = ``;
+let middleymzhuanggBODY = [];
+const ymzhuanspbodyArr = [];
+let ymzhuanspbodyVal = ``;
+let middleymzhuanspBODY = [];
+const ymzhuantxbodyArr = [];
+let ymzhuantxbodyVal = ``;
+let middleymzhuantxBODY = [];
 if ($.isNode()) {
-    // 没有设置 XP_CASH 则默认为 0 不提现
-    CASH = process.env.XP_CASH || 0;
-    // 没有设置 XP_live 则默认0
-    LIVE = process.env.XP_live || 0;
-    // 没有设置 XP_phone 则默认为 0 
-    phone = process.env.XP_phone || 0;
-    // 没有设置 XP_sms 则默认0  不获取TOKEN
-    sms = process.env.XP_sms || 0
-
+    // 没有设置 YMZ_CASH 则默认为 0 不兑换
+    CASH = process.env.YMZ_CASH || 888;
 }
-if ($.isNode() && process.env.XP_refreshTOKEN) {
+if ($.isNode() && process.env.YMZ_ymzhuanggBODY) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
     console.log(
         `============ cookies分隔符为：${JSON.stringify(
@@ -142,64 +89,168 @@ if ($.isNode() && process.env.XP_refreshTOKEN) {
     )} =============\n`
     );
     if (
-        process.env.XP_refreshTOKEN &&
-        process.env.XP_refreshTOKEN.indexOf(COOKIES_SPLIT) > -1
+        process.env.YMZ_ymzhuanggBODY &&
+        process.env.YMZ_ymzhuanggBODY.indexOf(COOKIES_SPLIT) > -1
     ) {
-        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split(COOKIES_SPLIT);
+        middleymzhuanggBODY = process.env.YMZ_ymzhuanggBODY.split(COOKIES_SPLIT);
     } else {
-        middlerefreshTOKEN = process.env.XP_refreshTOKEN.split();
+        middleymzhuanggBODY = process.env.YMZ_ymzhuanggBODY.split();
+    }
+    if (
+        process.env.YMZ_ymzhuanspBODY &&
+        process.env.YMZ_ymzhuanspBODY.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleymzhuanspBODY = process.env.YMZ_ymzhuanspBODY.split(COOKIES_SPLIT);
+    } else {
+        middleymzhuanspBODY = process.env.YMZ_ymzhuanspBODY.split();
+    }
+    if (
+        process.env.YMZ_ymzhuantxBODY &&
+        process.env.YMZ_ymzhuantxBODY.indexOf(COOKIES_SPLIT) > -1
+    ) {
+        middleymzhuantxBODY = process.env.YMZ_ymzhuantxBODY.split(COOKIES_SPLIT);
+    } else {
+        middleymzhuantxBODY = process.env.YMZ_ymzhuantxBODY.split();
     }
 }
-if (COOKIE.refreshtokenVal) {
-    XP_COOKIES = {
-
-        "refreshtokenVal": COOKIE.refreshtokenVal.split('\n'),
+if (COOKIE.ymzhuanggbodyVal) {
+    YMZ_COOKIES = {
+        "ymzhuanggbodyVal": COOKIE.ymzhuanggbodyVal.split('\n'),
+        "ymzhuanspbodyVal": COOKIE.ymzhuanspbodyVal.split('\n'),
+        "ymzhuantxbodyVal": COOKIE.ymzhuantxbodyVal.split('\n'),
     }
-    Length = XP_COOKIES.refreshtokenVal.length;
+    Length = YMZ_COOKIES.ymzhuanggbodyVal.length;
 }
-if (!COOKIE.refreshtokenVal) {
+if (!COOKIE.ymzhuanggbodyVal) {
     if ($.isNode()) {
-        Object.keys(middlerefreshTOKEN).forEach((item) => {
-            if (middlerefreshTOKEN[item]) {
-                refreshtokenArr.push(middlerefreshTOKEN[item]);
+        Object.keys(middleymzhuanggBODY).forEach((item) => {
+            if (middleymzhuanggBODY[item]) {
+                ymzhuanggbodyArr.push(middleymzhuanggBODY[item]);
+            }
+        });
+        Object.keys(middleymzhuanspBODY).forEach((item) => {
+            if (middleymzhuanspBODY[item]) {
+                ymzhuanspbodyArr.push(middleymzhuanspBODY[item]);
+            }
+        });
+        Object.keys(middleymzhuantxBODY).forEach((item) => {
+            if (middleymzhuantxBODY[item]) {
+                ymzhuantxbodyArr.push(middleymzhuantxBODY[item]);
             }
         });
     } else {
-        refreshtokenArr.push($.getdata("refreshtoken"));
+        ymzhuanggbodyArr.push($.getdata("ymzhuanggbody"));
+        ymzhuanspbodyArr.push($.getdata("ymzhuanspbody"));
+        ymzhuantxbodyArr.push($.getdata("ymzhuantxbody"));
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        if ("iboxpayCASH") {
-            CASH = $.getval("iboxpayCASH") || '0';
+        if ("ymzhuanCASH") {
+            CASH = $.getval("ymzhuanCASH") || '0';
         }
-        if ("iboxpayLIVE") {
-            LIVE = $.getval("iboxpayLIVE") || '0';
-        }
-        if ("iboxpayphone") {
-            phone = $.getval("iboxpayphone") || '0';
-        }
-        if ("iboxpaysms") {
-            sms = $.getval("iboxpaysms") || '0';
-        }
-        let iboxpayCount = ($.getval('iboxpayCount') || '1') - 0;
-        for (let i = 2; i <= iboxpayCount; i++) {
-            if ($.getdata(`refreshtoken${i}`)) {
-                refreshtokenArr.push($.getdata(`refreshtoken${i}`));
+        let ymzCount = ($.getval('ymzhuanCount') || '1') - 0;
+        for (let i = 2; i <= ymzCount; i++) {
+            if ($.getdata(`ymzhuanggbody${i}`)) {
+                ymzhuanggbodyArr.push($.getdata(`ymzhuanggbody${i}`));
+                ymzhuanspbodyArr.push($.getdata(`ymzhuanspbody${i}`));
+                ymzhuantxbodyArr.push($.getdata(`ymzhuantxbody${i}`));
             }
         }
     }
-    Length = refreshtokenArr.length
+    if (ymzhuanggbodyArr == '') {
+        Length = 0
+    } else Length = ymzhuanggbodyArr.length
 }
 
-
 function GetCookie() {
-    if ($request && $request.url.indexOf("nf-user-auth-web") >= 0) {
-        const refreshtokenVal = JSON.parse($response.body).data.refreshToken
-        $.setdata(refreshtokenVal, "refreshtoken" + $.idx);
+    if ($response && $request.url.indexOf("verifyidentity") >= 0) {
+        let BODY = {
+            "msg": "ok",
+            "statuscode": 200
+        }
         $.log(
-            `[${$.name + $.idx}] 获取refreshtoken✅: 成功,refreshtokenVal: ${refreshtokenVal}`
+            `[${$.name + $.idx}] 设备验证✅: 通过`
         );
-        $.msg($.name + $.idx, `获取refreshtoken: 成功🎉`, ``);
+        $.msg($.name + $.idx, `设备验证: 通过🎉`, ``);
+        $.done({
+            body: JSON.stringify(BODY)
+        });
     }
+    if ($response && $request.url.indexOf("login") >= 0) {
+        USERID = Number($.getval("ymzhuanUSERID"));
+        if (typeof USERID === 'undefined' || USERID == 0) {
+            $.log(
+                `[${$.name + $.idx}] 未设置USERID`
+            );
+            $.msg($.name + $.idx, `未设置USERID`, ``);
+            $.done({
+                body: body
+            });
+        } else {
 
+
+
+            let BODY = {
+                "timestamp": `${ddtime}`,
+                "result": {
+                    "id": 0,
+                    "invitecode": "",
+                    "status": 1,
+                    "pid": 0,
+                    "pinvitecode": "",
+                    "cellphone": "",
+                    "alipayaccount": "",
+                    "alipayname": "",
+                    "bannertime": 180,
+                    "bannerclkratio": "0##8",
+                    "cpvideo": 5,
+                    "cpratio": 10,
+                    "appinstallratio": "75##0##25",
+                    "appsigntime": 60,
+                    "leastbanner": 2,
+                    "qqgroup": "935826100",
+                    "shareurl": "",
+                    "appurl1": "",
+                    "appurl2": "",
+                    "nickname": "",
+                    "icon": ""
+                },
+                "msg": "ok",
+                "statuscode": 200
+            }
+            BODY.result.id = USERID
+            BODY.result.invitecode = `${USERID + 10000000}`
+            $.log(
+                `[${$.name + $.idx}] 模拟登陆✅: 成功,USERID: ${USERID}`
+            );
+            $.msg($.name + $.idx, `模拟登陆: 成功,USERID: ${USERID}🎉`, ``);
+            $.done({
+                body: JSON.stringify(BODY)
+            });
+        }
+    }
+    if ($request && $request.body.indexOf("taskid=1") >= 0 && $request.body.indexOf("sign=") >= 0) {
+        const ymzhuanggbodyVal = $request.body;
+        if (ymzhuanggbodyVal) $.setdata(ymzhuanggbodyVal, "ymzhuanggbody" + $.idx);
+        $.log(
+            `[${$.name + $.idx}] 获取ymzhuanggbodyVal✅: 成功,ymzhuanggbodyVal: ${ymzhuanggbodyVal}`
+        );
+        $.msg($.name + $.idx, `获取ymzhuanggbodyVal: 成功🎉`, ``);
+    }
+    if ($request && $request.body.indexOf("taskid=2") >= 0 && $request.body.indexOf("sign=") >= 0) {
+        const ymzhuanspbodyVal = $request.body;
+        if (ymzhuanspbodyVal) $.setdata(ymzhuanspbodyVal, "ymzhuanspbody" + $.idx);
+        $.log(
+            `[${$.name + $.idx}] 获取ymzhuanspbodyVal✅: 成功,ymzhuanspbodyVal: ${ymzhuanspbodyVal}`
+        );
+        $.msg($.name + $.idx, `获取ymzhuanspbodyVal: 成功🎉`, ``);
+    }
+    if ($request && $request.body.indexOf("account") >= 0 && $request.body.indexOf("money") >= 0) {
+        const ymzhuantxbodyVal = $request.body;
+        if (ymzhuantxbodyVal) $.setdata(ymzhuantxbodyVal, "ymzhuantxbody" + $.idx);
+        $.log(
+            `[${$.name + $.idx}] 获取ymzhuantxbodyVal✅: 成功,ymzhuantxbodyVal: ${ymzhuantxbodyVal}`
+        );
+        $.msg($.name + $.idx, `获取ymzhuantxbodyVal: 成功🎉`, ``);
+    }
 }
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
@@ -211,19 +262,6 @@ console.log(
 console.log(
     `============ 共 ${Length} 个${$.name}账号=============\n`
 );
-console.log(`============ 提现标准为：${CASH} =============\n`);
-if (LIVE == 0) {
-    console.log(`============ 看直播关闭，看视频开启 =============\n`);
-}
-if (LIVE == 1) {
-    console.log(`============ 看直播开启，看视频开启 =============\n`);
-}
-if (LIVE == 2) {
-    console.log(`============ 看直播开启，看视频关闭 =============\n`);
-}
-if (sms >= 1) {
-    console.log(`============ TOKEN获取开启 =============\n`);
-}
 //时间
 nowTimes = new Date(
     new Date().getTime() +
@@ -296,7 +334,7 @@ function udid2() {
     }
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-//编码
+//unicode编码
 function encodeUnicode(str) {
     var res = [];
     for (var i = 0; i < str.length; i++) {
@@ -304,25 +342,29 @@ function encodeUnicode(str) {
     }
     return "\\u" + res.join("\\u");
 }
-//解码
+//unicode解码
 function decodeUnicode(str) {
     str = str.replace(/\\/g, "%");
     return unescape(str);
 }
-
-
+//将中文格式转换成utf8
+function zhutf8(str) {
+    strs = encodeURIComponent(str);
+    return strs;
+}
+//将utf8格式转换成中文
+function utf8zh(str) {
+    strs = decodeURIComponent(str);
+    return strs;
+}
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
     GetCookie()
     $.done();
 } else {
     !(async () => {
-        if (sms >= 1) {
-            await getTOKEN();
-        } else await all();
-        if (HBY == 1) {
-            await $.wait(500)
-        }
+        await all();
+        //await $.wait(1000)
         await msgShow();
     })()
     .catch((e) => {
@@ -336,99 +378,72 @@ async function all() {
     if (!Length) {
         $.msg(
             $.name,
-            '提示：⚠️请点击前往获取https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970\n',
-            'https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970', {
-                "open-url": "https://apps.apple.com/cn/app/%E7%AC%91%E8%B0%B1/id1487075970"
+            '提示：⚠️请点击前往获取http://share.xiaoniuaso.com/43?invitecode=10008933\n',
+            'http://share.xiaoniuaso.com/43?invitecode=10008933', {
+                "open-url": "http://share.xiaoniuaso.com/43?invitecode=10008933"
             }
         );
         return;
     }
     for (let i = 0; i < Length; i++) {
-
-        if (COOKIE.refreshtokenVal) {
-
-            refreshtokenVal = XP_COOKIES.refreshtokenVal[i];
+        if (COOKIE.ymzhuanggbodyVal) {
+            ymzhuanggbodyVal = YMZ_COOKIES.ymzhuanggbodyVal[i];
+            ymzhuanspbodyVal = YMZ_COOKIES.ymzhuanspbodyVal[i];
+            ymzhuantxbodyVal = YMZ_COOKIES.ymzhuantxbodyVal[i];
         }
-        if (!COOKIE.refreshtokenVal) {
-
-            refreshtokenVal = refreshtokenArr[i];
+        if (!COOKIE.ymzhuanggbodyVal) {
+            ymzhuanggbodyVal = ymzhuanggbodyArr[i];
+            ymzhuanspbodyVal = ymzhuanspbodyArr[i];
+            ymzhuantxbodyVal = ymzhuantxbodyArr[i];
         }
-
-
+        header = {
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-cn",
+            "Connection": "close",
+            "Content-Length": "28",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Host": "ymz.iphonezhuan.com",
+            "User-Agent": "%E7%BE%8A%E6%AF%9B%E8%8B%B1%E6%B1%89%E8%AF%8D%E5%85%B8/1.03 CFNetwork/1206 Darwin/20.1.0",
+        }
+        uid = decodeUnicode(ymzhuanggbodyVal.split('uid=')[1].split('&')[0])
         O = (`${$.name + (i + 1)}🔔`);
+        await user(); //用户名
         await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
-
-        await refreshtoken(); //更新TOKEN       
-        let cookie_is_live = await user(i + 1); //用户名
+        let cookie_is_live = await task(); //用户名
         if (!cookie_is_live) {
             continue;
         }
-        await hdid(); //活动id
-        await goldcoin(); //金币信息
-        await coin(); //账户信息
-        await sylist(); //收益列表
-        await splimit(); //视频上限
-        await newcashlist(); //提现查询
-        await cashlist(); //今日提现查询
-        if (!cashcs.amount && CASH >= 1 && CASH <= 100 && $.coin.data.balance / 100 >= CASH) {
-            await withdraw(); //提现
+        if (gg.status == 0) {
+            await ggrw() //广告任务
+            await $.wait(4 * 33000)
         }
-
-        if (!cashcs.amount && CASH == 888) {
-
-            if ($.coin.data.balance / 100 >= 100) {
-                CASH = 100
-            } else if ($.coin.data.balance / 100 >= 50) {
-                CASH = 50
-            } else if ($.coin.data.balance / 100 >= 30) {
-                CASH = 30
-            } else if ($.coin.data.balance / 100 >= 15) {
-                CASH = 15
-            } else if ($.coin.data.balance / 100 >= 1) {
-                CASH = 1
-            }
-
-            if (CASH != 888) {
-                await withdraw(); //提现
-            }
+        if (sp.status == 0) {
+            await sprw() //视频任务
+            await $.wait(5 * 33000)
         }
-
-        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 20) {
-            await liveslist(); //直播节目表
-            if (liveIdcd >= 1) {
-                dd = liveIdcd * 35 - 34
-                console.log(`📍本次直播运行需要${dd}秒` + '\n')
-
-                await lives(); //看直播
-                await $.wait(dd * 1000)
+        await signinfo() //签到
+        if (CASH > 0 && nowTimes.getHours() >= 8 && nowTimes.getHours() < 20) {
+            if (CASH <= 100 && $.task.integral / 100 >= CASH) {
+                await tixian() //提现
             }
-        }
-
-        if (LIVE != 2 && $.splimit.data.isUperLimit == false || LIVE == 888) {
-
-            await playo(); //播放o       
-            await videoo(); //视频o
-
-            if (LIVES != 2) {
-                await $.wait(30000)
-                tt = CS * 30 - 29
-                console.log(`📍本次视频运行需要${tt}秒` + '\n')
-                await play(); //播放       
-                await video(); //视频
-                await $.wait(tt * 1000)
-                if (LIVE == 666) {
-                    await newvideo(); //新人福利
+            if (CASH == 888) {
+                if ($.task.integral / 100 >= 100) {
+                    CASH = 100
+                } else if ($.task.integral / 100 >= 50) {
+                    CASH = 50
+                } else if ($.task.integral / 100 >= 20) {
+                    CASH = 20
+                } else if ($.task.integral / 100 >= 10) {
+                    CASH = 10
+                } else if ($.task.integral / 100 >= 3) {
+                    CASH = 3
                 }
-                if ($.video.data && $.video.data.goldCoinNumber != 0 && videoPublishId6) {
-                    await goldvideo(); //金蛋视频
+                if (CASH != 888) {
+                    await tixian() //提现
                 }
-
-
             }
-
         }
-
-
     }
 }
 //通知
@@ -451,136 +466,32 @@ function msgShow() {
         resolve()
     })
 }
-
-
-//TOKEN获取  
-function getTOKEN(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            getTOKENbodyVal = `{"userPhone":"${phone}","smsCode":"${sms}","source":"VEISHOP_APP_IOS"}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf-user-auth-web/ignore_tk/veishop/v1/app_register_by_phone.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: getTOKENbodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, TOKEN获取🚩: ${data}`);
-                    $.getTOKEN = JSON.parse(data);
-                    if ($.getTOKEN.resultCode == 1) {
-                        const refreshtokenVal = $.getTOKEN.data.refreshToken
-                        $.setdata(refreshtokenVal, "refreshtoken" + $.idx);
-                        $.log(
-                            `[${$.name + $.idx}] 获取refreshtoken✅: 成功,refreshtokenVal: ${refreshtokenVal}`
-                        );
-                        $.msg($.name + $.idx, `获取refreshtoken: 成功🎉`, ``);
-                        $.message += '【TOKEN获取】：成功' + $.getTOKEN.data.refreshToken + '\n';
-                    }
-                    if ($.getTOKEN.resultCode == 0) {
-                        console.log(`TOKEN获取：${$.getTOKEN.errorCode}\n`);
-                        $.message += `【TOKEN获取】：${$.getTOKEN.errorCode}\n`;
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//TOKEN更新  
-function refreshtoken(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            refreshtokenbodyVal = `{"refreshToken":"${refreshtokenVal}","source":"VEISHOP_APP_IOS"}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_auth_web/uc/ignore_tk/v1/refresh_access_token_to_c.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: refreshtokenbodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, TOKEN更新🚩: ${data}`);
-                    $.refreshtoken = JSON.parse(data);
-                    if ($.refreshtoken.resultCode == 1) {
-                        TOKEN = $.refreshtoken.data.accessToken
-                        console.log('更新TOKEN成功:' + TOKEN + '\n');
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
 //用户名
-function user(timeout = 0) {
+function user() {
+    console.log(`\n${O}\n========== ${uid} ==========\n`)
+    $.message += `\n${O}\n========== 【${uid}】 ==========\n`;
+}
+//任务列表
+function task(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-
             let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_user_center_web/shopkeeper/v1/get_context_info.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
+                url: `http://ymz.iphonezhuan.com/gettask`,
+                headers: header,
+                body: `channelID=2&uid=${uid}&ver=102`,
             }
-            $.get(url, async (err, resp, data) => {
+            $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 用户名🚩: ${data}`);
-                    $.user = JSON.parse(data);
-                    if ($.user.resultCode == 1) {
-                        $.message += `\n${O}`;
-                        $.message += `\n========== 【${$.user.data.customerInfo.nickname}】 ==========\n`;
+                    if (logs) $.log(`${O}, 任务列表🚩: ${data}`);
+                    $.task = JSON.parse(data);
+                    if ($.task.statuscode == 200) {
+                        gg = $.task.result.find(item => item.action === "banner://");
+                        sp = $.task.result.find(item => item.action === "video://");
+                        console.log(`现金余额:${$.task.integral/100}元\n${gg.name}:${gg.nowcount}/${gg.count}\n${sp.name}:${sp.nowcount}/${sp.count}\n`)
+                        $.message += `【现金余额】:${$.task.integral/100}元\n【${gg.name}】:${gg.nowcount}/${gg.count}\n【${sp.name}】:${sp.nowcount}/${sp.count}\n`
                         resolve(true);
                     }
-
-                    if ($.user.resultCode == 0) {
+                    if ($.task.statuscode != 200) {
                         $.msg(O, time(Number(tts())) + "❌❌❌COOKIE失效");
                         if ($.isNode()) {
                             notify.sendNotify(O, time(Number(tts())) + "❌❌❌COOKIE失效");
@@ -596,408 +507,84 @@ function user(timeout = 0) {
         }, timeout)
     })
 }
-//金币信息  
-function goldcoin(timeout = 0) {
-    return new Promise((resolve) => {
+//广告任务
+function ggrw(timeout = 0) {
+    return new Promise(async (resolve) => {
         setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/balance.json?source=WX_APP_KA_HTZP`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 金币信息🚩: ${data}`);
-                    $.goldcoin = JSON.parse(data);
-                    $.message += '【金币信息】：今日金币' + $.goldcoin.data.coinSum + ',预估金额' + $.goldcoin.data.balanceSum / 100 + '元\n';
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//活动id 
-function hdid(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/ignore_tk/v1/query_act_list.json?source=WX_APP_KA_HTZP`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 活动id🚩: ${data}`);
-                    $.hdid = JSON.parse(data);
-                    if ($.hdid.resultCode == 1) {
-                        spid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 9)
-                        zbid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 10)
-                        console.log(spid.actName + 'ID：' + spid.actId + '\n' +
-                            zbid.actName + 'ID：' + zbid.actId + '\n');
-                        $.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n' +
-                            '【' + zbid.actName + 'ID】：' + zbid.actId + '\n';
-                    }
-
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-
-//账户信息  
-function coin(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/withdraw_detail.json?source=WX_APP_KA_HTZP`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 账户信息🚩: ${data}`);
-                    $.coin = JSON.parse(data);
-                    $.message += '【账户信息】：明日入账' + $.coin.data.tomorrowAmt / 100 + '元,可提余额' + $.coin.data.balance / 100 + '元\n';
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//播放o
-function playo(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-
-            do playTime = Math.floor(Math.random() * 31);
-            while (playTime < 20)
-            do playTimess = Math.floor(Math.random() * 36);
-            while (playTimess < 30)
-            do playid = Math.floor(Math.random() * 49600000000000000);
-            while (playid < 10000000000000000)
-            playbodyVal = `{"videoPublishId":"13${playid}","playTimeLenght":${playTime},"type":1,"videoTime":${playTimess}}`;
-            videoPublishId = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-            console.log(`视频ID1📍${videoPublishId}`)
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/video/ignore_tk/v1/video_channel/uplaod_play_video_recode.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: playbodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 播放ID1🚩: ${data}`);
-                    $.playo = JSON.parse(data);
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-
-        }, timeout)
-    })
-}
-//视频o
-function videoo(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            var inss = 0;
-
-            videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: videobodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 视频🚩: ${data}`);
-                    $.videoo = JSON.parse(data);
-                    if ($.videoo.resultCode == 0) {
-                        LIVES = 2
-                        console.log('视频奖励：⚠️' + $.videoo.errorDesc + '\n');
-                        $.message += '【视频奖励】：⚠️' + $.videoo.errorDesc + '\n'
-                    }
-                    if ($.videoo.data && $.videoo.data.goldCoinNumber == 0) {
-                        LIVES = 2
-                        console.log(`视频奖励：恭喜您的账号已灰，已无法获取视频奖励\n`);
-                        $.message += `【视频奖励】：恭喜您的账号已灰，已无法获取视频奖励\n`
-                    }
-                    if ($.videoo.data && $.videoo.data.goldCoinNumber != 0) {
-                        LIVES = 0
-                        console.log(`开始领取第1次视频奖励，获得${$.videoo.data.goldCoinNumber}金币\n`);
-                        console.log(`视频奖励：共领取1次视频奖励，共${$.videoo.data.goldCoinNumber}金币\n`);
-                        $.message += `【视频奖励】：共领取1次视频奖励，共${$.videoo.data.goldCoinNumber}金币\n`
-                    }
-
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-
-
-
-
-        }, timeout)
-    })
-}
-//播放
-function play(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            for (let i = 0; i < CS; i++) {
-                setTimeout(() => {
-
-                    do playTime = Math.floor(Math.random() * 31);
-                    while (playTime < 20)
-                    do playTimess = Math.floor(Math.random() * 36);
-                    while (playTimess < 30)
-                    do playid = Math.floor(Math.random() * 49600000000000000);
-                    while (playid < 10000000000000000)
-                    playbodyVal = `{"videoPublishId":"13${playid}","playTimeLenght":${playTime},"type":1,"videoTime":${playTimess}}`;
-                    videoPublishId = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    if (i == 1) {
-                        videoPublishId3 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 2) {
-                        videoPublishId4 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 3) {
-                        videoPublishId5 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    if (i == 4) {
-                        videoPublishId6 = playbodyVal.substring(playbodyVal.indexOf("videoPublishId") + 17, playbodyVal.indexOf(`","pl`))
-                    }
-                    console.log(`视频ID${i+2}📍${videoPublishId}`)
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/video/ignore_tk/v1/video_channel/uplaod_play_video_recode.json`,
-                        headers: {
-                            "Connection": "keep-alive",
-                            "Accept-Encoding": "gzip, deflate, br",
-                            "version": "1.4.8",
-                            "mchtNo": "100529600058887",
-                            "Content-Type": "application/json; charset=utf-8",
-                            "source": "VEISHOP_APP_IOS",
-                            "shopkeeperId": "1148855820752977920",
-                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "token": `${TOKEN}`,
-                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "traceid": "30000000000000000000" + tts() + "000000000000",
-                            "Host": "veishop.iboxpay.com",
-                            "Accept-Language": "zh-Hans-CN;q=1",
-                            "Accept": "*/*"
-                        },
-                        body: playbodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 播放ID${i+2}🚩: ${data}`);
-                            $.play = JSON.parse(data);
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
+                for (let i = 0; i < 4; i++) {
+                    setTimeout(() => {
+                        let url = {
+                            url: `http://ymz.iphonezhuan.com/addaction?`,
+                            headers: header,
+                            body: ymzhuanggbodyVal,
                         }
-                    })
-                }, i * 30000);
-            }
-        }, timeout)
+                        $.post(url, async (err, resp, data) => {
+                            try {
+                                if (logs) $.log(`${O}, 广告任务🚩: ${data}`);
+                                $.ggrw = JSON.parse(data);
+                                if ($.ggrw.statuscode == 200) {
+                                    console.log(`${gg.name+(i+1)}：执行成功\n`);
+                                    $.message += `【${gg.name+(i+1)}】：执行成功\n`;
+                                }
+                            } catch (e) {
+                                $.logErr(e, resp);
+                            } finally {
+                                resolve()
+                            }
+                        })
+                    }, i * 33000);
+                }
+            },
+            timeout)
     })
 }
-//视频
-function video(timeout = 0) {
-    return new Promise((resolve) => {
+//视频任务
+function sprw(timeout = 0) {
+    return new Promise(async (resolve) => {
         setTimeout(() => {
-            var inss = 0;
-
-
-            for (let i = 0; i < CS; i++) {
-
-                setTimeout(() => {
-
-                    videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-                        headers: {
-                            "Connection": "keep-alive",
-                            "Accept-Encoding": "gzip, deflate, br",
-                            "version": "1.4.8",
-                            "mchtNo": "100529600058887",
-                            "Content-Type": "application/json; charset=utf-8",
-                            "source": "VEISHOP_APP_IOS",
-                            "shopkeeperId": "1148855820752977920",
-                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "token": `${TOKEN}`,
-                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "traceid": "30000000000000000000" + tts() + "000000000000",
-                            "Host": "veishop.iboxpay.com",
-                            "Accept-Language": "zh-Hans-CN;q=1",
-                            "Accept": "*/*"
-                        },
-                        body: videobodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 视频🚩: ${data}`);
-                            $.video = JSON.parse(data);
-
-                            if ($.video.data && $.video.data.goldCoinNumber != 0) {
-                                console.log(`开始领取第${i+2}次视频奖励，获得${$.video.data.goldCoinNumber}金币\n`);
-                                inss += $.video.data.goldCoinNumber;
-                            }
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        let url = {
+                            url: `http://ymz.iphonezhuan.com/addaction?`,
+                            headers: header,
+                            body: ymzhuanspbodyVal,
                         }
-                    })
-                }, i * 30000);
-            }
-            setTimeout(() => {
-                if ($.video.resultCode == 0) {
-                    console.log('视频奖励：⚠️' + $.video.errorDesc + '\n');
-                    $.message += '【视频奖励】：⚠️' + $.video.errorDesc + '\n'
+                        $.post(url, async (err, resp, data) => {
+                            try {
+                                if (logs) $.log(`${O}, 视频任务🚩: ${data}`);
+                                $.sprw = JSON.parse(data);
+                                if ($.sprw.statuscode == 200) {
+                                    console.log(`${sp.name+(i+1)}：执行成功\n`);
+                                    $.message += `【${sp.name+(i+1)}】：执行成功\n`;
+                                }
+                            } catch (e) {
+                                $.logErr(e, resp);
+                            } finally {
+                                resolve()
+                            }
+                        })
+                    }, i * 33000);
                 }
-                if ($.video.data && $.video.data.goldCoinNumber == 0) {
-                    console.log(`视频奖励：恭喜您的账号已灰，已无法获取视频奖励\n`);
-                    $.message += `【视频奖励】：恭喜您的账号已灰，已无法获取视频奖励\n`
-                }
-                if ($.video.data && $.video.data.goldCoinNumber != 0) {
-                    console.log(`视频奖励：共领取${CS}次视频奖励，共${inss}金币\n`);
-                    $.message += `【视频奖励】：共领取${CS}次视频奖励，共${inss}金币\n`
-                }
-            }, CS * 30000 - 29000)
-
-        }, timeout)
+            },
+            timeout)
     })
 }
-//金蛋视频
-function goldvideo(timeout = 40000) {
+//每日签到
+function sign(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-
-            goldvideobodyVal = `{"type":2,"videoList":[{"videoId":"${videoPublishId3}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId4}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId5}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId6}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
             let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: goldvideobodyVal,
+                url: `http://ymz.iphonezhuan.com/submitsign?`,
+                headers: header,
+                body: `channelID=2&uid=${uid}&ver=102`,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 金蛋视频🚩: ${data}`);
-                    $.goldvideo = JSON.parse(data);
-                    if ($.goldvideo.resultCode == 1) {
-                        console.log('金蛋视频奖励，获得' + $.goldvideo.data.goldCoinNumber + '金币')
-                        $.message +=
-                            '【金蛋视频奖励】：获得' + $.goldvideo.data.goldCoinNumber + '金币\n'
-                    }
-                    if ($.goldvideo.resultCode == 0) {
-                        console.log($.goldvideo.errorDesc + '\n');
-                        $.message +=
-                            '【金蛋视频奖励】：' + $.goldvideo.errorDesc + '\n';
+                    if (logs) $.log(`${O}, 每日签到🚩: ${data}`);
+                    $.sign = JSON.parse(data);
+                    if ($.sign.statuscode == 200) {
+                        console.log(`每日签到：${$.sign.msg},获得${$.sign.result.nowintegrals/100}元\n`);
+                        $.message += `【每日签到】：${$.sign.msg},获得${$.sign.result.nowintegrals/100}元\n`;
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -1008,230 +595,28 @@ function goldvideo(timeout = 40000) {
         }, timeout)
     })
 }
-//新人福利
-function newvideo(timeout = 40000) {
+//签到列表
+function signinfo(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-
-            newvideobodyVal = `{"videoList":[{"videoId":"${videoPublishId3}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId4}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId5}","type":1,"isFinishWatch":false},{"videoId":"${videoPublishId6}","type":1,"isFinishWatch":false}]}`
             let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_cash_by_video.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: newvideobodyVal,
+                url: `http://ymz.iphonezhuan.com/getsignlist`,
+                headers: header,
+                body: `channelID=2&uid=${uid}&ver=102`,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 新人福利🚩: ${data}`);
-                    $.newvideo = JSON.parse(data);
-                    if ($.newvideo.resultCode == 1) {
-                        console.log('新人福利奖励，获得' + $.newvideo.data / 100 + '元\n')
-                        $.message +=
-                            '【新人福利奖励】：获得' + $.newvideo.data / 100 + '元\n'
-                    }
-                    if ($.newvideo.resultCode == 0) {
-                        console.log($.newvideo.errorDesc + '\n');
-                        $.message +=
-                            '【新人福利奖励】：' + $.newvideo.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//直播节目表
-function liveslist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/live/ignore_tk/v1/query_living_list_id.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 直播节目表🚩: ${data}`);
-                    $.liveslist = JSON.parse(data);
-                    if ($.liveslist.resultCode == 1 && $.liveslist.data.liveIdList.length) {
-                        liveId = $.liveslist.data.liveIdList
-                        liveIdcd = liveId.length
-                    }
-                    console.log(`直播节目表，当前${liveIdcd}个直播\n`);
-                    $.message += `【直播节目表】：当前${liveIdcd}个直播\n`
-
-                    if ($.liveslist.resultCode == 0) {
-                        console.log($.liveslist.errorDesc + '\n');
-                        $.message += '【直播节目表】：' + $.liveslist.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//直播
-function lives(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            var ins = 0;
-            for (let i = 0; i < liveIdcd; i++) {
-                $.index = i + 1
-                do RT = Math.floor(Math.random() * 35000);
-                while (RT < 30000)
-                setTimeout(() => {
-
-                    livesbodyVal = `{
- "actId": "${zbid.actId}",
- "liveId": "${liveId[i]}"
-}`
-                    let url = {
-                        url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
-                        headers: {
-                            "Connection": "keep-alive",
-                            "Accept-Encoding": "gzip, deflate, br",
-                            "version": "1.4.8",
-                            "mchtNo": "100529600058887",
-                            "Content-Type": "application/json; charset=utf-8",
-                            "source": "VEISHOP_APP_IOS",
-                            "shopkeeperId": "1148855820752977920",
-                            "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "token": `${TOKEN}`,
-                            "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                            "traceid": "30000000000000000000" + tts() + "000000000000",
-                            "Host": "veishop.iboxpay.com",
-                            "Accept-Language": "zh-Hans-CN;q=1",
-                            "Accept": "*/*"
-                        },
-                        body: livesbodyVal,
-                    }
-                    $.post(url, async (err, resp, data) => {
-                        try {
-                            if (logs) $.log(`${O}, 直播🚩: ${data}`);
-                            $.lives = JSON.parse(data);
-
-                            if ($.lives.resultCode == 1) {
-                                ins += $.lives.data.goldCoinAmt;
-                                console.log(`开始领取第${i+1}次直播奖励，获得${$.lives.data.goldCoinAmt}金币,等待${RT/1000}秒继续\n`);
-
-                            }
-                            if ($.lives.resultCode == 0) {
-                                console.log(`开始领取第${i+1}次直播奖励，${$.lives.errorDesc},等待${RT/1000}秒继续\n`);
-                            }
-                        } catch (e) {
-                            $.logErr(e, resp);
-                        } finally {
-                            resolve()
+                    if (logs) $.log(`${O}, 签到列表🚩: ${data}`);
+                    $.signinfo = JSON.parse(data);
+                    if ($.signinfo.statuscode == 200) {
+                        daysign = $.signinfo.result.days[$.signinfo.result.days.length - 1]
+                        if ($.signinfo.result.days.length) {
+                            console.log(`签到列表：已签到${$.signinfo.result.days.length}天\n`);
+                            $.message += `【签到列表】：已签到${$.signinfo.result.days.length}天\n`;
                         }
-                    })
-
-                }, i * RT);
-
-            }
-            setTimeout(() => {
-                console.log(`直播奖励：共领取${ins/500}次直播奖励，共${ins}金币\n`);
-                $.message += `【直播奖励】：共领取${ins/500}次直播奖励，共${ins}金币\n`
-            }, liveIdcd * 35000 - 34000)
-        }, timeout)
-    })
-}
-//收益列表
-function sylist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/list_gold_coin.json?source=WX_APP_KA_HTZP&date=${ddtime}&actTypeId=0&size=800`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 收益列表🚩: ${data}`);
-                    $.sylist = JSON.parse(data);
-
-                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":11,/g)) {
-                        hby = data.match(/"actTypeId":11,/g);
-                        hbycs = hby.length;
-                    } else hbycs = 0
-
-                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":10,/g)) {
-                        live = data.match(/"actTypeId":10,/g);
-                        livecs = live.length;
-                    } else livecs = 0
-
-                    if ($.sylist.resultCode == 1 && data.match(/"actTypeId":9,/g)) {
-
-                        videos = data.match(/"actTypeId":9,/g);
-                        videoscs = videos.length;
-                    } else videoscs = 0;
-
-                    spsy = $.goldcoin.data.coinSum - livecs * 500
-                    console.log('已获得红包雨奖励 ' + hbycs + ' 次\n')
-                    $.message +=
-                        '【红包雨收益】：已获得红包雨奖励 ' + hbycs + ' 次\n'
-                    console.log('已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n')
-                    $.message +=
-                        '【直播收益】：已获得直播奖励 ' + livecs + ' 次，共' + livecs * 500 + '金币\n'
-                    console.log('已获得视频奖励 ' + videoscs + ' 次，共' + spsy + '金币\n')
-                    $.message +=
-                        '【视频收益】：已获得视频奖励 ' + videoscs + ' 次，共' + spsy + '金币\n'
-
-                    if ($.sylist.resultCode == 0) {
-                        console.log($.sylist.errorDesc + '\n');
-                        $.message +=
-                            '【收益列表】：' + $.sylist.errorDesc + '\n';
+                        if (!daysign || daysign < nowTimes.getDate()) {
+                            await sign() //签到
+                        }
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -1242,189 +627,33 @@ function sylist(timeout = 0) {
         }, timeout)
     })
 }
-//视频上限  
-function splimit(timeout = 0) {
+//现金提现
+function tixian(timeout = 0) {
     return new Promise((resolve) => {
+        money = ymzhuantxbodyVal.split('money=')[1].split('&')[0]
+        timestamp = ymzhuantxbodyVal.split('timestamp=')[1].split('&')[0]
+
+        if (ymzhuantxbodyVal.indexOf("cellphone") >= 0 && ymzhuantxbodyVal.indexOf("code") >= 0) {
+            cellphone = ymzhuantxbodyVal.split('cellphone=')[1].split('&')[0]
+            code = ymzhuantxbodyVal.split('code=')[1].split('&')[0]
+            ymzhuantxbody = ymzhuantxbodyVal.replace(`cellphone=${cellphone}&`, ``).replace(`code=${code}&`, ``).replace(`money=${money}`, `money=${CASH}`).replace(`timestamp=${timestamp}`, `timestamp=${tts()}`)
+        } else {
+            ymzhuantxbody = ymzhuantxbodyVal.replace(`money=${money}`, `money=${CASH}`).replace(`timestamp=${timestamp}`, `timestamp=${tts()}`)
+        }
+
         setTimeout(() => {
 
             let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/ignore_tk/v1/get_video_act.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 视频上限🚩: ${data}`);
-                    $.splimit = JSON.parse(data);
-                    if ($.splimit.resultCode == 1) {
-                        console.log('视频上限：今日上限' + $.splimit.data.goldCoinDayLimit + '金币,今日未得' + ($.splimit.data.goldCoinDayLimit - spsy) + '金币\n');
-                        $.message += '【视频上限】：今日上限' + $.splimit.data.goldCoinDayLimit + '金币,今日未得' + ($.splimit.data.goldCoinDayLimit - spsy) + '金币\n';
-                    }
-                    if ($.splimit.data.isUperLimit == true) {
-                        console.log('视频上限：今日达到上限\n');
-                        $.message += '【视频上限】：今日达到上限\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//提现记录
-function newcashlist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/in_out.json?source=WX_APP_KA_HTZP&date=&tradeType=0&current=1&size=40`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 提现记录🚩: ${data}`);
-                    $.newcashlist = JSON.parse(data);
-                    if ($.newcashlist.resultCode == 1 && data.match(/新人福利/g)) {
-                        newcashcs = $.newcashlist.data.records.find(item => item.tradeTypeName === "新人福利")
-                    }
-                    if ($.newcashlist.resultCode == 0) {
-                        console.log($.newcashlist.errorDesc + '\n');
-                        $.message +=
-                            '【新人福利】：' + $.newcashlist.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//今日提现记录
-function cashlist(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/in_out.json?source=WX_APP_KA_HTZP&date=${ddtime}&tradeType=0&current=1&size=40`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-            }
-            $.get(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 今日提现记录🚩: ${data}`);
-                    $.cashlist = JSON.parse(data);
-                    if ($.cashlist.resultCode == 1 && data.match(/提现/g)) {
-
-                        cashcs = $.cashlist.data.records.find(item => item.tradeTypeName === "提现")
-                        console.log('今日已提现' + cashcs.amount / 100 + '元\n')
-                        $.message +=
-                            '【提现查询】：今日已提现' + cashcs.amount / 100 + '元\n'
-                    }
-                    if ($.cashlist.resultCode == 0) {
-                        console.log($.cashlist.errorDesc + '\n');
-                        $.message +=
-                            '【提现查询】：' + $.cashlist.errorDesc + '\n';
-                    }
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-        }, timeout)
-    })
-}
-//提现
-function withdraw(timeout = 0) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-
-            withdrawbodyVal = `{
- "source": "WX_APP_KA_HTZP",
- "bizType": 2,
- "amount": ${CASH*100}
-}`
-            let url = {
-                url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/activity/v1/withdraw.json`,
-                headers: {
-                    "Connection": "keep-alive",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "version": "1.4.8",
-                    "mchtNo": "100529600058887",
-                    "Content-Type": "application/json; charset=utf-8",
-                    "source": "VEISHOP_APP_IOS",
-                    "shopkeeperId": "1148855820752977920",
-                    "User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "token": `${TOKEN}`,
-                    "X-User-Agent": "VeiShop, 1.4.8 (iOS, 14.2, zh_CN, Apple, iPhone, )",
-                    "traceid": "30000000000000000000" + tts() + "000000000000",
-                    "Host": "veishop.iboxpay.com",
-                    "Accept-Language": "zh-Hans-CN;q=1",
-                    "Accept": "*/*"
-                },
-                body: withdrawbodyVal,
+                url: `http://ymz.iphonezhuan.com/submitwithdraw`,
+                headers: header,
+                body: ymzhuantxbody,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 提现🚩: ${data}`);
-                    $.withdraw = JSON.parse(data);
-                    if ($.withdraw.resultCode == 1 && $.withdraw.data.withdrawRes == 1) {
-                        console.log('成功提现 ' + CASH + ' 元\n')
-                        $.message +=
-                            '【余额提现】：成功提现 ' + CASH + ' 元\n'
-                    }
-                    if ($.withdraw.resultCode == 0) {
-                        console.log($.withdraw.errorDesc + '\n');
-                        $.message +=
-                            '【余额提现】：' + $.withdraw.errorDesc + '\n';
-                    }
+                    if (logs) $.log(`${O}, 现金提现🚩: ${data}`);
+                    $.tixian = JSON.parse(data);
+                        console.log(`现金提现：${$.tixian.msg}\n`);
+                        $.message += `【现金提现】：${$.tixian.msg}\n`;                  
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -1773,3 +1002,965 @@ function Env(t, e) {
         }
     }(t, e)
 }
+                                                                                                                                        /**
+*
+    ！！！此脚本永远禁止 “所谓大佬————shuye73” 使用，是我耽误您抄袭了，祝您和您的家人平安。
+
+    Name: 京喜财富岛
+    Address: 京喜App ====>>>> 全民赚大钱
+    Author: MoPoQAQ
+    Created：2020/x/xx xx:xx
+    Updated: 2021/3/12 14:20
+    Thanks:
+      whyour大佬
+      GitHub: https://github.com/whyour
+      
+      新用户签到问题反馈者：https://github.com/NanjolnoRing
+    
+    获取Token方式：
+      1.打开【❗️京喜农场❗️】，手动任意完成<工厂任务>、<签到任务>、<金牌厂长任务>一项，提示获取cookie成功即可，然后退出跑任务脚本
+      2.京喜工厂收取电力一次
+      3.财富岛手动提现一次
+    
+    hostname = wq.jd.com, m.jingxi.com
+    
+    Quantumult X:
+    [task_local]
+    0 * * * * https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js, tag=京喜财富岛, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
+    [rewrite_local]
+    ^https\:\/\/wq\.jd\.com\/cubeactive\/farm\/dotask url script-request-header https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+    ^https\:\/\/m\.jingxi\.com\/dreamfactory\/generator\/CollectCurrentElectricity url script-request-header https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+    ^https\:\/\/m\.jingxi\.com\/jxcfd\/consume\/CashOut url script-request-header https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+
+    Loon:
+    [Script]
+    http-request ^https\:\/\/wq\.jd\.com\/cubeactive\/farm\/dotask script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js, requires-body=false, timeout=10, tag=京喜token
+    http-request ^https\:\/\/m\.jingxi\.com\/dreamfactory\/generator\/CollectCurrentElectricity script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js, requires-body=false, timeout=10, tag=京喜token
+    http-request ^^https\:\/\/m\.jingxi\.com\/jxcfd\/consume\/CashOut script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js, requires-body=false, timeout=10, tag=京喜token
+    cron "0 * * * *" script-path=https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js,tag=京喜财富岛
+    
+    Surge:
+    京喜财富岛 = type=cron,cronexp="0 * * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js
+    京喜token = type=http-request,pattern=^https\:\/\/wq\.jd\.com\/cubeactive\/farm\/dotask,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+    京喜token = type=http-request,pattern=^https\:\/\/m\.jingxi\.com\/dreamfactory\/generator\/CollectCurrentElectricity,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+    京喜token = type=http-request,pattern=^https\:\/\/m\.jingxi\.com\/jxcfd\/consume\/CashOut,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js
+    
+    Shadowrocket:
+    [Script]
+    京喜财富岛 = type=cron,script-path=https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js,cronexpr="0 * * * *",timeout=120,enable=true
+    京喜token = type=http-request,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js,pattern=^https\:\/\/wq\.jd\.com\/cubeactive\/farm\/dotask,max-size=131072,timeout=10,enable=true
+    京喜token = type=http-request,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js,pattern=^https\:\/\/m\.jingxi\.com\/dreamfactory\/generator\/CollectCurrentElectricity,max-size=131072,timeout=10,enable=true
+    京喜token = type=http-request,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_tokens.js,pattern=^https\:\/\/m\.jingxi\.com\/jxcfd\/consume\/CashOut,max-size=131072,timeout=10,enable=true
+    
+    BoxJS订阅
+    https://raw.githubusercontent.com/whyour/hundun/master/quanx/whyour.boxjs.json
+
+    Docker：
+      1.上传jx_cfd.js文件到scripts文件夹下
+
+      2.修改以下三个参数
+
+      ################################## 是否添加DIY脚本（选填） ##################################
+      ## 如果你自己会写shell脚本，并且希望在每次git_pull.sh这个脚本运行时，额外运行你的DIY脚本，请赋值为 "true"
+      ## 同时，请务必将你的脚本命名为 diy.sh (只能叫这个文件名)，放在 config 目录下
+      ## 我已定义好的变量，你如果想直接使用，可以参考本仓库下 git_pull.sh 文件
+      EnableExtraShell="true"
+
+      ################################## 定义京喜农场TOKEN（选填） ##################################
+      ## 如果某个Cookie的账号种植的是app种子，则必须填入有效的TOKEN；而种植非app种子则不需要TOKEN
+      ## TOKEN的形式：{"farm_jstoken":"749a90f871adsfads8ffda7bf3b1576760","timestamp":"1610165423873","phoneid":"42c7e3dadfadsfdsaac-18f0e4f4a0cf"}
+      ## 因TOKEN中带有双引号，因此，变量值两侧必须由一对单引号引起来
+      ## TOKEN如何获取请阅读以下文件的注释：https://github.com/lxk0301/jd_scripts/blob/master/jd_jxnc.js
+      TokenJxnc1='{"farm_jstoken":"xxx","phoneid":"xxx","timestamp":"xxx"}'
+      TokenJxnc2=''
+      TokenJxnc3=''
+      TokenJxnc4=''
+      TokenJxnc5=''
+      TokenJxnc6=''
+
+      Docker通知推送：
+      ################################## 京喜财富岛是否静默运行 ##################################
+      ## 默认为 "false"，静默，不发送推送通知消息，如想收到通知，请修改为 "true"
+      ## 如果你不想完全关闭或者完全开启通知，只想在特定的时间发送通知，可以参考上面面的“定义东东萌宠是否静默运行”部分，设定几个if判断条件
+      export CFD_NOTIFY_CONTROL=""
+
+    logs:
+    2021/2/24 9:00
+      - 添加自动领取年终福利活动
+      - 添加自动领取升级奖励
+      - 修复超级助力App环境问题
+    2021/2/25 11:11
+      - 修复长时间不改代码问题
+*
+**/
+
+const $ = new Env("京喜财富岛");
+const JD_API_HOST = "https://m.jingxi.com/";
+const notify = $.isNode() ? require('./sendNotify') : '';
+const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
+const jdTokenNode = $.isNode() ? require('./jdJxncTokens.js') : '';
+$.showLog = $.getdata("cfd_showLog") ? $.getdata("cfd_showLog") === "true" : false;
+$.notifyTime = $.getdata("cfd_notifyTime");
+$.result = [];
+$.cookieArr = [];
+$.currentCookie = '';
+$.tokenArr = [];
+$.currentToken = {};
+$.allTask = [];
+$.info = {};
+
+!(async () => {
+  if (!getCookies()) return;
+  if (!getTokens()) return;
+  for (let i = 0; i < $.cookieArr.length; i++) {
+    $.currentCookie = $.cookieArr[i];
+    $.currentToken = $.tokenArr[i] || {};
+    if ($.currentCookie) {
+      $.userName = decodeURIComponent($.currentCookie.match(/pt_pin=(.+?);/) && $.currentCookie.match(/pt_pin=(.+?);/)[1]);
+      $.index = i + 1;
+      $.nickName = '';
+      
+      $.log(`\n开始【京东账号${i + 1}】${$.userName}`);
+
+      const beginInfo = await getUserInfo();
+         
+      await $.wait(500);
+      await querySignList();
+
+      //领取岛主升级奖励
+      promotionAward();
+
+      //领取年终福利
+      await $.wait(500);
+      getAdvEmployee(1001);
+
+      await $.wait(500);
+      await getMoney();
+      
+      //日常任务
+      await $.wait(500);
+      await getTaskList(0);      
+      await $.wait(500);
+      await browserTask(0);
+      
+      //寻宝
+      await $.wait(500);
+      await treasureHunt();
+
+      //偷财富
+      await $.wait(500);
+      await friendCircle();
+
+      //成就任务
+      await $.wait(500);
+      await getTaskList(1);
+      await $.wait(500);
+      await browserTask(1);
+
+      //抽奖
+      await $.wait(500);
+      await funCenterState();
+
+      //领取寻宝宝箱
+      await $.wait(500);
+      await openPeriodBox();
+
+      const endInfo = await getUserInfo();
+      $.result.push(
+        `【💵财富值】任务前: ${beginInfo.ddwMoney}\n【💵财富值】任务后: ${endInfo.ddwMoney}`,
+        `【💵财富值】净增值: ${endInfo.ddwMoney - beginInfo.ddwMoney}`
+      );
+
+      //出岛寻宝大作战
+      await $.wait(500);
+      await submitGroupId();
+      await $.wait(500);
+      await joinGroup();
+      //提交邀请码
+      await $.wait(500);
+      await submitInviteId($.userName);
+      //超级助力
+      await $.wait(500);
+      await createSuperAssistUser();
+      //普通助力
+      await $.wait(500);
+      await createAssistUser();
+    }
+  }
+  await $.wait(500);
+  await showMsg();
+})()
+  .catch((e) => $.logErr(e))
+  .finally(() => $.done());
+
+
+function getUserInfo() {
+  return new Promise(async (resolve) => {
+    $.get(taskUrl(`user/QueryUserInfo`), (err, resp, data) => {
+      try {
+        const {
+          iret,
+          SceneList = {},
+          XbStatus: { XBDetail = [], dwXBRemainCnt } = {},
+          ddwMoney,
+          dwIsNewUser,
+          sErrMsg,
+          strMyShareId,
+          strPin,
+        } = JSON.parse(data);
+        $.log(`\n获取用户信息：${sErrMsg}\n${$.showLog ? data : ""}`);
+        $.info = {
+          ...$.info,
+          SceneList,
+          XBDetail,
+          dwXBRemainCnt,
+          ddwMoney,
+          dwIsNewUser,
+          strMyShareId,
+          strPin,
+        };
+        resolve({
+          SceneList,
+          XBDetail,
+          dwXBRemainCnt,
+          ddwMoney,
+          dwIsNewUser,
+          strMyShareId,
+          strPin,
+        });
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//签到列表
+function querySignList() {
+  return new Promise(async (resolve) => {
+    $.get(taskUrl(`task/QuerySignListV2`), async (err, resp, data) => {
+      try {
+        const { iRet, sData: { Sign = [{}], dwUserFlag }, sErrMsg } = JSON.parse(data);
+        $.log(`\n签到列表：${sErrMsg}\n${$.showLog ? data : ""}`);
+        const [{ dwStatus, ddwMoney }] = Sign.filter(x => x.dwShowFlag === 1);
+        if (dwStatus === 0) {
+          await userSignReward(dwUserFlag, ddwMoney);
+        } else {
+          $.log(`\n📌签到：你今日已签到过啦，请明天再来`);
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//签到
+async function userSignReward(dwUserFlag,ddwMoney) {
+  return new Promise(async (resolve) => {
+    $.get(
+      taskUrl(
+        `task/UserSignRewardV2`,
+        `dwReqUserFlag=${dwUserFlag}&ddwMoney=${ddwMoney}`
+      ),
+      async (err, resp, data) => {
+        try {
+          //$.log(data)
+          const { iRet, sData: { ddwMoney }, sErrMsg } = JSON.parse(data);
+          $.log(`\n📌签到：${sErrMsg}，获得财富 ¥ ${ddwMoney || 0}\n${$.showLog ? data : ""}`);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      }
+    );
+  });
+}
+
+//领取财富值
+//dwSource=[1,2,3]  1:岛主自产财富 2:普通助力财富 3:超级助力财富
+function getMoney() {
+  return new Promise(async (resolve) => {
+    const sceneList = $.info.SceneList;
+    for (var _key of Object.keys($.info.SceneList)) {
+      try {
+        //领取自产财富
+        await $.wait(500);
+        await getMoney_dwSource_1( _key, sceneList );
+        //领取普通助力的财富
+        const employeeList = eval('('+ JSON.stringify(sceneList[_key].EmployeeList) +')');
+        if(employeeList !== ""){
+          for( var key of Object.keys(employeeList) ) {
+            await $.wait(500);
+            await getMoney_dwSource_2( _key, sceneList, key );
+          }
+        }
+        //领取超级助力财富
+        await $.wait(500);
+        await getMoney_dwSource_3( _key, sceneList );
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    }
+  });
+}
+
+//领取自产财富
+function getMoney_dwSource_1( _key, sceneList ) {
+  return new Promise(async (resolve) => {
+    $.get(
+      taskUrl(`user/GetMoney`,`dwSceneId=${_key}&strEmployeeId=undefined&dwSource=1`),
+      async (err, resp, data) => {
+        try {
+          const { iRet, dwMoney, sErrMsg } = JSON.parse(data);
+          $.log(`\n【${sceneList[_key].strSceneName}】🏝岛主 : ${ sErrMsg == 'success' ? `获取财富值：¥ ${dwMoney || 0}` : sErrMsg } \n${$.showLog ? data : ""}`);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      }
+    );
+  });
+}
+
+//领取普通助力的财富
+function getMoney_dwSource_2( _key, sceneList, key ) {
+  return new Promise(async (resolve) => {
+    $.get(
+      taskUrl(`user/GetMoney`, `dwSceneId=${_key}&strEmployeeId=${key}&dwSource=2`), 
+      async (err, resp, data) => {
+        try {
+          const { dwMoney, iRet, sErrMsg, strPin } = JSON.parse(data);
+          $.log(`\n【${sceneList[_key].strSceneName}】👬好友: ${ sErrMsg == 'success' ? `获取普通助力财富值：¥ ${dwMoney || 0}` : sErrMsg } \n${$.showLog ? data : ""}`);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      }
+    );
+  });
+}
+
+//领取超级助力财富
+function getMoney_dwSource_3( _key, sceneList ) {
+  return new Promise(async (resolve) => {
+    $.get(
+      taskUrl(`user/GetMoney`,`dwSceneId=${_key}&strEmployeeId=&dwSource=3&strPgtimestamp=${$.currentToken['timestamp']}&strPhoneID=${$.currentToken['phoneid']}&strPgUUNum=${$.currentToken['farm_jstoken']}`), 
+      async (err, resp, data) => {
+        try {
+          const { iRet, dwMoney, sErrMsg, strPin } = JSON.parse(data);
+          $.log(`\n【${sceneList[_key].strSceneName}】👬好友: ${ sErrMsg == 'success' ? `获取超级助力财富值：¥ ${dwMoney || 0}` : sErrMsg } \n${$.showLog ? data : ""}`);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      }
+    );
+  });
+}
+
+//判断年终福利是否领取
+//user/GetAdvEmployee
+//strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=1614127340116&ptag=138631.26.55&
+//dwSenceId=1001&dwIsSlave=0&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwIsSlave%2CdwSenceId%2Cptag%2Csource%2CstrZone
+//&_=1614127340121&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls
+function getAdvEmployee(_key) { 
+  $.get(taskUrl(`user/GetAdvEmployee`, `dwSenceId=${_key}&dwIsSlave=0&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwIsSlave%2CdwSenceId%2Cptag%2Csource%2CstrZone`), async(err, resp, data) => {
+    try {
+      const { SceneEmployeeInfo:{ SceneId, SceneName, dwCurStage } , dwNextSceneId, sErrMsg } = JSON.parse(data);
+      if( sErrMsg === `success` && dwCurStage === 1) {
+        await advEmployeeAward( SceneId, SceneName );
+        await $.wait(500);
+        if(dwNextSceneId > 0 ) {
+          _key = dwNextSceneId;
+          getAdvEmployee (_key);
+        }
+      }
+    } catch (e) {
+      $.logErr(e, resp);
+    }
+  });
+}
+
+//领取年终福利
+//user/AdvEmployeeAward
+//strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=1614127342671&ptag=138631.26.55
+//&dwSenceId=1001&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwSenceId%2Cptag%2Csource%2CstrZone&_ste=1
+//&_=1614127342672&sceneval=2&g_login_type=1&callback=jsonpCBKQ&g_ty=ls
+function advEmployeeAward(_key, strSceneName) {
+  return new Promise(async (resolve) =>{
+    $.get(taskUrl(`user/AdvEmployeeAward`,`dwSenceId=${_key}&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwSenceId%2Cptag%2Csource%2CstrZone`), async(err, resp, data) => {
+      try {
+        const  { sErrMsg, strAwardDetail: { strName } } = JSON.parse(data);
+        $.log(`\n【${strSceneName}】💰雇主奖励：${ sErrMsg == 'success' ? `获取雇主奖励：¥ ${strName || 0}` : sErrMsg } \n${$.showLog ? data : ""}`);
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//领取岛主升级奖励
+//user/PromotionAward
+//strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=1614127340122&ptag=138631.26.55
+//&_stk=_cfd_t%2CbizCode%2CdwEnv%2Cptag%2Csource%2CstrZone&_ste=1
+//&_=1614127340124&sceneval=2&g_login_type=1&callback=jsonpCBKI&g_ty=ls
+function promotionAward() {
+  $.get(taskUrl(`user/PromotionAward`, `_stk=_cfd_t%2CbizCode%2CdwEnv%2Cptag%2Csource%2CstrZone`), async (err, resp, data) => {
+    try {
+      const { sErrMsg, strPrizeName } = JSON.parse(data);
+      $.log(`\n💰岛主升级奖励：${ sErrMsg == 'success' ? `获取升级奖励：¥ ${strPrizeName || 0}` : sErrMsg } \n${$.showLog ? data : ""}`);
+    } catch (e) {
+      $.logErr(e, resp);
+    }
+  });
+}
+
+//好友圈偷财富
+function friendCircle() {
+  return new Promise(async (resolve) => {
+    $.get(taskUrl(`user/FriendCircle`, `dwPageIndex=1&dwPageSize=20`), async(err, resp, data) => {
+      try {
+        //$.log(`\n好友圈列表\n${data}`);
+        const {MomentList = [],iRet,sErrMsg,strShareId} = JSON.parse(data);
+        for (moment of MomentList) {
+          if (moment.strShareId !== strShareId && moment.dwAccessMoney > 0) {
+            await queryFriendIsland(moment.strShareId);
+            await $.wait(500);
+          }
+        }  
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//获取好友信息
+function queryFriendIsland(strShareId,){
+  return new Promise(async (resolve) => {
+    $.get(taskUrl(`user/QueryFriendIsland`, `strShareId=${strShareId}&sceneval=2`), 
+      async(err, resp, data) => {
+        try {
+          //$.log(`\n获取好友信息\n${data}`);
+          const {SceneList = {},dwStealMoney,sErrMsg,strFriendNick} = JSON.parse(data);
+          if (sErrMsg === "success") {
+            const sceneList = eval('(' + JSON.stringify(SceneList) + ')');
+            const sceneIds = Object.keys(SceneList);
+            for (sceneId of sceneIds) {
+              await stealMoney(strShareId,sceneId,strFriendNick,sceneList[sceneId].strSceneName);
+              await $.wait(500);
+            }
+          } 
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+    });
+  });
+}
+
+//偷财富
+function stealMoney(strShareId, sceneId, strFriendNick, strSceneName){
+  return new Promise(async (resolve) =>{
+    $.get(taskUrl(`user/StealMoney`, `strFriendId=${strShareId}&dwSceneId=${sceneId}&sceneval=2`), async(err, resp, data) => {
+      try {
+        //$.log(data);
+        const {dwGetMoney,iRet,sErrMsg} = JSON.parse(data);
+        $.log(`\n🤏偷取好友【${strFriendNick}】【${strSceneName}】财富值：¥ ${dwGetMoney ? dwGetMoney : sErrMsg}\n${$.showLog ? data: ""}`);
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//寻宝  
+async function treasureHunt() {
+  if($.info.dwXBRemainCnt > 0) {
+    const xbDetail = $.info.XBDetail;
+    for (let i = 0; i < xbDetail.length; i++) {
+      const { ddwColdEndTm, strIndex }= xbDetail[i];
+      const currentTm = Math.round(new Date() / 1000);
+      if( currentTm > ddwColdEndTm ) {
+        await doTreasureHunt(strIndex);
+        await $.wait(3000);
+      } else {
+        $.log(`\n🎁寻宝：宝藏冷却中，请等待冷却完毕`);
+      }
+    }
+  } else {
+    $.log(`\n🎁寻宝：寻宝次数不足`);
+  }
+}
+
+function doTreasureHunt(place) {
+  return new Promise(async (resolve) => {
+    $.get(
+      taskUrl(`consume/TreasureHunt`, `strIndex=${place}&dwIsShare=0`),
+      async (err, resp, data) => {
+        try {
+          //$.log(data);
+          const { iRet, dwExpericnce, sErrMsg } = JSON.parse(data);
+          $.log(`\n【${place}】🎁寻宝：${sErrMsg} ，获取随机奖励：¥ ${dwExpericnce || 0} \n${$.showLog ? data : ""}`);
+          resolve(iRet)
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      }
+    );
+  });
+}
+
+//任务赚财富
+function getTaskList(taskType) {
+  return new Promise(async (resolve) => {
+    switch (taskType){
+      case 0: //日常任务
+        $.get(taskListUrl("GetUserTaskStatusList"), async (err, resp, data) => {
+          try {
+            const { ret, data: { userTaskStatusList = [] } = {}, msg } = JSON.parse(data);
+            $.allTask = userTaskStatusList.filter((x) => x.awardStatus !== 1);
+            $.log(`\n获取【📆日常任务】列表 ${msg}，总共${$.allTask.length}个任务！\n${$.showLog ? data : ""}`);
+          } catch (e) {
+            $.logErr(e, resp);  
+          } finally {
+            resolve();
+          }
+        });
+        break;
+      case 1: //成就任务
+        $.get(taskUrl("consume/AchieveInfo"), async (err, resp, data) => {
+          try{
+            const { iRet, sErrMsg, taskinfo = [] } = JSON.parse(data);
+            $.allTask = taskinfo.filter((x) => x.dwAwardStatus === 1);
+            $.log(`\n获取【🎖成就任务】列表 ${sErrMsg}，总共${$.allTask.length}个任务！\n${$.showLog ? data : ""}`);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+        break;
+      default:
+        break;
+    }
+  });
+}
+
+//浏览任务 + 做任务 + 领取奖励
+function browserTask(taskType) {
+  return new Promise(async (resolve) => {
+    switch (taskType) {
+      case 0://日常任务
+        const times = Math.max(...[...$.allTask].map((x) => x.configTargetTimes));
+        for (let i = 0; i < $.allTask.length; i++) {          
+          const taskinfo = $.allTask[i];
+          $.log(`\n开始第${i + 1}个【📆日常任务】：${taskinfo.taskName}`);
+          const status = [true, true];
+          for (let i = 0; i < times; i++) {
+            await $.wait(500);
+            if (status[0]) {
+              //做任务
+              status[0] = await doTask(taskinfo);
+            }
+            await $.wait(500);
+            if (status[1]) {
+              //领取奖励
+              status[1] = await awardTask(0, taskinfo);
+            }
+            if (!status[0] && !status[1]) {
+              break;
+            }
+          }
+          $.log(`\n结束第${i + 1}个【📆日常任务】：${taskinfo.taskName}\n`);
+        }
+        break;
+      case 1://成就任务
+        for (let i = 0; i < $.allTask.length; i++) {
+          const taskinfo = $.allTask[i];
+          $.log(`\n开始第${i + 1}个【🎖成就任务】：${taskinfo.strTaskDescr}`);
+          if(taskinfo.dwAwardStatus === "0"){
+            $.log(`\n${taskinfo.strTaskDescr}【领成就奖励】：该成就任务未达到门槛}`);
+          } else {
+            await $.wait(500);
+            //领奖励
+            await awardTask(1, taskinfo);
+          }
+          $.log(`\n结束第${i + 1}个【🎖成就任务】：${taskinfo.strTaskDescr}\n`);
+        }        
+        break;
+      default:
+        break;
+    }
+    resolve();
+  });
+}
+
+//做任务
+function doTask(taskinfo) {
+  return new Promise(async (resolve) => {
+    const { taskId, completedTimes, configTargetTimes, taskName } = taskinfo;
+    if (parseInt(completedTimes) >= parseInt(configTargetTimes)) {
+      resolve(false);
+      $.log(`\n${taskName}【做日常任务】： mission success`);
+      return;
+    }
+    $.get(taskListUrl(`DoTask`, `taskId=${taskId}`), (err, resp, data) => {
+      try {
+        //$.log(`taskId:${taskId},data:${data}`);
+        const { msg, ret } = JSON.parse(data);
+        $.log(`\n${taskName}【做日常任务】：${msg.indexOf("活动太火爆了") !== -1 ? "任务进行中或者未到任务时间" : msg }\n${$.showLog ? data : ""}`);
+        resolve(ret === 0);
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//领取奖励
+function awardTask( taskType, taskinfo) {
+  return new Promise((resolve) => {
+    switch (taskType) {
+      case 0://日常任务
+        const { taskId, taskName } = taskinfo;
+        $.get(taskListUrl(`Award`, `taskId=${taskId}`), (err, resp, data) => {
+          try {
+            const { msg, ret, data: { prizeInfo = '' } = {} } = JSON.parse(data);
+            let str = '';
+            if (msg.indexOf('活动太火爆了') !== -1) {
+              str = '任务为成就任务或者未到任务时间';
+            } else {
+              str = msg + prizeInfo ? ` 获得财富值 ¥ ${JSON.parse(prizeInfo).ddwMoney}` : '';
+            }
+            $.log(`\n${taskName}【领日常奖励】：${str}\n${$.showLog ? data : ''}`);
+            resolve(ret === 0);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+        break
+      case 1://成就奖励
+        const { strTaskIndex, strTaskDescr } = taskinfo;
+        $.get(taskUrl(`consume/AchieveAward`, `strTaskIndex=${strTaskIndex}`), (err, resp, data) => {
+          try {
+            const { iRet, sErrMsg, dwExpericnce } = JSON.parse(data);
+            $.log(`\n${strTaskDescr}【领成就奖励】： success 获得财富值：¥ ${dwExpericnce}\n${ $.showLog ? data : '' }`);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+        break
+      default:
+        break
+    }
+  });
+}
+
+//娱乐中心
+function funCenterState() {
+  return new Promise(resolve => {
+    $.get(taskUrl(`consume/FunCenterState`, `strType=1`), async(err, resp, data) => {
+      try {
+        const {  SlotMachine: { ddwConfVersion, dwFreeCount, strCouponPool, strGoodsPool } = {}, iRet, sErrMsg } = JSON.parse(data);
+        if(dwFreeCount == 1) {
+          await $.wait(500);
+          await soltMachine(strCouponPool,strGoodsPool,ddwConfVersion);
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//抽奖机
+function soltMachine(strCouponPool,strGoodsPool,ddwConfVersion) {
+  return new Promise(resolve => {
+    $.get(taskUrl(`consume/SlotMachine`,`strCouponPool=${strCouponPool}&strGoodsPool=${strGoodsPool}&ddwConfVersion=${ddwConfVersion}`), async(err, resp, data) => {
+      try {
+        const { iRet, sErrMsg, strAwardPoolName } = JSON.parse(data);
+        $.log(`\n【抽奖结果】🎰 ${strAwardPoolName != "" ? "未中奖" : strAwardPoolName} \n${ $.showLog ? data : '' }`);
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//提交互助码
+function submitInviteId(userName) {
+  return new Promise(resolve => {
+    if (!$.info || !$.info.strMyShareId) {
+      resolve();
+      return;
+    }
+    $.log('\n【🏖岛主】你的互助码: ' + $.info.strMyShareId);
+    $.post(
+      {
+        url: `https://api.ninesix.cc/api/jx-cfd/${$.info.strMyShareId}/${encodeURIComponent(userName)}`,
+      },
+      async (err, resp, _data) => {
+        try {
+          const { data = {}, code } = JSON.parse(_data);
+          $.log(`\n【🏖岛主】邀请码提交：${code}\n${$.showLog ? _data : ''}`);
+          if (data.value) {
+            $.result.push('【🏖岛主】邀请码提交成功！');
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      },
+    );
+  });
+}
+
+//随机超级助力好友
+//user/JoinScene
+//strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=1614129401306&ptag=&
+//strShareId=90A15070F26FE5335C0DD5B80BC737B570EE3333E55C6586B913301C30BBD298&dwSceneId=1001&dwType=2
+//&strPgtimestamp=1614129401239&strPhoneID=1fdab515ff3293f7fa8979661e521458d5a7a0b3&strPgUUNum=5e9a1cf37e0ad6fbe634840fcfe0ebb3
+//&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwSceneId%2CdwType%2Cptag%2Csource%2CstrPgUUNum%2CstrPgtimestamp%2CstrPhoneID%2CstrShareId%2CstrZone
+function createSuperAssistUser() {
+  return new Promise(resolve => {
+    const sceneIds = Object.keys($.info.SceneList);
+    const sceneId = Math.min(...sceneIds);
+    $.get({ url: 'https://api.ninesix.cc/api/jx-cfd' }, async (err, resp, _data) => {
+      try {
+        const { data = {} } = JSON.parse(_data);
+        $.log(`\n【👫🏻超级助力】超级助力码：${data.value}\n${$.showLog ? _data : ''}`);
+        $.get(taskUrl('user/JoinScene', `strPgtimestamp=${$.currentToken['timestamp']}&strPhoneID=${$.currentToken['phoneid']}&strPgUUNum=${$.currentToken['farm_jstoken']}&strShareId=${escape(data.value)}&dwSceneId=${sceneId}&dwType=2&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwSceneId%2CdwType%2Cptag%2Csource%2CstrPgUUNum%2CstrPgtimestamp%2CstrPhoneID%2CstrShareId%2CstrZone`), async (err, resp, data) => {
+          try {
+            const { sErrMsg, data: { rewardMoney = 0 } = {} } = JSON.parse(data);
+            $.log(`\n【👫🏻超级助力】超级助力：${sErrMsg}\n${$.showLog ? data : ''}`);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//随机助力好友
+function createAssistUser() {
+  return new Promise(resolve => {
+    const sceneIds = Object.keys($.info.SceneList);
+    const sceneId = Math.min(...sceneIds);
+    $.get({ url: 'https://api.ninesix.cc/api/jx-cfd' }, async (err, resp, _data) => {
+      try {
+        const { data = {} } = JSON.parse(_data);
+        $.log(`\n【👬普通助力】普通助力码：${data.value}\n${$.showLog ? _data : ''}`);
+        $.get(taskUrl('user/JoinScene', `strShareId=${escape(data.value)}&dwSceneId=${sceneId}`), async (err, resp, data) => {
+          try {
+            const { sErrMsg, data: { rewardMoney = 0 } = {} } = JSON.parse(data);
+            $.log(`\n【👬普通助力】助力：${sErrMsg}\n${$.showLog ? data : ''}`);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+      	resolve();
+      }
+    });
+  });
+}
+
+//提交互助码
+function submitGroupId() {
+  return new Promise(resolve => {
+    $.get(taskUrl(`user/GatherForture`), async (err, resp, g_data) => {
+      try {
+        const { GroupInfo:{ strGroupId }, strPin } = JSON.parse(g_data);
+        if(!strGroupId) {
+          const status = await openGroup();
+          if(status === 0) {
+            await submitGroupId();
+          } else {
+            resolve();
+            return;
+          }
+        } else {
+          $.log('你的【🏝寻宝大作战】互助码: ' + strGroupId);
+          $.post(
+            {url: `https://api.ninesix.cc/api/jx-cfd-group/${strGroupId}/${encodeURIComponent(strPin)}`},
+            async (err, resp, _data) => {
+              try {
+                const { data = {}, code } = JSON.parse(_data);
+                $.log(`\n【🏝寻宝大作战】邀请码提交：${code}\n${$.showLog ? _data : ''}`);
+                if (data.value) {
+                  $.result.push('【🏝寻宝大作战】邀请码提交成功！');
+                }
+              } catch (e) {
+                $.logErr(e, resp);
+                resolve();
+              } finally {
+                resolve();
+              }
+            }
+          );
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//开启寻宝大作战
+function openGroup() {
+  return new Promise( async (resolve) => {
+    $.get(taskUrl(`user/OpenGroup`, `dwIsNewUser=${$.info.dwIsNewUser}`), async (err, resp, data) => {
+      try {
+        const { sErrMsg } = JSON.parse(data);
+        $.log(`\n【🏝寻宝大作战】${sErrMsg}\n${$.showLog ? data : ''}`);
+        resolve(0);
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//助力好友寻宝大作战
+//user/JoinGroup
+//strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=1614153421905&ptag=138920.20.4&
+//strGroupId=Jxcfd_GroupId_202_37661794&dwIsNewUser=0&pgtimestamp=1614153421889&phoneID=1fdab515ff3293f7fa8979661e521458d5a7a0b3&pgUUNum=794e1fa83f6455e43a18853b4f6e1419
+//&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwIsNewUser%2CpgUUNum%2Cpgtimestamp%2CphoneID%2Cptag%2Csource%2CstrGroupId%2CstrZone&_ste=1
+//&_=1614153421918&sceneval=2&g_login_type=1&callback=jsonpCBKI&g_ty=ls
+function joinGroup() {
+  return new Promise( async (resolve) => {
+    $.get({ url: 'https://api.ninesix.cc/api/jx-cfd-group' }, (err, resp, _data) => {
+      try {
+        const { data = {} } = JSON.parse(_data);
+        $.log(`\n【🏝寻宝大作战】随机助力码：${data.value}\n${$.showLog ? _data : ''}`);
+        $.get(taskUrl(`user/JoinGroup`, `strGroupId=${data.value}&dwIsNewUser=${$.info.dwIsNewUser}&pgtimestamp=${$.currentToken['timestamp']}&phoneID=${$.currentToken['phoneid']}&pgUUNum=${$.currentToken['farm_jstoken']}&_stk=_cfd_t%2CbizCode%2CdwEnv%2CdwIsNewUser%2CpgUUNum%2Cpgtimestamp%2CphoneID%2Cptag%2Csource%2CstrGroupId%2CstrZone`), (err, resp, data) => {
+          try {
+            const { sErrMsg } = JSON.parse(data);
+            $.log(`\n【🏝寻宝大作战】助力：${sErrMsg}\n${$.showLog ? data : ''}`);
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve();
+          }
+        });
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+//寻宝大作战开宝箱
+function openPeriodBox() {
+  return new Promise( async (resolve) => { 
+    $.get(taskUrl(`user/GatherForture`), async (err, resp, data) => {
+      try {
+        const { PeriodBox = [{}] } = JSON.parse(data);
+        for (var i = 0; i < PeriodBox.length ; i++) {
+          const { dwStatus, dwSeq, strBrandName } = PeriodBox[i];
+          //1:未达条件 2:可开启 3:已开启
+          if (dwStatus == 2) {
+            await $.wait(1000);
+            await $.get(taskUrl(`user/OpenPeriodBox`, `dwSeq=${dwSeq}`), async (err, resp, data) => {
+              try {
+                const { dwMoney, iRet, sErrMsg } = JSON.parse(data)
+                $.log(`\n【🏝寻宝大作战】【${strBrandName}】开宝箱：${sErrMsg == 'success' ? ` 获得财富值 ¥ ${dwMoney}` : sErrMsg }\n${$.showLog ? data : ''}`);
+              } catch (e) {
+                $.logErr(e, resp);
+              } finally {
+                resolve();
+              }
+            });
+          } else if (dwStatus == 3) {
+            $.log(`\n【🏝寻宝大作战】【${strBrandName}】开宝箱：宝箱已开启过！`);
+          } else {
+            $.log(`\n【🏝寻宝大作战】【${strBrandName}】开宝箱：未达到宝箱开启条件，快去邀请好友助力吧！`);
+            resolve();
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve(); 
+      }
+    });
+  });
+}
+
+function getCookies() {
+  if ($.isNode()) {
+    $.cookieArr = Object.values(jdCookieNode);
+  } else {
+    const CookiesJd = JSON.parse($.getdata("CookiesJD") || "[]").filter(x => !!x).map(x => x.cookie);
+    $.cookieArr = [$.getdata("CookieJD") || "", $.getdata("CookieJD2") || "", ...CookiesJd];
+  }
+  if (!$.cookieArr[0]) {
+    $.msg(
+      $.name,
+      "【⏰提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取",
+      "https://bean.m.jd.com/",
+      { "open-url": "https://bean.m.jd.com/", }
+    );
+    return false;
+  }
+  return true;
+}
+
+function getTokens() {
+  if ($.isNode()) {
+    Object.keys(jdTokenNode).forEach((item) => {
+      $.tokenArr.push(jdTokenNode[item] ? JSON.parse(jdTokenNode[item]) : '{}');
+    })
+  } else {
+    $.tokenArr = JSON.parse($.getdata('jx_tokens') || '[]');
+  }
+  if (!$
