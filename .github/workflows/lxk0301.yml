@@ -7,6 +7,7 @@ on:
 jobs:
   repo-lxk:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
     - uses: actions/checkout@v2
       with:
@@ -18,3 +19,11 @@ jobs:
         source_branch: "master"
         destination_branch: "jd_scripts"
         github_token: ${{ secrets.PAT }}
+        
+    - name: Delete Workflow Runs # 删除执行日志
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        retain_days: 1
+        keep_minimum_runs: 0
