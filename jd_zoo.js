@@ -9,7 +9,7 @@ PK互助：内部账号自行互助(排名靠前账号得到的机会多),多余
 地图任务：已添加，下午2点到5点执行,抽奖已添加(基本都是优惠券)
 金融APP任务：已完成
 活动时间：2021-05-24至2021-06-20
-脚本更新时间：2021-05-27 20:55
+脚本更新时间：2021-05-28 9:20
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 ===================quantumultx================
 [task_local]
@@ -35,12 +35,14 @@ const pKHelpAuthorFlag = true;//是否助力作者PK  true 助力，false 不助
 let cookiesArr = [];
 $.cookie = '';
 $.inviteList = [];
-$.pkInviteList = [
-  'sSKNX-MpqKOJsNu8mJ7RA9BJMup4tAAmPcPPPhBUWYKUJ19UKeC8EAoKeUXELiQ',
-];
+$.pkInviteList = [];
 $.secretpInfo = {};
 $.innerPkInviteList = [
+  'sSKNX-MpqKOJsNu8mJ7RA9BJMup4tAAmPcPPPhBUWYKUJ19UKeC8EAoKeUXELiQ',
+  'sSKNX-MpqKPS7Le4m5rbBpODDLhoZ9ruJViTqJpv4c2Lm2-TfJwzRBS82zBEzk8',
+  'sSKNX-MpqKOJsNvSzMSZfAM9H7GwE_7GAGP6h5-yWMFC6rsV_bSQHlBmw28K',
 ];
+$.hotFlag = false; //是否火爆
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -64,7 +66,9 @@ if ($.isNode()) {
       '地图任务：已添加，下午2点到5点执行,抽奖已添加\n' +
       '金融APP任务：已完成\n' +
       '活动时间：2021-05-24至2021-06-20\n' +
-      '脚本更新时间：2021-05-26 20:50');
+      '脚本更新时间：2021-05-28 9:20\n' +
+      '火爆账户暂时不做任务，找到解决办法后再做任务'
+      );
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       $.cookie = cookiesArr[i];
@@ -177,7 +181,7 @@ async function zoo() {
     await takePostRequest('zoo_getTaskDetail');
     await $.wait(1000);
     //做任务
-    for (let i = 0; i < $.taskList.length && $.secretp; i++) {
+    for (let i = 0; i < $.taskList.length && $.secretp && !$.hotFlag; i++) {
       $.oneTask = $.taskList[i];
       if ([1, 3, 5, 7, 9, 26].includes($.oneTask.taskType) && $.oneTask.status === 1) {
         $.activityInfoList = $.oneTask.shoppingActivityVos || $.oneTask.brandMemberVos || $.oneTask.followShopVo || $.oneTask.browseShopVo;
@@ -230,7 +234,7 @@ async function zoo() {
       }
     }
     //===================================图鉴里的店铺====================================================================
-    if (new Date().getUTCHours() + 8 >= 17 && new Date().getUTCHours() + 8 <= 18) {//分享
+    if (new Date().getUTCHours() + 8 >= 17 && new Date().getUTCHours() + 8 <= 18 && !$.hotFlag) {//分享
       $.myMapList = [];
       await takePostRequest('zoo_myMap');
       for (let i = 0; i < $.myMapList.length; i++) {
@@ -242,7 +246,7 @@ async function zoo() {
         }
       }
     }
-    if (new Date().getUTCHours() + 8 >= 14 && new Date().getUTCHours() + 8 <= 17){//30个店铺，为了避免代码执行太久，下午2点到5点才做店铺任务
+    if (new Date().getUTCHours() + 8 >= 14 && new Date().getUTCHours() + 8 <= 17 && !$.hotFlag){//30个店铺，为了避免代码执行太久，下午2点到5点才做店铺任务
       console.log(`去做店铺任务`);
       $.shopInfoList = [];
       await takePostRequest('qryCompositeMaterials');
@@ -305,7 +309,7 @@ async function zoo() {
     }
     //==================================微信任务========================================================================
     $.wxTaskList = [];
-    await takePostRequest('wxTaskDetail');
+    if(!$.hotFlag) await takePostRequest('wxTaskDetail');
     for (let i = 0; i < $.wxTaskList.length; i++) {
       $.oneTask = $.wxTaskList[i];
       if($.oneTask.taskType === 2 || $.oneTask.status !== 1){continue;} //不做加购
@@ -330,7 +334,7 @@ async function zoo() {
     }
     //=======================================================京东金融=================================================================================
     $.jdjrTaskList = [];
-    await takePostRequest('jdjrTaskDetail');
+    if(!$.hotFlag) await takePostRequest('jdjrTaskDetail');
     await $.wait(1000);
     for (let i = 0; i < $.jdjrTaskList.length; i++) {
       $.taskId = $.jdjrTaskList[i].id;
@@ -353,7 +357,7 @@ async function zoo() {
     }
     await $.wait(1000);
     $.pkTaskList = [];
-    await takePostRequest('zoo_pk_getTaskDetail');
+    if(!$.hotFlag) await takePostRequest('zoo_pk_getTaskDetail');
     await $.wait(1000);
     for (let i = 0; i < $.pkTaskList.length; i++) {
       $.oneTask = $.pkTaskList[i];
@@ -551,8 +555,13 @@ async function dealReturn(type, data) {
       }
       break;
     case 'zoo_collectProduceScore':
-      if (data.code === 0) {
+      if (data.code === 0 && data.data && data.data.result) {
         console.log(`收取成功，获得：${data.data.result.produceScore}`);
+      }else{
+        console.log(JSON.stringify(data));
+      }
+      if(data.code === 0 && data.data && data.data.bizCode === -1002){
+        $.hotFlag = true;
       }
       break;
     case 'zoo_getTaskDetail':
