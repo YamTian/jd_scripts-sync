@@ -1,3 +1,16 @@
+/*
+author：tg@chenxing666
+鲜豆庄园
+  Quantumult X:
+  [task_local]
+    55 0 * * * 
+  Loon:
+  [Script]
+    cron "55 0 * * *" 
+  Surge:
+    鲜豆庄园 = type=cron,cronexp="55 0 * * *",w
+*/
+
 const $ = new Env('鲜豆庄园');
 
 const notify = $.isNode() ? require('./sendNotify') : '';
