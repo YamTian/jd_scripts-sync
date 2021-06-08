@@ -8,17 +8,17 @@
 ============Quantumultx===============
 [task_local]
 #京东到家
-53 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js, tag=签到领现金, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+53 0 * * * https://bitbucket.org/jd-study/shylocks/src/master/jd_daojia.js, tag=签到领现金, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "53 0 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js,tag=签到领现金
+cron "53 0 * * *" script-path=https://bitbucket.org/jd-study/shylocks/src/master/jd_daojia.js,tag=签到领现金
 
 ===============Surge=================
-京东到家 = type=cron,cronexp="53 0 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js
+京东到家 = type=cron,cronexp="53 0 * * *",wake-system=1,timeout=3600,script-path=https://bitbucket.org/jd-study/shylocks/src/master/jd_daojia.js
 
 ============小火箭=========
-京东到家 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js, cronexpr="53 0 * * *", timeout=3600, enable=true
+京东到家 = type=cron,script-path=https://bitbucket.org/jd-study/shylocks/src/master/jd_daojia.js, cronexpr="53 0 * * *", timeout=3600, enable=true
  */
 
 const $ = new Env('京东到家');
