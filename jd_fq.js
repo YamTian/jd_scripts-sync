@@ -1,6 +1,14 @@
 /*
 author：tg@chenxing666
 分分币
+  Quantumult X:
+  [task_local]
+    38 0 * * * 
+  Loon:
+  [Script]
+    cron "38 0 * * *" 
+  Surge:
+    分分币 = type=cron,cronexp="38 0 * * *",w
 */
 const $ = new Env('分分币');
 
