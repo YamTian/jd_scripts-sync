@@ -1,6 +1,14 @@
 /*
 author：tg@chenxing666
 盲盒
+  Quantumult X:
+  [task_local]
+    33 6 * * * 
+  Loon:
+  [Script]
+    cron "33 * * *" 
+  Surge:
+    盲盒 = type=cron,cronexp="33 6 * * *",w
 */
 const $ = new Env('盲盒');
 
