@@ -5,7 +5,7 @@ on:
     - cron: '0 */6 * * *'
 
 jobs:
-  repo-lxk:
+  repo-ClassmateLin:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
